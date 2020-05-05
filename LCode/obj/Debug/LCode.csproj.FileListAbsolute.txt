@@ -1,0 +1,2 @@
+C:\Users\gabap\Desktop\Projetos\LCode\LCode\obj\Debug\LCode.csprojAssemblyReference.cache
+C:\Users\gabap\Desktop\Projetos\LCode\LCode\obj\Debug\LCode.csproj.CoreCompileInputs.cache
