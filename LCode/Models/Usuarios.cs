@@ -27,6 +27,6 @@ namespace LCode.Models
 
         public int Usu_pais { get; set; }
 
-        public int Usu_hierarquia { get; set; }
+        public string Usu_hierarquia { get; set; }
     }
 }
