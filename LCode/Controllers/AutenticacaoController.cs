@@ -11,12 +11,13 @@ using Renci.SshNet.Security.Cryptography;
 using LCode.Dados;
 using System.Web.Security;
 
+
 namespace LCode.Controllers
 {
     public class AutenticacaoController : Controller
     {
-        Login usu = new Login();
-
+        Login log = new Login();
+        BancoDeDados bd = new BancoDeDados();
  
         public ActionResult Login()
         {
@@ -26,8 +27,7 @@ namespace LCode.Controllers
         [HttpPost]
         public ActionResult Login(Usuarios u)
         {
-            usu.ValidaLogin(u);
-            ViewBag.mensagem = "Digite o usuário e senha";
+            log.ValidaLogin(u);
 
             if (u.Usu_email != null && u.Usu_senha != null)
             {
@@ -48,19 +48,77 @@ namespace LCode.Controllers
                     Session["Estudante"] = u.Usu_hierarquia.ToString();
                 }
 
-                return View("Index", "Home");
+                ViewBag.mensagem = "Seja bem-vindo, " + u.Usu_nome;
+                return RedirectToAction("Index","Home");
             }
             else
             {
-                return View();
+                ViewBag.mensagem = "Usuário ou senha inválido!";
+                return View(u);
             }
 
         }
 
-
+        [HttpGet]
         public ActionResult Cadastro()
         {
-            return View();
+            Usuarios u = new Usuarios();
+            return View(u);
+        }
+
+        [HttpPost]
+        public ActionResult Cadastro(Usuarios u)
+        {
+            if (ModelState.IsValid)
+            {
+                var retorno = log.ValidarCadastro(u);
+
+                if (retorno == null)
+                {
+
+                    Usuarios usuario = new Usuarios
+                    {
+
+                        Usu_email = u.Usu_email,
+                        Usu_nome = u.Usu_nome,
+                        Usu_sobrenome = u.Usu_sobrenome,
+                        Usu_senha = u.Usu_senha,
+                        Usu_hierarquia = u.Usu_hierarquia,
+                        Usu_empresa = u.Usu_empresa,
+                        Usu_pais = u.Usu_pais,
+                        Usu_data_nasc = u.Usu_data_nasc,
+                        Usu_cpf_ou_cnpj = u.Usu_cpf_ou_cnpj,
+
+                    };
+
+                    bd.InsereUsuario(usuario);
+
+                    return View("Login");
+                }
+                else
+                {
+                    if (u.Usu_email != null && u.Usu_cpf_ou_cnpj == null)
+                    {
+                        ModelState.AddModelError("Usu_email", "Já existe um usuário cadastrado com esse e-mail.");
+                        return View(u);
+                    }
+                    else if (u.Usu_cpf_ou_cnpj != null && u.Usu_email == null)
+                    {
+                        ModelState.AddModelError("Usu_cpf_ou_cnpj", "Já existe um usuário cadastrado com esse cpf.");
+                        return View(u);
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("Usu_email", "Já existe um usuário cadastrado para esse e-mail.");
+                        ModelState.AddModelError("Usu_cpf_ou_cnpj", "Já existe um usuário cadastrado para esse CPF.");
+                        return View(u);
+                    }
+                }
+            }
+            else
+            {               
+                return View(u);
+            }
         }
     }
 }
