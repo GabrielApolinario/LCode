@@ -22,7 +22,7 @@ namespace LCode.Dados
 
             using (bd = new BancoDeDados())
             {
-                string query = string.Format("SELECT usu_nome, usu_email, usu_senha, usu_hierarquia FROM lc_usuarios WHERE Usu_email = '{0}' AND Usu_Senha = '{1}' LIMIT 1;", u.Usu_email, u.Usu_senha);
+                string query = string.Format("SELECT * FROM lc_usuarios WHERE Usu_email = '{0}' AND Usu_Senha = '{1}' LIMIT 1;", u.Usu_email, u.Usu_senha);
 
                 MySqlDataReader retorno;
 
@@ -33,6 +33,7 @@ namespace LCode.Dados
                     while (retorno.Read())
                     {
                         {
+                            u.Usu_id = Convert.ToInt32(retorno["usu_id"]);
                             u.Usu_nome = Convert.ToString(retorno["usu_nome"]);
                             u.Usu_email = Convert.ToString(retorno["usu_email"]);
                             u.Usu_senha = Convert.ToString(retorno["usu_senha"]);

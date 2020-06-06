@@ -18,7 +18,9 @@ namespace LCode.Controllers
     {
         Login log = new Login();
         BancoDeDados bd = new BancoDeDados();
- 
+
+        
+
         public ActionResult Login()
         {
             return View();
@@ -58,13 +60,24 @@ namespace LCode.Controllers
             }
 
         }
-
-        [HttpGet]
+       
+        
         public ActionResult Cadastro()
         {
             Usuarios u = new Usuarios();
-            return View(u);
+            try
+            {
+                u.Paises = BancoDeDados.PopulaPais();
+                //u.Hierarquia = BancoDeDados.PopulaHierarquia();
+                return View(u);
+            }
+            catch
+            {
+                return View();
+            }
+
         }
+        
 
         [HttpPost]
         public ActionResult Cadastro(Usuarios u)
@@ -116,7 +129,9 @@ namespace LCode.Controllers
                 }
             }
             else
-            {               
+            {
+                u.Paises = BancoDeDados.PopulaPais();
+                //u.Hierarquia = BancoDeDados.PopulaHierarquia();
                 return View(u);
             }
         }

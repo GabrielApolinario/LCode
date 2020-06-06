@@ -195,4 +195,3 @@ C:\Users\gabap\Desktop\Projetos\LCode\LCode\bin\Microsoft.CodeDom.Providers.DotN
 C:\Users\gabap\Desktop\Projetos\LCode\LCode\obj\Debug\LCode.csproj.CopyComplete
 C:\Users\gabap\Desktop\Projetos\LCode\LCode\obj\Debug\LCode.dll
 C:\Users\gabap\Desktop\Projetos\LCode\LCode\obj\Debug\LCode.pdb
-C:\Users\gabap\Desktop\Projetos\LCode\LCode\obj\Debug\LCode.csprojAssemblyReference.cache

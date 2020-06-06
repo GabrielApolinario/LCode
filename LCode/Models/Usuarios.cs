@@ -1,15 +1,26 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Web;
+using LCode.Dados;
+using System.Web.UI.WebControls;
+using System.Configuration;
+using System.Web.Mvc;
 
 namespace LCode.Models
 {
+
     public class Usuarios
     {
+
+        public List<SelectListItem> Paises { get; set; }
+        //public List<SelectListItem> Hierarquia { get; set; }
+
+
         [DisplayName("Identificação")]
         public int Usu_id { get; set; }
 
@@ -37,7 +48,7 @@ namespace LCode.Models
         [Required(ErrorMessage = "A data de nascimento é obrigatória")]
         public DateTime Usu_data_nasc { get; set; }
 
-        [DisplayName("Empresa (Se houver)")] 
+        [DisplayName("Empresa (Se houver)")]
         public string Usu_empresa { get; set; }
 
         [DisplayName("Data de integração")]
@@ -50,5 +61,7 @@ namespace LCode.Models
         [DisplayName("Tipo de usuário")]
         [Required(ErrorMessage = "Escolher o tipo de usuário é obrigatório")]
         public string Usu_hierarquia { get; set; }
+
+        
     }
 }

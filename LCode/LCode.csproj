@@ -165,9 +165,10 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CursoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\AutenticacaoController.cs" />
-    <Compile Include="Dados\Comandos.cs" />
+    <Compile Include="Controllers\VideoController.cs" />
     <Compile Include="Dados\Login.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -223,9 +224,13 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Autenticacao\Login.cshtml" />
     <Content Include="Views\Autenticacao\Cadastro.cshtml" />
+    <Content Include="Views\Curso\CadastroCurso.cshtml" />
+    <Content Include="Views\Video\CadastraVideo.cshtml" />
+    <Content Include="Videos\teste.json" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="ViewModel\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
