@@ -47,7 +47,7 @@ namespace LCode.Controllers
                 
                 bd.InsereCurso(curso, Convert.ToInt32(Session["UsuId"]));
 
-                return View("Login");
+                return RedirectToAction("Index", "Home");
             }
             else
             {

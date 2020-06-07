@@ -9,6 +9,7 @@ using System.Data;
 using System.Security.Cryptography.X509Certificates;
 using System.Web.Mvc;
 using Renci.SshNet;
+using System.Web.UI.WebControls;
 
 namespace LCode.Models
 {
@@ -167,7 +168,19 @@ namespace LCode.Models
 
         public void InsereVideo(Video v)
         {
+            string query = string.Format("Insert into lc_Video (video_titulo, video_descricao, video_curso, video_link) VALUES ('{0}', '{1}', '{2}', '{3}')"
+                , v.video_titulo, v.video_descricao, v.video_curso, v.video_link);
 
+            MySqlCommand cmd = new MySqlCommand(query, con);
+            cmd.CommandType = CommandType.Text;
+
+            //cmd.Parameters.AddWithValue("proc_video_titulo", v.video_titulo);
+            //cmd.Parameters.AddWithValue("proc_video_descricao", v.video_descricao);
+            //cmd.Parameters.AddWithValue("proc_video_curso", v.video_curso);
+            //cmd.Parameters.AddWithValue("proc_video_link", v.video_link);
+            con.Open();
+
+            cmd.ExecuteNonQuery();
         }
     }
 }
