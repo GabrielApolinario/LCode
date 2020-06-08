@@ -11,13 +11,14 @@ using System.Web.Mvc;
 using Renci.SshNet;
 using System.Web.UI.WebControls;
 using Microsoft.Ajax.Utilities;
+using LCode.Controllers;
 
 namespace LCode.Models
 {
     public class BancoDeDados : IDisposable
     {
         public MySqlConnection con;
-
+        public int novo_curso_id;
         public BancoDeDados()
         {
           con = new MySqlConnection(ConfigurationManager.ConnectionStrings["BdConexao"].ConnectionString);
@@ -62,9 +63,8 @@ namespace LCode.Models
 
         }
 
-        public void InsereCurso(Curso c, int user_id)
+        public int InsereCurso(Curso c, int user_id)
         {
-
             MySqlCommand cmd = new MySqlCommand("Insere_Curso", con);
             cmd.CommandType = CommandType.StoredProcedure;
 
@@ -74,10 +74,15 @@ namespace LCode.Models
             cmd.Parameters.AddWithValue("proc_curso_valor", c.Curso_valor);
             cmd.Parameters.AddWithValue("proc_curso_categoria", c.Curso_categoria);
             cmd.Parameters.AddWithValue("proc_usu_id", user_id);
+            cmd.Parameters.Add("novo_curso_id", MySqlDbType.Int32);
+            cmd.Parameters["novo_curso_id"].Direction = ParameterDirection.Output;
             con.Open();
 
             cmd.ExecuteNonQuery();
+            novo_curso_id = Convert.ToInt32(cmd.Parameters["novo_curso_id"].Value);
+            con.Dispose();
 
+            return novo_curso_id;
         }
 
         public static List<SelectListItem> PopulaCurso(int id_usu)
@@ -179,11 +184,6 @@ namespace LCode.Models
 
             MySqlCommand cmd = new MySqlCommand(query, con);
             cmd.CommandType = CommandType.Text;
-
-            //cmd.Parameters.AddWithValue("proc_video_titulo", v.video_titulo);
-            //cmd.Parameters.AddWithValue("proc_video_descricao", v.video_descricao);
-            //cmd.Parameters.AddWithValue("proc_video_curso", v.video_curso);
-            //cmd.Parameters.AddWithValue("proc_video_link", v.video_link);
             con.Open();
 
             cmd.ExecuteNonQuery();

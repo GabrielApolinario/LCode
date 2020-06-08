@@ -10,6 +10,7 @@ namespace LCode.Controllers
     public class CursoController : Controller
     {
         BancoDeDados bd = new BancoDeDados();
+        Curso c = new Curso();
 
         // GET: Curso
         public ActionResult CadastroCurso()
@@ -43,8 +44,9 @@ namespace LCode.Controllers
                 };
                 
                 bd.InsereCurso(curso, Convert.ToInt32(Session["UsuId"]));
-
-                return RedirectToAction("Index", "Home");
+                Video v = new Video();
+                v.video_curso = bd.novo_curso_id;
+                return RedirectToAction("CadastraVideo", "Video", new { curso_id = v.video_curso });
             }
             else
             {

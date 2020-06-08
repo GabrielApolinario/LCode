@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.UI.HtmlControls;
 using LCode.Models;
+using Microsoft.Ajax.Utilities;
 
 namespace LCode.Controllers
 {
@@ -13,14 +14,16 @@ namespace LCode.Controllers
     {
         BancoDeDados bd = new BancoDeDados();
         // GET: Video
-        public ActionResult CadastraVideo()
+        [HttpGet]
+        public ActionResult CadastraVideo(int curso_id)
         {
             if (Session["Professor"] != null || Session["Adm"] != null)
             {
                 try
                 {
                     Video v = new Video();
-                    v.Cursos = BancoDeDados.PopulaCurso(Convert.ToInt32(Session["UsuId"]));
+                    // v.Cursos = BancoDeDados.PopulaCurso(Convert.ToInt32(Session["UsuId"]));
+                    v.video_curso = curso_id;
                     return View(v);
                 }
                 catch 
@@ -39,7 +42,6 @@ namespace LCode.Controllers
         {
             try
             {
-
                 string FileName = Path.GetFileNameWithoutExtension(v.video.FileName);
 
                 string FileExtension = Path.GetExtension(v.video.FileName);
@@ -53,6 +55,7 @@ namespace LCode.Controllers
                 v.video.SaveAs(v.video_link);
 
                 v.video_link = "~/Videos/" + FileName;
+
 
                 Video vid = new Video
                 {
