@@ -10,7 +10,6 @@ namespace LCode.Controllers
     public class CursoController : Controller
     {
         BancoDeDados bd = new BancoDeDados();
-        Usuarios u = new Usuarios();
 
         // GET: Curso
         public ActionResult CadastroCurso()
@@ -36,13 +35,11 @@ namespace LCode.Controllers
             {
                 Curso curso = new Curso
                 {
-
                     Curso_nome = c.Curso_nome,
                     Curso_descricao = c.Curso_descricao,
                     Curso_duracao = c.Curso_duracao,
                     Curso_valor = c.Curso_valor,
                     Curso_categoria = c.Curso_categoria,
-
                 };
                 
                 bd.InsereCurso(curso, Convert.ToInt32(Session["UsuId"]));

@@ -6,11 +6,11 @@
 
 <h2>CadastraVideo</h2>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm("CadastraVideo", "Video", FormMethod.Post, new { enctype = "multipart/form-data" })) 
 {
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
         <h4>Video</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })

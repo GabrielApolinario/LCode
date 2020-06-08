@@ -23,6 +23,14 @@
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    @if (Session["Adm"] != null || Session["Professor"] != null || Session["Estudante"] != null)
+                    {
+                        <li>@Html.ActionLink("Sair", "Logout", "Autenticacao")</li>
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("Entrar", "Login", "Autenticacao")</li>
+                    }
                 </ul>
             </div>
         </div>
