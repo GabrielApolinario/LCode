@@ -19,8 +19,6 @@ namespace LCode.Controllers
         Login log = new Login();
         BancoDeDados bd = new BancoDeDados();
 
-        
-
         public ActionResult Login()
         {
             return View();
@@ -84,6 +82,7 @@ namespace LCode.Controllers
         {
             if (ModelState.IsValid)
             {
+                
                 var retorno = log.ValidarCadastro(u);
 
                 if (retorno == null)
@@ -130,10 +129,20 @@ namespace LCode.Controllers
             }
             else
             {
-                u.Paises = BancoDeDados.PopulaPais();
-                //u.Hierarquia = BancoDeDados.PopulaHierarquia();
+                u.Paises = BancoDeDados.PopulaPais();                
                 return View(u);
             }
+        }
+
+        public ActionResult Logout()
+        {
+            Session["UsuEmail"] = null;
+            Session["UsuId"] = null;
+            Session["Adm"] = null;
+            Session["Professor"] = null;
+            Session["Estudante"] = null;
+
+            return RedirectToAction("Index", "Home");
         }
     }
 }

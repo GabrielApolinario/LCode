@@ -10,6 +10,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Web.Mvc;
 using Renci.SshNet;
 using System.Web.UI.WebControls;
+using Microsoft.Ajax.Utilities;
 
 namespace LCode.Models
 {
@@ -79,13 +80,18 @@ namespace LCode.Models
 
         }
 
-        public static List<SelectListItem> PopulaCurso()
+        public static List<SelectListItem> PopulaCurso(int id_usu)
         {
             List<SelectListItem> items = new List<SelectListItem>();
             string constr = ConfigurationManager.ConnectionStrings["BdConexao"].ConnectionString;
             using (MySqlConnection con = new MySqlConnection(constr))
             {
-                string query = " SELECT curso_id, curso_nome FROM lc_curso";
+                
+                string query = string.Format("SELECT c.curso_nome, d.digital_prof, u.usu_nome, d.digital_nome "
+                + "FROM lc_curso c, lc_digital d, lc_usuarios u " 
+                + "WHERE d.digital_prof = u.usu_id " 
+                + "AND d.digital_nome = c.curso_id " 
+                + "AND u.usu_id = {0};", id_usu);
                 using (MySqlCommand cmd = new MySqlCommand(query))
                 {
                     cmd.Connection = con;
@@ -97,7 +103,7 @@ namespace LCode.Models
                             items.Add(new SelectListItem
                             {
                                 Text = sdr["curso_nome"].ToString(),
-                                Value = sdr["curso_id"].ToString()
+                                Value = sdr["digital_nome"].ToString()
                             });
                         }
                     }
@@ -168,8 +174,8 @@ namespace LCode.Models
 
         public void InsereVideo(Video v)
         {
-            string query = string.Format("Insert into lc_Video (video_titulo, video_descricao, video_curso, video_link) VALUES ('{0}', '{1}', '{2}', '{3}')"
-                , v.video_titulo, v.video_descricao, v.video_curso, v.video_link);
+            string query = string.Format("Insert into lc_Video (video_titulo, video_descricao, video_curso, video_link, video_status) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}')"
+                ,v.video_titulo, v.video_descricao, v.video_curso, v.video_link, 1);
 
             MySqlCommand cmd = new MySqlCommand(query, con);
             cmd.CommandType = CommandType.Text;

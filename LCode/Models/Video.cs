@@ -18,16 +18,17 @@ namespace LCode.Models
         [DisplayName("Título")]
         public string video_titulo {get;set;}
 
-        [DisplayName("Título")]
+        [DisplayName("Descrição da aula")]
         public string video_descricao { get; set; }
 
-        [Required]
-        public string video_link { get; set; }
         
         [Required]
         [DisplayName("Curso que receberá a aula")]
         public int video_curso { get; set; }
        
+        [Required]
+        public string video_link { get; set; }
+
         [Required]
         public HttpPostedFileBase video { get; set; }
     }
