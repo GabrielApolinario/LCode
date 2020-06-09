@@ -1,0 +1,18 @@
+.img-curso{
+    width: 357px;
+    height:250px ;
+    background-size:cover;
+    background-position: center;
+}
+
+
+
+header{
+    background: url(../image/banner-roxo.jpg);
+}
+
+.card:hover{
+  transform: scale(1.1);
+  transition: all 400ms ease-in-out;
+  cursor: pointer;
+}

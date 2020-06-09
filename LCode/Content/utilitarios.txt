@@ -1,0 +1,14 @@
+#7665cf   = cor da letra
+
+
+#660D79   = cor intermediaria
+
+
+#4F2393   = cor mais escura
+
+#DC0CFC  = cor mais clara meio rosa
+
+background-image: linear-gradient(to top, #4f2393, #551f8e, #5a1b89, #5e1784, #62137f, #6c1287, #771190, #820f98, #9810b0, #ae10c9, #c50fe2, #dc0cfc);    = com três cores
+
+
+
