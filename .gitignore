@@ -1,5 +1,4 @@
 *.suo
 *.cache
-*.csproj
 obj/
 Debug/
