@@ -19,11 +19,13 @@ namespace LCode.Models
     {
         public MySqlConnection con;
         public int novo_curso_id;
+        public int mod_id;
+
         public BancoDeDados()
         {
-          con = new MySqlConnection(ConfigurationManager.ConnectionStrings["BdConexao"].ConnectionString);
+            con = new MySqlConnection(ConfigurationManager.ConnectionStrings["BdConexao"].ConnectionString);
 
-        }                
+        }
         public void Dispose()
         {
             con.Dispose();
@@ -32,7 +34,7 @@ namespace LCode.Models
 
         public MySqlDataReader RetornaComando(string query)
         {
-            
+
             var cmd = new MySqlCommand(query, con);
             cmd.CommandType = CommandType.Text;
 
@@ -56,7 +58,7 @@ namespace LCode.Models
             cmd.Parameters.AddWithValue("proc_usu_pais", u.Usu_pais);
             cmd.Parameters.AddWithValue("proc_usu_data_nasc", u.Usu_data_nasc);
             cmd.Parameters.AddWithValue("proc_usu_cpf", u.Usu_cpf_ou_cnpj);
-            
+
             con.Open();
 
             cmd.ExecuteNonQuery();
@@ -91,11 +93,11 @@ namespace LCode.Models
             string constr = ConfigurationManager.ConnectionStrings["BdConexao"].ConnectionString;
             using (MySqlConnection con = new MySqlConnection(constr))
             {
-                
+
                 string query = string.Format("SELECT c.curso_nome, d.digital_prof, u.usu_nome, d.digital_nome "
-                + "FROM lc_curso c, lc_digital d, lc_usuarios u " 
-                + "WHERE d.digital_prof = u.usu_id " 
-                + "AND d.digital_nome = c.curso_id " 
+                + "FROM lc_curso c, lc_digital d, lc_usuarios u "
+                + "WHERE d.digital_prof = u.usu_id "
+                + "AND d.digital_nome = c.curso_id "
                 + "AND u.usu_id = {0};", id_usu);
                 using (MySqlCommand cmd = new MySqlCommand(query))
                 {
@@ -179,14 +181,37 @@ namespace LCode.Models
 
         public void InsereVideo(Video v)
         {
-            string query = string.Format("Insert into lc_Video (video_titulo, video_descricao, video_curso, video_link, video_status) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}')"
-                ,v.video_titulo, v.video_descricao, v.video_curso, v.video_link, 1);
+            string query = string.Format("Insert into lc_Video (video_titulo, video_descricao, video_curso, video_link, video_modulo, video_status) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}')"
+                , v.video_titulo, v.video_descricao, v.video_curso, v.video_link, v.video_modulo, 1);
 
             MySqlCommand cmd = new MySqlCommand(query, con);
             cmd.CommandType = CommandType.Text;
             con.Open();
 
             cmd.ExecuteNonQuery();
+        }
+
+        public int InsereModulo(Modulo m)
+        {
+            string query = string.Format("Insere_Modulo");
+
+            MySqlCommand cmd = new MySqlCommand(query, con);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("proc_mod_curso", m.mod_curso);
+            cmd.Parameters.AddWithValue("proc_mod_nome", m.mod_nome);
+            cmd.Parameters.AddWithValue("proc_mod_desc", m.mod_desc);
+            cmd.Parameters.AddWithValue("proc_mod_qtd_video", m.mod_qtd_video);
+            cmd.Parameters.Add("novo_mod_id", MySqlDbType.Int32);
+            cmd.Parameters["novo_mod_id"].Direction = ParameterDirection.Output;
+            con.Open();
+            cmd.ExecuteNonQuery();
+
+            mod_id = Convert.ToInt32(cmd.Parameters["novo_mod_id"].Value);
+
+            con.Close();
+
+            return mod_id;
         }
     }
 }
