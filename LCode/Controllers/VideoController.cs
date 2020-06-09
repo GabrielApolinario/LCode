@@ -79,11 +79,19 @@ namespace LCode.Controllers
 
                 bd.InsereVideo(vid);
 
-                return RedirectToAction("Index", "Home");
+                //vid.video_titulo = "";
+                //vid.video_descricao = "";
+                //vid.video_link = "";
+
+                ViewBag.CadVideo = "Vídeo cadastrado com sucesso!";
+
+                return View(vid);
             }
 
             catch
             {
+                ViewBag.CadVideo = "Erro ao cadastrar o vídeo!";
+
                 return View();
             }
         }

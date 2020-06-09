@@ -49,7 +49,7 @@ namespace LCode.Controllers
                 }
 
                 ViewBag.mensagem = "Seja bem-vindo, " + u.Usu_nome;
-                return RedirectToAction("Index","Home");
+                return RedirectToAction("Dashboard","Home");
             }
             else
             {

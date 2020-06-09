@@ -237,7 +237,6 @@
     <Content Include="image\k.png" />
     <Content Include="image\banner-sigin.jpg" />
     <Content Include="image\favicon.png" />
-    <Content Include="image\image.png" />
     <Content Include="image\js-2.png" />
     <Content Include="image\js..jpg" />
     <Content Include="image\logo-devkey.png" />
