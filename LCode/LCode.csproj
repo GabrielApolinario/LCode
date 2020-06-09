@@ -182,6 +182,7 @@
     <Compile Include="Models\Digital.cs" />
     <Compile Include="Models\Disciplina.cs" />
     <Compile Include="Models\Livros.cs" />
+    <Compile Include="Models\Modulo.cs" />
     <Compile Include="Models\Pais.cs" />
     <Compile Include="Models\Presencial.cs" />
     <Compile Include="Models\Usuarios.cs" />
@@ -227,6 +228,7 @@
     <Content Include="Views\Curso\CadastroCurso.cshtml" />
     <Content Include="Views\Video\CadastraVideo.cshtml" />
     <Content Include="Videos\teste.json" />
+    <Content Include="Views\Curso\AddModulo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

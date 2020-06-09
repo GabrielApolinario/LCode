@@ -21,6 +21,7 @@ namespace LCode.Models
         [DisplayName("Descrição da aula")]
         public string video_descricao { get; set; }
 
+        public int video_modulo { get; set; }
         
         [Required]
         [DisplayName("Curso que receberá a aula")]

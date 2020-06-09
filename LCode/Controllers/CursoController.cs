@@ -11,6 +11,7 @@ namespace LCode.Controllers
     {
         BancoDeDados bd = new BancoDeDados();
         Curso c = new Curso();
+        Modulo m = new Modulo(); 
 
         // GET: Curso
         public ActionResult CadastroCurso()
@@ -44,9 +45,9 @@ namespace LCode.Controllers
                 };
                 
                 bd.InsereCurso(curso, Convert.ToInt32(Session["UsuId"]));
-                Video v = new Video();
-                v.video_curso = bd.novo_curso_id;
-                return RedirectToAction("CadastraVideo", "Video", new { curso_id = v.video_curso });
+                Modulo m = new Modulo();
+                m.mod_curso = bd.novo_curso_id;
+                return RedirectToAction("AddModulo", "Curso", new { curso_id = m.mod_curso });
             }
             else
             {
@@ -54,6 +55,32 @@ namespace LCode.Controllers
 
                 return View(c);
             }
+        }
+
+        public ActionResult AddModulo(int curso_id)
+        {
+            Modulo m = new Modulo();
+            m.mod_curso = curso_id;
+            return View(m);
+            
+        }
+
+        [HttpPost]
+        public ActionResult AddModulo(Modulo m)
+        {
+            Modulo mod = new Modulo
+            {
+                mod_desc = m.mod_desc,
+                mod_nome = m.mod_nome,
+                mod_curso = m.mod_curso,
+                mod_qtd_video = m.mod_qtd_video,
+
+            };
+
+            bd.InsereModulo(mod);
+
+            m.mod_id = bd.mod_id;
+            return RedirectToAction("CadastraVideo", "Video", new { curso_id = m.mod_curso, m.mod_id });
         }
     }
 }
