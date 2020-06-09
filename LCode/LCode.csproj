@@ -219,6 +219,22 @@
     <Content Include="image\banner-6.jpg" />
     <Content Include="image\banner-7.jpg" />
     <Content Include="image\banner-login.jpg" />
+    <Content Include="image\banner-principal-2.jpg" />
+    <Content Include="image\banner-principal.jpg" />
+    <Content Include="image\banner-roxo.jpg" />
+    <Content Include="image\banner-sigin.jpg" />
+    <Content Include="image\banner.jpg" />
+    <Content Include="image\carreira.jpg" />
+    <Content Include="image\carreira.png" />
+    <Content Include="image\certificado.png" />
+    <Content Include="image\computer-banner.jpg" />
+    <Content Include="image\contato.jpg" />
+    <Content Include="image\depositphotos_254300952-stock-illustration-letter-abstract-logo-design-vector.jpg" />
+    <Content Include="image\favicon.png" />
+    <Content Include="image\gabrielle.jpg" />
+    <Content Include="image\grafico.png" />
+    <Content Include="image\image.png" />
+    <Content Include="image\k.png" />
     <Content Include="image\banner-sigin.jpg" />
     <Content Include="image\favicon.png" />
     <Content Include="image\image.png" />
@@ -230,6 +246,7 @@
     <Content Include="image\man.png" />
     <Content Include="image\print-categorias.jpg" />
     <Content Include="image\print-comofunciona.jpg" />
+    <Content Include="image\Sem Título-1.png" />
     <Content Include="image\suporte.png" />
     <Content Include="obj\Debug\LCode.csproj.FileListAbsolute.txt" />
     <Content Include="obj\Debug\LCode.dll" />
@@ -242,6 +259,7 @@
     <Content Include="Scripts\esm\popper-utils.min.js" />
     <Content Include="Scripts\esm\popper.js" />
     <Content Include="Scripts\esm\popper.min.js" />
+    <Content Include="Scripts\global.js" />
     <Content Include="Scripts\index.js.flow" />
     <Content Include="Scripts\esm\popper.min.js.map" />
     <Content Include="Scripts\esm\popper.js.map" />
@@ -375,6 +393,8 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Home\Dashboard.cshtml" />
     <Content Include="Views\Curso\AddModulo.cshtml" />
+    <Content Include="Views\Home\Contato.cshtml" />
+    <Content Include="Views\Home\Sobre.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -38,19 +38,19 @@
                     <div class="collapse navbar-collapse flex-grow-1 text-right" id="myNavbar">
                         <ul class="navbar-nav ml-auto flex-nowrap">
                             <li class="nav-item">
-                                <span class="span"><a href="index.html" class="nav-link m-2">HOME</a></span>
+                                <span class="span">@Html.ActionLink("HOME", "Index", "Home", new { area = "" }, new { @class = "nav-link m-2" })</span>
                             </li>
                             <li class="nav-item">
-                                <span class="span"><a href="course.html" class="nav-link m-2">CURSOS</a></span>
+                                <span class="span">@Html.ActionLink("CURSOS", "Index", "Home", new { area = "" }, new { @class = "nav-link m-2" })</span>
                             </li>
                             <li class="nav-item">
-                                <span class="span"><a href="about.html" class="nav-link m-2 active-1">SOBRE</a></span>
+                                <span class="span">@Html.ActionLink("SOBRE", "Index", "Home", new { area = "" }, new { @class = "nav-link m-2" })</span>
                             </li>
                             <li class="nav-item">
-                                <span class="span"><a href="contato.html" class="nav-link m-2 active-1">CONTATO</a></span>
+                                <span class="span">@Html.ActionLink("CONTATO", "Index", "Home", new { area = "" }, new { @class = "nav-link m-2" })</span>
                             </li>
                             <li class="nav-item">
-                                <span class="span"> <a href="login.html" class="nav-link m-2">CADASTRE-SE</a></span>
+                                <span class="span">@Html.ActionLink("CADASTRE-SE", "Cadastro", "Autenticacao", new { area = "" }, new { @class = "nav-link m-2" })</span>
                             </li>
                         </ul>
                     </div>

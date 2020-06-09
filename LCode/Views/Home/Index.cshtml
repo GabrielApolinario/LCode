@@ -1,30 +1,559 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    Layout = null;
 }
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
-@ViewBag.mensagem
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
+<head>
+    <meta charset="utf-8">
+    <title>Cursos online, matricule-se já!</title>
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/global.css">
+    <link rel="stylesheet" href="~/Content/index.css">
+    <link rel="icon" type="~/image/png" sizes="16x16" href="~/image/favicon.png">
+    <link rel="stylesheet"
+          href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+          integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+          crossorigin="anonymous">
+
+</head>
+
+<body>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+
+    <header>
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-purpk nav-pills">
+            <div class="d-flex flex-grow-1">
+                <span class="w-100 d-lg-none d-block"></span>
+                <a style="color: rgb(224, 224, 224);" class="navbar-brand d-none d-lg-inline-block h1 mb-0" href="index.html">
+                    <img src="~/image/logo.png" class="d-inline-block align-top" alt="">
+                </a>
+                </a>
+                <a class="navbar-brand-two mx-auto d-lg-none d-inline-block" href="#">
+                    <img src="~/image/logo.png" alt="logo">
+                </a>
+                <div class="w-100 text-right">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </div>
+            </div>
+            <div class="collapse navbar-collapse flex-grow-1 text-right" id="myNavbar">
+                <ul class="navbar-nav ml-auto flex-nowrap">
+                    <li class="nav-item">
+                        <span class="span">@Html.ActionLink("CURSOS", "Index", "Home", new { area = "" }, new { @class = "nav-link m-2" })</span>
+                    </li>
+                    <li class="nav-item">
+                        <span class="span">@Html.ActionLink("SOBRE", "Index", "Home", new { area = "" }, new { @class = "nav-link m-2" })</span>
+                    </li>
+                    <li class="nav-item">
+                        <span class="span">@Html.ActionLink("CONTATO", "Index", "Home", new { area = "" }, new { @class = "nav-link m-2" })</span>
+                    </li>
+                    <li class="nav-item">
+                        <span class="span">@Html.ActionLink("CADASTRE-SE", "Cadastro", "Autenticacao", new { area = "" }, new { @class = "nav-link m-2" })</span>
+                    </li>
+                    <li class="nav-item">
+                        <span class="span">@Html.ActionLink("LOGIN", "Login", "Autenticacao", new { area = "" }, new { @class = "nav-link m-2" })</span>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+
+        <!--------------------------BANNER-SECTION---------------------------->
+
+        <section id="banner">
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p class="promo-title" style="color: rgb(255, 255, 255)">Bem vindo à LCode</p>
+                        <h5 style="color: rgb(255, 255, 255);">
+                            Cursos on-line para você se tornar um profissional de sucesso. A chave para o desenvolvimento se encontra aqui!
+                        </h5>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- <img src="~/image/banner.jpg">-->
+    </header>
+
+    <main>
+        <section class="features-icons bg-light text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 mb-5">
+                        <h2>Nossos <span class="color-purple"> Serviços</span></h2>
+                        <p class="mt-3">
+                            A nossa plataforma sempre procura inovar o mercado de ensino, com esse intuito dentre os nossos serviços encontra-se pontos importantíssimos para melhor aproveitamento de nossos alunos.
+                        </p>
+                    </div>
+                    <div class="col-lg-3 card-icon mr-auto">
+                        <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+                            <div class="features-icons-icon d-flex">
+                                <!--<i class="icon-screen-desktop m-auto text-primary"></i>-->
+                                <i class="fas fa-tv icon-screen-desktop m-auto text-primary"></i>
+                            </div>
+                            <h3>Responsivo</h3>
+                            <p class="lead mb-0">As vídeos aulas podem ser acessadas facilmente de qualquer dispositivo, a qualquer hora.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 card-icon mr-auto">
+                        <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+                            <div class="features-icons-icon d-flex">
+                                <i class=""></i>
+                                <i class="fas fa-play-circle icon-screen-desktop m-auto text-primary"></i>
+                            </div>
+                            <h3>Vídeos</h3>
+                            <p class="lead mb-0">As vídeos aulas podem ser acessadas facilmente de qualquer dispositivo, a qualquer hora.</p>
+                        </div>
+                    </div>
+
+
+                    <div class="col-lg-3 card-icon mr-auto">
+                        <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+                            <div class="features-icons-icon d-flex">
+                                <i class=""></i>
+                                <i class="fas fa-users icon-screen-desktop m-auto text-primary"></i>
+                            </div>
+                            <h3>Suporte</h3>
+                            <p class="lead mb-0">O nosso suporte, conta com um chat na qual o aluno ou novo usuário pode tirar suas dúvidas sem qualquer restrição.</p>
+                        </div>
+                    </div>
+
+
+
+                </div>
+                <!--<button type="button" class="btn btn-outline-primary mt-5">VER MAIS</button>-->
+            </div>
+        </section>
+
+
+        <section class="p-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 mt-5">
+                        <h2><span class="color-purple">Sobre</span> nossa Plataforma</h2>
+                    </div>
+                    <div class="col-lg-6 text-justify mt-4">
+                        <p>
+                            Com uma metologia moderna, a equipe desenvolveu A LCode com o intuito de atender o máximo de pessoas possível, através de cursos online.
+                            Contando com algumas tecnológias para melhor aproveitamento da plataforma.
+                        </p>
+                        <ul>
+                            <li class="li-color"><span>Chat online para tirar dúvidas;<span></li>
+                            <li class="li-color"><span>Perfil do usuário para melhor monitoramento de aulas;<span></li>
+                            <li class="li-color"><span>Material disponibilizado em PDF;<span></li>
+                            <li class="li-color"><span>Certificado ao término do curso.<span></li>
+                        </ul>
+
+                        <button type="button" class="btn btn-purple mr-3 mt-5">Ver cursos</button>
+                        <a href="about.html"> <button type="button" class="btn btn-outline-purple mt-5 ">Saber mais...</button></a>
+                    </div>
+                    <iframe width="500" height="300" src="https://www.youtube.com/embed/v2fqiy1YW9s" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section class="p-5 mt-5 bg-light">
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 mb-5 text-center">
+                        <h2><span class="color-purple">Principais</span> Categorias</h2>
+                        <p class="mt-3">
+                            A LCode conta com um sistema de categorias de curso para melhor entendimento do usuário. Com uma breve descrição
+                            de cada categoria.
+                        </p>
+                    </div>
+
+
+                    <div class="col-sm-3 mt-4 card-categ">
+                        <a href="#" class="a">
+                            <div class="card card-categoria">
+                                <div class="card-header media">
+                                    <div class="box-icon">
+                                        <i class="fas fa-mobile-alt align-self-start mr-3 icon-categoria"></i>
+                                    </div>
+                                    <!--<img class="align-self-start mr-3 media-img" src="~/image/logo.png" alt="Imagem de exemplo genérica">-->
+                                    <h5 class="ml-3">Cursos de Mobile</h5>
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-text">
+                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                                        Lorem Ipsum has been the industry.
+                                    </p>
+
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="col-sm-3 mt-4">
+                        <a href="#" class="a">
+                            <div class="card card-categoria">
+                                <div class="card-header media">
+                                    <div class="box-icon">
+                                        <i class="fas fa-code align-self-start mr-3 icon-categoria"></i>
+                                    </div>
+                                    <h5 class="ml-3">Cursos de Mobile</h5>
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-text">
+                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                                        Lorem Ipsum has been the industry.
+                                    </p>
+
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="col-sm-3 mt-4">
+                        <a href="#" class="a">
+                            <div class="card card-categoria">
+                                <div class="card-header media">
+                                    <div class="box-icon">
+                                        <i class="fab fa-node-js align-self-start mr-3 icon-categoria"></i>
+                                    </div>
+                                    <h5 class="ml-3">Cursos de Mobile</h5>
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-text">
+                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                                        Lorem Ipsum has been the industry.
+                                    </p>
+
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+
+                    <div class="col-sm-3 mt-4">
+                        <a href="#" class="a">
+                            <div class="card card-categoria">
+                                <div class="card-header media">
+                                    <div class="box-icon">
+                                        <i class="fas fa-cog align-self-start mr-3 icon-categoria"></i>
+                                    </div>
+                                    <h5 class="ml-3">Cursos de Mobile</h5>
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-text">
+                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                                        Lorem Ipsum has been the industry.
+                                    </p>
+
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+
+                    <div class="col-sm-3 mt-4">
+                        <a href="#" class="a">
+                            <div class="card card-categoria">
+                                <div class="card-header media">
+                                    <div class="box-icon">
+                                        <i class="fas fa-eye align-self-start mr-3 icon-categoria"></i>
+                                    </div>
+                                    <h5 class="ml-3">Cursos de Mobile</h5>
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-text">
+                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                                        Lorem Ipsum has been the industry.
+                                    </p>
+
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+
+                    <div class="col-sm-3 mt-4">
+                        <a href="#" class="a">
+                            <div class="card card-categoria">
+                                <div class="card-header media">
+                                    <div class="box-icon">
+                                        <i class="fas fa-bullseye align-self-start mr-3 icon-categoria"></i>
+                                    </div>
+                                    <h5 class="ml-3">Cursos de Mobile</h5>
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-text">
+                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                                        Lorem Ipsum has been the industry.
+                                    </p>
+
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="col-sm-3 mt-4">
+                        <a href="#" class="a">
+                            <div class="card card-categoria">
+                                <div class="card-header media">
+                                    <div class="box-icon">
+                                        <i class="fas fa-terminal align-self-start mr-3 icon-categoria"></i>
+                                    </div>
+                                    <h5 class="ml-3">Cursos de Mobile</h5>
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-text">
+                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                                        Lorem Ipsum has been the industry.
+                                    </p>
+
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="col-sm-3 mt-4">
+                        <a href="#" class="a">
+                            <div class="card card-categoria">
+                                <div class="card-header media">
+                                    <div class="box-icon">
+                                        <i class="fas fa-database  align-self-start mr-3 icon-categoria"></i>
+                                    </div>
+                                    <h5 class="ml-3">Cursos de Mobile</h5>
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-text">
+                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                                        Lorem Ipsum has been the industry.
+                                    </p>
+
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+
+                </div>
+            </div>
+
+        </section>
+
+
+        <section class="comments">
+            <div class="container ">
+                <div class="row">
+                    <div class="col-lg-12 mt-5 text-center">
+                        <h2 style="color: #FFF;">O que nossos alunos dizem</h2>
+
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="media mt-5 mr-3">
+                            <img class="mr-3 rounded-circle" src="~/image/avatar.png" alt="Imagem de exemplo genérica">
+                            <div class="media-body">
+                                <h5 class="mt-1">Alan Carter</h5>
+                                <p class="mt-2"><span>"A LCode salvou minha vida.</span> Não tenho tempo nem dinheiro para fazer faculdade. Minha meta é tornar-me um desenvolvedor da web freelancer e, graças à LCode, estou a um passo disso."</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="media mt-5 mr-3">
+                            <img class="mr-3 rounded-circle" src="~/image/avatar.png" alt="Imagem de exemplo genérica">
+                            <div class="media-body">
+                                <h5 class="mt-1">Katie Morris</h5>
+                                <p class="mt-2">"A plataforma é incrível. Além das metodologias do curso serem de alcance pois as aulas saõ totalmente gratuitas, para quem está começando ou quem já está avançado em alguma tecnologia, no fórum de dúvidas sempre algum instrutor te responde em um curto espaço de tempo.<span> Na LCode, seu conhecimento é prioridade."</span></p>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-lg-4">
+                        <div class="media mt-5 mr-3">
+                            <img class="mr-3 rounded-circle" src="~/image/avatar.png" alt="Imagem de exemplo genérica">
+                            <div class="media-body">
+                                <h5 class="mt-1">David Williams</h5>
+                                <p class="mt-2">"Se você não sabe a ordem do que deve aprender e praticar para dominar uma tecnologia, a <span>forma como os cursos estão organizados e estruturados na LCode ajuda muito.</span>"</p>
+                            </div>
+                        </div>
+                    </div>
+        </section>
+
+
+
+        <section class="p-5 bg-light register">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 mt-5">
+
+                    </div>
+                    <div class="col-lg-6 d-flex justify-content-center mt-1">
+                        <img src="~/image/man.png" alt="..." class="img-thumbnail">
+                    </div>
+
+                    <div class="col-lg-6 text-justify mt-4">
+                        <h2>Faça agora o seu <span class="color-purple">Cadastro</span></h2>
+                        <p class="mt-4">
+                            Se cadastre agora mesmo na nossa plataforma, podendo começar as aulas de qualquer curso, a qualquer hora com o acesso ilimitado.
+                            Contando com ajuda de professores altamente capacitados e treinados, com a disponibilidade de material em PDF para consulta da matéria.
+                        </p>
+
+
+                        <button type="button" class="btn btn-purple mr-3 mt-5">Cadastrar</button>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </section>
+        </section>
+
+
+        <!-- Footer -->
+        <footer class="page-footer font-small unique-color-dark">
+
+            <div style="background-color: #6351ce;">
+                <div class="container">
+
+
+                    <div class="row py-4 d-flex align-items-center">
+
+
+                        <div class="col-md-6 col-lg-5 text-center text-md-left mb-4 mb-md-0">
+                            <h6 class="mb-0">Conecte-se conosco nas redes sociais!</h6>
+                        </div>
+
+                        <div class="col-md-6 col-lg-7 text-center text-md-right">
+
+                            <!-- Facebook -->
+                            <a class="fb-ic">
+                                <i class="fab fa-facebook-f white-text mr-4"> </i>
+                            </a>
+                            <!-- Twitter -->
+                            <a class="tw-ic">
+                                <i class="fab fa-twitter white-text mr-4"> </i>
+                            </a>
+                            <!-- Google +-->
+                            <a class="gplus-ic">
+                                <i class="fab fa-google-plus-g white-text mr-4"> </i>
+                            </a>
+                            <!--Linkedin -->
+                            <a class="li-ic">
+                                <i class="fab fa-linkedin-in white-text mr-4"> </i>
+                            </a>
+                            <!--Instagram-->
+                            <a class="ins-ic">
+                                <i class="fab fa-instagram white-text"> </i>
+                            </a>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+            </div>
+
+            <!-- Footer Links -->
+            <div class="container text-center text-md-left mt-5">
+
+
+                <div class="row mt-3">
+
+
+                    <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+
+
+                        <h6 class="text-uppercase font-weight-bold">LCode</h6>
+                        <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                        <p>Cursos on-line totalmente gratuitos para você se tornar um programador de sucesso. A chave para o desenvolvimento se encontra aqui!</p>
+
+                    </div>
+
+                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+
+                        <!-- Links -->
+                        <h6 class="text-uppercase font-weight-bold">Produtos</h6>
+                        <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                        <p>
+                            <a href="#!">Cursos online</a>
+                        </p>
+                        <p>
+                            <a href="#!">Acesso ilimitado</a>
+                        </p>
+                        <p>
+                            <a href="#!">Certificado</a>
+                        </p>
+                        <p>
+                            <a href="#!">Chat para tirar dúvidas</a>
+                        </p>
+
+                    </div>
+
+                    <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+
+                        <!-- Links -->
+                        <h6 class="text-uppercase font-weight-bold">Links Úteis</h6>
+                        <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                        <p>
+                            <span class="span">@Html.ActionLink("Cursos", "", "Curso", new { area = "" }, "")</span>
+                        </p>
+                        <p>
+                            <span class="span">@Html.ActionLink("Sobre", "Sobre", "Home", new { area = "" }, "")</span>
+                        </p>
+                        <p>
+                            <span class="span">@Html.ActionLink("Contato", "Contato", "Home", new { area = "" }, "")</span>
+                        </p>
+                        <p>
+                            <span class="span">@Html.ActionLink("Login", "Login", "Autenticacao", new { area = "" }, "")</span>
+                        </p>
+
+                    </div>
+
+                    <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+
+                        <!-- Links -->
+                        <h6 class="text-uppercase font-weight-bold">Contato</h6>
+                        <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                        <p>
+                            <i class="fas fa-home mr-3"></i>R.Guaipá, 678 - Vila Leopoldina
+                        </p>
+                        <p>
+                            <i class="fas fa-envelope mr-3"></i>developmentinfo@gmail.com
+                        </p>
+                        <p>
+                            <i class="fas fa-phone mr-3"></i> +55 11 3699-2270
+                        </p>
+                        <p>
+                            <i class="fas fa-print mr-3"></i>+55 11 3699-2270
+                        </p>
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+            <!-- Footer Links -->
+            <!-- Copyright -->
+            <div class="footer-copyright text-center py-3">
+                <p>© 2020 Copyright: LCode - Todos os direitos reservados</p>
+
+            </div>
+            <!-- Copyright -->
+
+        </footer>
+        <!-- Footer -->
+    </main>
+    <script src="~/Scripts/global.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</body>
