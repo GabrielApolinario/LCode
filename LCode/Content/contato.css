@@ -1,0 +1,83 @@
+header{
+    background: url(../image/banner-roxo.jpg);
+}
+
+  .form-control:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color:rgba(116, 79, 168, 0.274);
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(116, 79, 168, 0.274);
+    transition: all 400ms ease-in-out;
+  }
+  .form-control{
+    border-radius: .5rem;
+    width: 100%;
+   
+  
+}
+
+textarea{
+    height: 200px!important;
+}
+
+.contato{
+    float: left;
+    border: 1px solid #e7e7e7;
+    background-color: rgb(255, 255, 255);
+    border-radius: 5px;
+    -webkit-box-shadow: 8px 7px 12px -4px rgba(0,0,0,0.28);
+-moz-box-shadow: 8px 7px 12px -4px rgba(0,0,0,0.28);
+box-shadow: 8px 7px 12px -4px rgba(0,0,0,0.28);
+    
+}
+
+.img-fluid-ct{
+    height: 480px;
+}
+.btn-purple-form{
+    color: #fff;
+    background-color:  #8e24aa;
+    border:none;
+    border-radius: 2rem;
+    padding: .5rem 9rem;
+    background-image: linear-gradient(to right, #667eea, #764ba2, #6B8DD6, #8E37D7);
+    font-weight: 600;
+    cursor: pointer;
+    text-align:center;
+    border: none;
+    background-size: 300% 100%;
+    -moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+    margin-left: 16%;
+  }
+  
+  .btn-purple-form:hover {
+    color: #fff;
+    background-image: linear-gradient(to right, #7300b5, #9500c6, #b800d7, #ff00f4);
+    box-shadow: 0 4px 15px 0 rgba(116, 79, 168, 0.75);
+    background-position: 100% 0;
+    -moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+    
+  }
+
+  .btn-link {
+    font-weight: 400;
+    color: #474747;
+    background-color: transparent;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+  
+  .btn-link:hover {
+    text-decoration: none!important;
+    color: #af00b5;
+    background-color: transparent;
+    border-color: transparent;
+    transition: all 400ms ease-in-out;
+  }

@@ -1,0 +1,30 @@
+.form-cad {
+    border-radius: 10px;
+    -webkit-box-shadow: 7px 7px 25px -15px rgba(0, 0, 0, 0.8);
+    -moz-box-shadow: 7px 7px 25px -15px rgba(0, 0, 0, 0.8);
+    box-shadow: 7px 7px 25px -15px rgba(0, 0, 0, 0.8);
+}
+
+label {
+    font-size: .8571em;
+    margin-bottom: 5px;
+    color: #9a9a9a;
+}
+
+.form-control {
+    background-color: transparent;
+    border: 1px solid #e3e3e3;
+    border-radius: 30px;
+    color: #2c2c2c;
+    line-height: normal;
+    font-size: .8571em;
+    box-shadow: none;
+}
+
+
+/*GLOBAL*/
+
+.title {
+    font-weight: 700;
+    margin-left: 3rem;
+}
