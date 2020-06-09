@@ -15,15 +15,15 @@ namespace LCode.Controllers
         BancoDeDados bd = new BancoDeDados();
         // GET: Video
         [HttpGet]
-        public ActionResult CadastraVideo(int curso_id, int mod_id)
+        public ActionResult CadastraVideo(Nullable<int> curso_id, Nullable<int> mod_id)
         {
             if (Session["Professor"] != null || Session["Adm"] != null)
             {
                 try
                 {
                     Video v = new Video();
-                    v.video_curso = curso_id;
-                    v.video_modulo = mod_id;
+                    v.video_curso = Convert.ToInt32(curso_id);
+                    v.video_modulo = Convert.ToInt32(mod_id);
                     return View(v);
                 }
                 catch

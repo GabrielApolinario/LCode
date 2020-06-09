@@ -57,10 +57,10 @@ namespace LCode.Controllers
             }
         }
 
-        public ActionResult AddModulo(int curso_id)
+        public ActionResult AddModulo(Nullable<int> curso_id)
         {
             Modulo m = new Modulo();
-            m.mod_curso = curso_id;
+            m.mod_curso = Convert.ToInt32(curso_id);
             return View(m);
 
         }

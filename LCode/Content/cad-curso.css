@@ -1,8 +1,10 @@
 .form-cad {
-    border-radius: 10px;
+    border-radius: 2px;
     -webkit-box-shadow: 7px 7px 25px -15px rgba(0, 0, 0, 0.8);
     -moz-box-shadow: 7px 7px 25px -15px rgba(0, 0, 0, 0.8);
     box-shadow: 7px 7px 25px -15px rgba(0, 0, 0, 0.8);
+    background: #2b2b2b !important;
+    color:#e3e3e3;
 }
 
 label {
@@ -15,16 +17,37 @@ label {
     background-color: transparent;
     border: 1px solid #e3e3e3;
     border-radius: 30px;
-    color: #2c2c2c;
+    color: #e3e3e3;
     line-height: normal;
     font-size: .8571em;
     box-shadow: none;
 }
-
+.selecionar{
+    color:#2b2b2b;
+}
 
 /*GLOBAL*/
 
 .title {
     font-weight: 700;
     margin-left: 3rem;
+    line-height:2rem;
+}
+.custom-file-input {
+    background-color: transparent !important;
+    border: 1px solid #e3e3e3;
+    border-radius: 30px;
+    color: #2c2c2c;
+    line-height: normal;
+    font-size: .8571em;
+    box-shadow: none;
+}
+
+.box-title {
+    background-color: #764ba2;
+    border-radius: 5px;
+    margin-left: 3rem;
+    height: 65px;
+    margin-bottom: 1rem;
+    margin-top: -20px;
 }
