@@ -15,9 +15,8 @@
 
 </head>
 
-
 <body>
-    <script src="~Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
 
     <header>
 
@@ -29,7 +28,7 @@
                 </a>
                 </a>
                 <a class="navbar-brand-two mx-auto d-lg-none d-inline-block" href="#">
-                    <img src="~/image/logo-LCode.png" alt="logo">
+                    <img src="~/image/logo.png" alt="logo">
                 </a>
                 <div class="w-100 text-right">
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar">
@@ -507,6 +506,9 @@
                         </p>
                         <p>
                             <span class="span">@Html.ActionLink("Sobre", "Sobre", "Home", new { area = "" }, "")</span>
+                        </p>
+                        <p>
+                            <span class="span">@Html.ActionLink("Contato", "Contato", "Home", new { area = "" }, "")</span>
                         </p>
                         <p>
                             <span class="span">@Html.ActionLink("Login", "Login", "Autenticacao", new { area = "" }, "")</span>

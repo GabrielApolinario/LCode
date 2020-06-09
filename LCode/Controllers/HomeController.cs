@@ -30,5 +30,15 @@ namespace LCode.Controllers
         {
             return View();
         }
+
+        public ActionResult Contato()
+        {
+            return View();
+        }
+
+        public ActionResult Sobre()
+        {
+            return View();
+        }
     }
 }
