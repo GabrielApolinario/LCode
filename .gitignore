@@ -1,0 +1,5 @@
+**/obj
+**/Debug
+*.csproj
+*.suo
+*.cache
