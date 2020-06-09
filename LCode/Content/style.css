@@ -169,4 +169,12 @@ iframe {
     overflow-y: hidden;
 }
 
+.avatar {
+    width: 150px;
+    height: 150px;
+    margin-left: 30px;
+    margin-bottom: 2rem;
+    margin-top: .1rem;
+}
+
 /*# sourceMappingURL=style.css.map */

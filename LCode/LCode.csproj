@@ -235,6 +235,11 @@
     <Content Include="image\grafico.png" />
     <Content Include="image\image.png" />
     <Content Include="image\k.png" />
+    <Content Include="image\banner-sigin.jpg" />
+    <Content Include="image\favicon.png" />
+    <Content Include="image\image.png" />
+    <Content Include="image\js-2.png" />
+    <Content Include="image\js..jpg" />
     <Content Include="image\logo-devkey.png" />
     <Content Include="image\logo-roxo.png" />
     <Content Include="image\logo.png" />
@@ -291,6 +296,7 @@
     <Content Include="Scripts\popper-utils.min.js" />
     <Content Include="Scripts\popper.js" />
     <Content Include="Scripts\popper.min.js" />
+    <Content Include="Scripts\script.js" />
     <Content Include="Scripts\src\index.js" />
     <Content Include="Scripts\src\methods\defaults.js" />
     <Content Include="Scripts\src\methods\destroy.js" />
