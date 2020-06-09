@@ -15,18 +15,18 @@ namespace LCode.Controllers
         BancoDeDados bd = new BancoDeDados();
         // GET: Video
         [HttpGet]
-        public ActionResult CadastraVideo(int curso_id)
+        public ActionResult CadastraVideo(int curso_id, int mod_id)
         {
             if (Session["Professor"] != null || Session["Adm"] != null)
             {
                 try
                 {
                     Video v = new Video();
-                    // v.Cursos = BancoDeDados.PopulaCurso(Convert.ToInt32(Session["UsuId"]));
                     v.video_curso = curso_id;
+                    v.video_modulo = mod_id;
                     return View(v);
                 }
-                catch 
+                catch
                 {
                     return View();
                 }
@@ -46,7 +46,17 @@ namespace LCode.Controllers
 
                 string FileExtension = Path.GetExtension(v.video.FileName);
 
-                FileName = DateTime.Now.ToString("ddMMyyyyHHmmss") + "-" + FileName.Trim() + FileExtension;
+                string final = "";
+
+                foreach (char s in FileName.ToCharArray())
+                {
+                    if (s != ' ')
+                        final += s;
+                }
+
+                FileName = final;
+
+                FileName = DateTime.Now.ToString("ddMMyyyyHHmmss") + "-" + FileName + FileExtension;
 
                 string UploadPath = Server.MapPath("~/Videos/");
 
@@ -63,6 +73,7 @@ namespace LCode.Controllers
                     video_descricao = v.video_descricao,
                     video_link = v.video_link,
                     video_curso = v.video_curso,
+                    video_modulo = v.video_modulo,
 
                 };
 
