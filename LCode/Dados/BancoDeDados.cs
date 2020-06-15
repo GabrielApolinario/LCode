@@ -42,6 +42,32 @@ namespace LCode.Models
             return cmd.ExecuteReader();
         }
 
+        public List<Curso> ListarCursos()
+        {
+            
+            var strQuery = "SELECT * FROM lc_Curso ORDER BY curso_categoria, curso_nome asc;";
+            MySqlCommand cmd = new MySqlCommand(strQuery, con);
+            var retorno = RetornaComando(strQuery);
+            return ListaDeCursos(retorno);
+        }
+
+        //Retorna lista de cursos cadastrados
+        public List<Curso> ListaDeCursos(MySqlDataReader retorno)
+        {
+            var cursos = new List<Curso>();
+
+            while (retorno.Read())
+            {
+                var TempCurso = new Curso()
+                {
+                    Curso_nome = retorno["curso_nome"].ToString(),
+                    Curso_descricao = retorno["curso_descricao"].ToString(),
+                };
+                cursos.Add(TempCurso);
+            }
+            retorno.Close();
+            return cursos;
+        }
 
         public void InsereUsuario(Usuarios u)
         {
