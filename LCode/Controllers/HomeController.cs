@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LCode.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,6 +9,8 @@ namespace LCode.Controllers
 {
     public class HomeController : Controller
     {
+        BancoDeDados bd = new BancoDeDados();
+
         public ActionResult Index()
         {
             return View();
@@ -43,7 +46,9 @@ namespace LCode.Controllers
 
         public ActionResult Cursos()
         {
-            return View();
+           var retorno =  bd.ListarCursos();
+
+            return View(retorno);
         }
     }
 }
