@@ -40,5 +40,10 @@ namespace LCode.Controllers
         {
             return View();
         }
+
+        public ActionResult Cursos()
+        {
+            return View();
+        }
     }
 }

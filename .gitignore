@@ -2,6 +2,5 @@
 *.cache
 obj/
 Debug/
-web.config
-.dll
-.pdb
+web
+applicationhost

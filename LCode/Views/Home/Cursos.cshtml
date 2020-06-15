@@ -1,0 +1,273 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <title>Cursos online</title>
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/global.css">
+    <link rel="stylesheet" href="~/Content/index.css">
+    <link rel="icon" type="~/Image/png" sizes="16x16" href="~/~/Image/favicon.png">
+    <link rel="stylesheet"
+          href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+          integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+          crossorigin="anonymous">
+
+</head>
+
+<body>
+    <header>
+        <section id="nav-bar">
+            <nav class="navbar navbar-expand-lg navbar-light bg-purpk nav-pills">
+                <div class="d-flex flex-grow-1">
+                    <span class="w-100 d-lg-none d-block"></span>
+                    <a style="color: rgb(224, 224, 224);" class="navbar-brand d-none d-lg-inline-block h1 mb-0" href="index.html">
+                        <img src="~/Image/logo-LCode.png" width="30" height="30" class="d-inline-block align-top" alt="">
+                    </a>
+                    </a>
+                    <a class="navbar-brand-two mx-auto d-lg-none d-inline-block" href="#">
+                        <img src="~/Image/logo.png" alt="logo">
+                    </a>
+                    <div class="w-100 text-right">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                    </div>
+                </div>
+                <div class="collapse navbar-collapse flex-grow-1 text-right" id="myNavbar">
+                    <ul class="navbar-nav ml-auto flex-nowrap">
+                        <li class="nav-item">
+                            <span class="span">@Html.ActionLink("HOME", "Index", "Home", new { area = "" }, new { @class = "nav-link m-2" })</span>
+                        </li>
+                        <li class="nav-item">
+                            <span class="span">@Html.ActionLink("CURSOS", "Cursos", "Home", new { area = "" }, new { @class = "nav-link m-2" })</span>
+                        </li>
+                        <li class="nav-item">
+                            <span class="span">@Html.ActionLink("SOBRE", "Sobre", "Home", new { area = "" }, new { @class = "nav-link m-2" })</span>
+                        </li>
+                        <li class="nav-item">
+                            <span class="span">@Html.ActionLink("CONTATO", "Contato", "Home", new { area = "" }, new { @class = "nav-link m-2" })</span>
+                        </li>
+                        <li class="nav-item">
+                            <span class="span">@Html.ActionLink("CADASTRE-SE", "Cadastro", "Autenticacao", new { area = "" }, new { @class = "nav-link m-2" })</span>
+                        </li>
+                        <li class="nav-item">
+                            <span class="span">@Html.ActionLink("LOGIN", "Login", "Autenticacao", new { area = "" }, new { @class = "nav-link m-2" })</span>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </section>
+
+
+        <!--------------------------BANNER-SECTION---------------------------->
+
+        <section id="banner">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p class="promo-title" style="color: #FFF;">ALGUMA COISA SOBRE A PLATAFORMA</p>
+                        <p style="color: #FFF;">
+                            Breve descrição sobre nossos serviços, sobre o que fazemos, cursos e etc, não sei mais o que escrever e só estou escrevendo pra encher linguiça
+                            , porque estou com preguiça de ir pegar no Lorem Ipsum.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </header>
+
+
+    <!--------------------------COURSES-SECTION---------------------------->
+    <section id="section-cursos">
+        <div class="container">
+            <div class="row mt-5">
+                <div class="col-lg-12 mb-5 text-center">
+                    <h2>Cursos de <span class="color-purple"> JavaScript</span></h2>
+                    <p class="mt-3">
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry,Lorem Ipsum is simply dummy text of the printing and typesetting industry
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry
+                    </p>
+                </div>
+                <div class="col-md-">
+                    <div class="card-deck">
+                        <div class="card">
+                            <img class="card-img-top img-curso" src="~/Image/grafico.png" alt="Imagem de capa do card">
+                            <div class="card-body">
+                                <h5 class="card-title">Título do card</h5>
+                                <p class="card-text">Este é um card maior com suporte a texto embaixo, que funciona como uma introdução a um conteúdo adicional. Este conteúdo é um pouco maior, para demonstração.</p>
+                            </div>
+                            <div class="card-footer">
+                                <small class="text-muted">Atualizados 3 minutos atrás</small>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <img class="card-img-top img-curso" src="~/Image/grafico.png" alt="Imagem de capa do card">
+                            <div class="card-body">
+                                <h5 class="card-title">Título do card</h5>
+                                <p class="card-text">Este é um card com suporte a texto embaixo, que funciona como uma introdução a um conteúdo adicional.</p>
+                            </div>
+                            <div class="card-footer">
+                                <small class="text-muted">Atualizados 3 minutos atrás</small>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <img class="card-img-top img-curso" src="~/Image/grafico.png" alt="Imagem de capa do card">
+                            <div class="card-body">
+                                <h5 class="card-title">Título do card</h5>
+                                <p class="card-text">Este é um card maior com suporte a texto embaixo, que funciona como uma introdução a um conteúdo adicional. Este card tem o conteúdo ainda maior que o primeiro, para mostrar a altura igual, em ação.</p>
+                            </div>
+                            <div class="card-footer">
+                                <small class="text-muted">Atualizados 3 minutos atrás</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer class="page-footer font-small unique-color-dark">
+
+        <div style="background-color: #6351ce;">
+            <div class="container">
+
+
+                <div class="row py-4 d-flex align-items-center">
+
+
+                    <div class="col-md-6 col-lg-5 text-center text-md-left mb-4 mb-md-0">
+                        <h6 class="mb-0">Conecte-se conosco nas redes sociais!</h6>
+                    </div>
+
+                    <div class="col-md-6 col-lg-7 text-center text-md-right">
+
+                        <!-- Facebook -->
+                        <a class="fb-ic">
+                            <i class="fab fa-facebook-f white-text mr-4"> </i>
+                        </a>
+                        <!-- Twitter -->
+                        <a class="tw-ic">
+                            <i class="fab fa-twitter white-text mr-4"> </i>
+                        </a>
+                        <!-- Google +-->
+                        <a class="gplus-ic">
+                            <i class="fab fa-google-plus-g white-text mr-4"> </i>
+                        </a>
+                        <!--Linkedin -->
+                        <a class="li-ic">
+                            <i class="fab fa-linkedin-in white-text mr-4"> </i>
+                        </a>
+                        <!--Instagram-->
+                        <a class="ins-ic">
+                            <i class="fab fa-instagram white-text"> </i>
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+
+        <!-- Footer Links -->
+        <div class="container text-center text-md-left mt-5">
+
+
+            <div class="row mt-3">
+
+
+                <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+
+
+                    <h6 class="text-uppercase font-weight-bold">LCode</h6>
+                    <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                    <p>
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
+                    </p>
+
+                </div>
+
+                <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+
+                    <!-- Links -->
+                    <h6 class="text-uppercase font-weight-bold">Produtos</h6>
+                    <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                    <p>
+                        <a href="#!">Cursos online</a>
+                    </p>
+                    <p>
+                        <a href="#!">Acesso ilimitado</a>
+                    </p>
+                    <p>
+                        <a href="#!">Certificado</a>
+                    </p>
+                    <p>
+                        <a href="#!">Chat para tirar dúvidas</a>
+                    </p>
+
+                </div>
+
+                <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+
+                    <!-- Links -->
+                    <h6 class="text-uppercase font-weight-bold">Useful links</h6>
+                    <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                    <p>
+                        <a href="#!">Home</a>
+                    </p>
+                    <p>
+                        <a href="#!">Cursos</a>
+                    </p>
+                    <p>
+                        <a href="#!">Sobre</a>
+                    </p>
+                    <p>
+                        <a href="#!">Login</a>
+                    </p>
+
+                </div>
+
+                <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+
+                    <!-- Links -->
+                    <h6 class="text-uppercase font-weight-bold">Contato</h6>
+                    <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                    <p>
+                        <i class="fas fa-home mr-3"></i>R.Guaipá, 678 - Vila Leopoldina
+                    </p>
+                    <p>
+                        <i class="fas fa-envelope mr-3"></i>developmentinfo@gmail.com
+                    </p>
+                    <p>
+                        <i class="fas fa-phone mr-3"></i> +55 11 3699-2270
+                    </p>
+                    <p>
+                        <i class="fas fa-print mr-3"></i>+55 11 3699-2270
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+        <!-- Footer Links -->
+        <!-- Copyright -->
+        <div class="footer-copyright text-center py-3">
+            <p>© 2018 Copyright:LCode - Todos os direitos reservados</p>
+
+        </div>
+        <!-- Copyright -->
+
+    </footer>
+    <!-- Footer -->
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/global.js"></script>
+</body>
