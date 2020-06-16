@@ -2,6 +2,6 @@
 *.cache
 obj/
 Debug/
-web
+web.config
 applicationhost
 .vs/
