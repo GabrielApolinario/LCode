@@ -1,14 +1,3 @@
-.img-curso {
-    width: 357px;
-    height: 250px;
-    background-size: cover;
-    background-position: center;
-}
-
-header {
-    background: url(../image/banner-roxo.jpg);
-}
-
 .card-img-top {
     height: 240px;
     width: 80%;
@@ -26,6 +15,7 @@ header {
 
 .card-text {
     text-align: center;
+    height: 6rem;
 }
 
 .section-cursos {
@@ -41,7 +31,107 @@ header {
 }
 
     .card:hover {
-        transform: scale(1.1);
         transition: all 400ms ease-in-out;
         cursor: pointer;
     }
+
+
+
+.card {
+    position: relative;
+    text-decoration: none;
+    border: 2px solid transparent;
+    text-align: center;
+    display: block;
+    color: #7665cf;
+}
+
+    .card:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 0;
+        background: transparent;
+        border-radius: 1.5rem;
+        border: 3px solid transparent;
+    }
+
+    .card:hover:before {
+        animation: animate 600ms linear forwards;
+    }
+
+@keyframes animate {
+    0% {
+        width: 0;
+        height: 0;
+        border-top-color: #7665cf;
+        border-right-color: transparent;
+        border-bottom-color: transparent;
+        border-left-color: transparent;
+    }
+
+    50% {
+        width: 100%;
+        height: 0;
+        border-top-color: #7665cf;
+        border-right-color: #7665cf;
+        border-bottom-color: transparent;
+        border-left-color: transparent;
+    }
+
+    100% {
+        width: 100%;
+        height: 100%;
+        border-top-color: #7665cf;
+        border-right-color: #7665cf;
+        border-bottom-color: transparent;
+        border-left-color: transparent;
+    }
+}
+
+.card:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    background: transparent;
+    border-radius: 1.5rem;
+    border: 3px solid transparent;
+}
+
+.card:hover:after {
+    animation: animate2 600ms linear forwards;
+}
+
+@keyframes animate2 {
+    0% {
+        width: 0;
+        height: 0;
+        border-top-color: transparent;
+        border-right-color: transparent;
+        border-bottom-color: transparent;
+        border-left-color: #7665cf;
+    }
+
+    50% {
+        width: 0;
+        height: 100%;
+        border-top-color: transparent;
+        border-right-color: transparent;
+        border-bottom-color: #7665cf;
+        border-left-color: #7665cf;
+    }
+
+    100% {
+        width: 100%;
+        height: 100%;
+        border-top-color: transparent;
+        border-right-color: transparent;
+        border-bottom-color: #7665cf;
+        border-left-color: #7665cf;
+    }
+}

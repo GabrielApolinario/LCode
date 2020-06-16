@@ -1,4 +1,5 @@
-﻿
+﻿@model IEnumerable<LCode.Models.Curso>
+
 @{
     Layout = null;
 }
@@ -53,12 +54,21 @@
                         <li class="nav-item">
                             <span class="span">@Html.ActionLink("CONTATO", "Contato", "Home", new { area = "" }, new { @class = "nav-link m-2" })</span>
                         </li>
-                        <li class="nav-item">
-                            <span class="span">@Html.ActionLink("CADASTRE-SE", "Cadastro", "Autenticacao", new { area = "" }, new { @class = "nav-link m-2" })</span>
-                        </li>
-                        <li class="nav-item">
-                            <span class="span">@Html.ActionLink("LOGIN", "Login", "Autenticacao", new { area = "" }, new { @class = "nav-link m-2" })</span>
-                        </li>
+                        @if (Session["Adm"] != null || Session["Professor"] != null || Session["Estudante"] != null)
+                        {
+                            <li class="nav-item">
+                                <span class="span">@Html.ActionLink("SAIR", "Logout", "Autenticacao", new { area = "" }, new { @class = "nav-link m-2" })</span>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <span class="span">@Html.ActionLink("CADASTRE-SE", "Cadastro", "Autenticacao", new { area = "" }, new { @class = "nav-link m-2" })</span>
+                            </li>
+                            <li class="nav-item">
+                                <span class="span">@Html.ActionLink("LOGIN", "Login", "Autenticacao", new { area = "" }, new { @class = "nav-link m-2" })</span>
+                            </li>
+                        }
                     </ul>
                 </div>
             </nav>
@@ -84,227 +94,230 @@
 
     <!--------------------------COURSES-SECTION---------------------------->
 
-   
+
     <section id="section-cursos" class="bg-light">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 mb-5 text-center mt-5">
-                    <h2>Cursos de <span class="color-purple"> JavaScript</span></h2>
+                    <h2>Todos os nossos<span class="color-purple"> Cursos</span></h2>
                     <p class="mt-3">
                         Lorem Ipsum is simply dummy text of the printing and typesetting industry,Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum is simply dummy text of the printing and typesetting industry
                     </p>
                 </div>
             </div>
 
-            <div class="card-deck">
+                <div class="card-deck">
+            @foreach (var item in Model)
+            {
+
                 <div class="col-md-4 mt-5">
                     <div class="card">
                         <img class="card-img-top" src="image/banner-1.jpg" alt="Card image cap">
                         <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                            <h5 class="card-title">@Html.DisplayFor(modelItem => item.Curso_nome)</h5>
+                            <p class="card-text">@Html.DisplayFor(modelItem => item.Curso_descricao)</p>
                         </div>
                         <div class="card-footer">
                             <small class="text-muted">Last updated 3 mins ago</small>
                         </div>
                     </div>
                 </div>
+            }
+                    @*<div class="col-md-4 mt-5">
+                                <div class="card">
+                                    <img class="card-img-top" src="..." alt="Card image cap">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Card title</h5>
+                                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                    </div>
+                                    <div class="card-footer">
+                                        <small class="text-muted">Last updated 3 mins ago</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mt-5">
+                                <div class="card">
+                                    <img class="card-img-top" src="..." alt="Card image cap">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Card title</h5>
+                                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                    </div>
+                                    <div class="card-footer">
+                                        <small class="text-muted">Last updated 3 mins ago</small>
+                                    </div>
+                                </div>
+                            </div>
 
-                <div class="col-md-4 mt-5">
-                    <div class="card">
-                        <img class="card-img-top" src="..." alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        </div>
-                        <div class="card-footer">
-                            <small class="text-muted">Last updated 3 mins ago</small>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 mt-5">
-                    <div class="card">
-                        <img class="card-img-top" src="..." alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        </div>
-                        <div class="card-footer">
-                            <small class="text-muted">Last updated 3 mins ago</small>
-                        </div>
-                    </div>
-                </div>
+                            <div class="col-md-4 mt-5">
+                                <div class="card">
+                                    <img class="card-img-top" src="..." alt="Card image cap">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Card title</h5>
+                                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                    </div>
+                                    <div class="card-footer">
+                                        <small class="text-muted">Last updated 3 mins ago</small>
+                                    </div>
+                                </div>
+                            </div>
 
-                <div class="col-md-4 mt-5">
-                    <div class="card">
-                        <img class="card-img-top" src="..." alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        </div>
-                        <div class="card-footer">
-                            <small class="text-muted">Last updated 3 mins ago</small>
-                        </div>
-                    </div>
-                </div>
+                            <div class="col-md-4 mt-5">
+                                <div class="card">
+                                    <img class="card-img-top" src="..." alt="Card image cap">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Card title</h5>
+                                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                    </div>
+                                    <div class="card-footer">
+                                        <small class="text-muted">Last updated 3 mins ago</small>
+                                    </div>
+                                </div>
+                            </div>*@
 
-                <div class="col-md-4 mt-5">
-                    <div class="card">
-                        <img class="card-img-top" src="..." alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+
                         </div>
-                        <div class="card-footer">
-                            <small class="text-muted">Last updated 3 mins ago</small>
+              
+        </div>
+    </section>
+        <!-- Footer -->
+        <footer class="page-footer font-small unique-color-dark">
+
+            <div style="background-color: #6351ce;">
+                <div class="container">
+
+
+                    <div class="row py-4 d-flex align-items-center">
+
+
+                        <div class="col-md-6 col-lg-5 text-center text-md-left mb-4 mb-md-0">
+                            <h6 class="mb-0">Conecte-se conosco nas redes sociais!</h6>
                         </div>
+
+                        <div class="col-md-6 col-lg-7 text-center text-md-right">
+
+                            <!-- Facebook -->
+                            <a class="fb-ic">
+                                <i class="fab fa-facebook-f white-text mr-4"> </i>
+                            </a>
+                            <!-- Twitter -->
+                            <a class="tw-ic">
+                                <i class="fab fa-twitter white-text mr-4"> </i>
+                            </a>
+                            <!-- Google +-->
+                            <a class="gplus-ic">
+                                <i class="fab fa-google-plus-g white-text mr-4"> </i>
+                            </a>
+                            <!--Linkedin -->
+                            <a class="li-ic">
+                                <i class="fab fa-linkedin-in white-text mr-4"> </i>
+                            </a>
+                            <!--Instagram-->
+                            <a class="ins-ic">
+                                <i class="fab fa-instagram white-text"> </i>
+                            </a>
+
+                        </div>
+
                     </div>
+
+
+                </div>
+            </div>
+
+            <!-- Footer Links -->
+            <div class="container text-center text-md-left mt-5">
+
+
+                <div class="row mt-3">
+
+
+                    <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+
+
+                        <h6 class="text-uppercase font-weight-bold">LCode</h6>
+                        <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                        <p>
+                            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
+                        </p>
+
+                    </div>
+
+                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+
+                        <!-- Links -->
+                        <h6 class="text-uppercase font-weight-bold">Produtos</h6>
+                        <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                        <p>
+                            <a href="#!">Cursos online</a>
+                        </p>
+                        <p>
+                            <a href="#!">Acesso ilimitado</a>
+                        </p>
+                        <p>
+                            <a href="#!">Certificado</a>
+                        </p>
+                        <p>
+                            <a href="#!">Chat para tirar dúvidas</a>
+                        </p>
+
+                    </div>
+
+                    <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+
+                        <!-- Links -->
+                        <h6 class="text-uppercase font-weight-bold">Useful links</h6>
+                        <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                        <p>
+                            <a href="#!">Home</a>
+                        </p>
+                        <p>
+                            <a href="#!">Cursos</a>
+                        </p>
+                        <p>
+                            <a href="#!">Sobre</a>
+                        </p>
+                        <p>
+                            <a href="#!">Login</a>
+                        </p>
+
+                    </div>
+
+                    <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+
+                        <!-- Links -->
+                        <h6 class="text-uppercase font-weight-bold">Contato</h6>
+                        <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                        <p>
+                            <i class="fas fa-home mr-3"></i>R.Guaipá, 678 - Vila Leopoldina
+                        </p>
+                        <p>
+                            <i class="fas fa-envelope mr-3"></i>developmentinfo@gmail.com
+                        </p>
+                        <p>
+                            <i class="fas fa-phone mr-3"></i> +55 11 3699-2270
+                        </p>
+                        <p>
+                            <i class="fas fa-print mr-3"></i>+55 11 3699-2270
+                        </p>
+
+                    </div>
+
+
                 </div>
 
 
             </div>
-        </div>
+            <!-- Footer Links -->
+            <!-- Copyright -->
+            <div class="footer-copyright text-center py-3">
+                <p>© 2018 Copyright:LCode - Todos os direitos reservados</p>
 
-    </section>
-            <!-- Footer -->
-            <footer class="page-footer font-small unique-color-dark">
+            </div>
+            <!-- Copyright -->
 
-                <div style="background-color: #6351ce;">
-                    <div class="container">
-
-
-                        <div class="row py-4 d-flex align-items-center">
-
-
-                            <div class="col-md-6 col-lg-5 text-center text-md-left mb-4 mb-md-0">
-                                <h6 class="mb-0">Conecte-se conosco nas redes sociais!</h6>
-                            </div>
-
-                            <div class="col-md-6 col-lg-7 text-center text-md-right">
-
-                                <!-- Facebook -->
-                                <a class="fb-ic">
-                                    <i class="fab fa-facebook-f white-text mr-4"> </i>
-                                </a>
-                                <!-- Twitter -->
-                                <a class="tw-ic">
-                                    <i class="fab fa-twitter white-text mr-4"> </i>
-                                </a>
-                                <!-- Google +-->
-                                <a class="gplus-ic">
-                                    <i class="fab fa-google-plus-g white-text mr-4"> </i>
-                                </a>
-                                <!--Linkedin -->
-                                <a class="li-ic">
-                                    <i class="fab fa-linkedin-in white-text mr-4"> </i>
-                                </a>
-                                <!--Instagram-->
-                                <a class="ins-ic">
-                                    <i class="fab fa-instagram white-text"> </i>
-                                </a>
-
-                            </div>
-
-                        </div>
-
-
-                    </div>
-                </div>
-
-                <!-- Footer Links -->
-                <div class="container text-center text-md-left mt-5">
-
-
-                    <div class="row mt-3">
-
-
-                        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-
-
-                            <h6 class="text-uppercase font-weight-bold">LCode</h6>
-                            <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
-                            <p>
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
-                            </p>
-
-                        </div>
-
-                        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
-
-                            <!-- Links -->
-                            <h6 class="text-uppercase font-weight-bold">Produtos</h6>
-                            <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
-                            <p>
-                                <a href="#!">Cursos online</a>
-                            </p>
-                            <p>
-                                <a href="#!">Acesso ilimitado</a>
-                            </p>
-                            <p>
-                                <a href="#!">Certificado</a>
-                            </p>
-                            <p>
-                                <a href="#!">Chat para tirar dúvidas</a>
-                            </p>
-
-                        </div>
-
-                        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
-
-                            <!-- Links -->
-                            <h6 class="text-uppercase font-weight-bold">Useful links</h6>
-                            <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
-                            <p>
-                                <a href="#!">Home</a>
-                            </p>
-                            <p>
-                                <a href="#!">Cursos</a>
-                            </p>
-                            <p>
-                                <a href="#!">Sobre</a>
-                            </p>
-                            <p>
-                                <a href="#!">Login</a>
-                            </p>
-
-                        </div>
-
-                        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
-
-                            <!-- Links -->
-                            <h6 class="text-uppercase font-weight-bold">Contato</h6>
-                            <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
-                            <p>
-                                <i class="fas fa-home mr-3"></i>R.Guaipá, 678 - Vila Leopoldina
-                            </p>
-                            <p>
-                                <i class="fas fa-envelope mr-3"></i>developmentinfo@gmail.com
-                            </p>
-                            <p>
-                                <i class="fas fa-phone mr-3"></i> +55 11 3699-2270
-                            </p>
-                            <p>
-                                <i class="fas fa-print mr-3"></i>+55 11 3699-2270
-                            </p>
-
-                        </div>
-
-
-                    </div>
-
-
-                </div>
-                <!-- Footer Links -->
-                <!-- Copyright -->
-                <div class="footer-copyright text-center py-3">
-                    <p>© 2018 Copyright:LCode - Todos os direitos reservados</p>
-
-                </div>
-                <!-- Copyright -->
-
-            </footer>
-            <!-- Footer -->
-            <script src="~/Scripts/bootstrap.min.js"></script>
-            <script src="~/Scripts/global.js"></script>
-</body>
+        </footer>
+        <!-- Footer -->
+        <script src="~/Scripts/bootstrap.min.js"></script>
+        <script src="~/Scripts/global.js"></script>
+    </body>

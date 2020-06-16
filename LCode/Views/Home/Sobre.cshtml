@@ -50,12 +50,21 @@
                     <li class="nav-item">
                         <span class="span">@Html.ActionLink("CONTATO", "Contato", "Home", new { area = "" }, new { @class = "nav-link m-2" })</span>
                     </li>
-                    <li class="nav-item">
-                        <span class="span">@Html.ActionLink("CADASTRE-SE", "Cadastro", "Autenticacao", new { area = "" }, new { @class = "nav-link m-2" })</span>
-                    </li>
-                    <li class="nav-item">
-                        <span class="span">@Html.ActionLink("LOGIN", "Login", "Autenticacao", new { area = "" }, new { @class = "nav-link m-2" })</span>
-                    </li>
+                    @if (Session["Adm"] != null || Session["Professor"] != null || Session["Estudante"] != null)
+                    {
+                        <li class="nav-item">
+                            <span class="span">@Html.ActionLink("SAIR", "Logout", "Autenticacao", new { area = "" }, new { @class = "nav-link m-2" })</span>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item">
+                            <span class="span">@Html.ActionLink("CADASTRE-SE", "Cadastro", "Autenticacao", new { area = "" }, new { @class = "nav-link m-2" })</span>
+                        </li>
+                        <li class="nav-item">
+                            <span class="span">@Html.ActionLink("LOGIN", "Login", "Autenticacao", new { area = "" }, new { @class = "nav-link m-2" })</span>
+                        </li>
+                    }
                 </ul>
             </div>
         </nav>
