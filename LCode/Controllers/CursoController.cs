@@ -10,8 +10,6 @@ namespace LCode.Controllers
     public class CursoController : Controller
     {
         BancoDeDados bd = new BancoDeDados();
-        Curso c = new Curso();
-        Modulo m = new Modulo();
 
         // GET: Curso
         public ActionResult CadastroCurso()
@@ -82,5 +80,19 @@ namespace LCode.Controllers
             m.mod_id = bd.mod_id;
             return RedirectToAction("CadastraVideo", "Video", new { curso_id = m.mod_curso, m.mod_id });
         }
+
+        public ActionResult Cursos()
+        {
+            var retorno = bd.ListarCursos();
+
+            return View(retorno);
+        }
+
+        public ActionResult DetalhesCurso(Curso c)
+        {
+
+            return View();
+        }
+
     }
 }

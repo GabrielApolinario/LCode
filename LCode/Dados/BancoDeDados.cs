@@ -60,6 +60,7 @@ namespace LCode.Models
             {
                 var TempCurso = new Curso()
                 {
+                    Curso_id = Convert.ToInt32(retorno["curso_id"]),
                     Curso_nome = retorno["curso_nome"].ToString(),
                     Curso_descricao = retorno["curso_descricao"].ToString(),
                 };

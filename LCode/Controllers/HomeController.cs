@@ -44,11 +44,5 @@ namespace LCode.Controllers
             return View();
         }
 
-        public ActionResult Cursos()
-        {
-           var retorno =  bd.ListarCursos();
-
-            return View(retorno);
-        }
     }
 }
