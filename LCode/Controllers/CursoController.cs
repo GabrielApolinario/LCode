@@ -91,7 +91,7 @@ namespace LCode.Controllers
         public ActionResult DetalhesCurso(Curso c)
         {
 
-            return View();
+            return View(c);
         }
 
     }
