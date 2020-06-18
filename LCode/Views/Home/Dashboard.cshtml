@@ -1,4 +1,4 @@
-﻿
+﻿@model LCode.Models.Usuarios
 @{
     Layout = null;
 }
@@ -41,7 +41,7 @@
                         <i class="material-icons icon">
                             person
                         </i>
-                        <span class="text">Nome do Usuário</span>
+                        <span class="text">@TempData["nome"] </span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="@Url.Action("Logout","Autenticacao")">Sair</a>
