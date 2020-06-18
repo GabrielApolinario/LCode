@@ -31,7 +31,12 @@ namespace LCode.Controllers
         }
         public ActionResult Dashboard()
         {
-            return View();
+            if (Session["Adm"] != null || Session["Professor"] != null || Session["Estudante"] != null)
+            { 
+                return View();
+            }
+
+            return RedirectToAction("Login", "Autenticacao");
         }
 
         public ActionResult Contato()

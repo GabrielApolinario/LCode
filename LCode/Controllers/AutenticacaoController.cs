@@ -47,8 +47,8 @@ namespace LCode.Controllers
                 {
                     Session["Estudante"] = u.Usu_hierarquia.ToString();
                 }
-
-                ViewBag.mensagem = "Seja bem-vindo, " + u.Usu_nome;
+                TempData["nome"] = u.Usu_nome;
+                ViewBag.mensagem = "Seja bem-vindo, " + ViewBag.nome;
                 return RedirectToAction("Dashboard","Home");
             }
             else

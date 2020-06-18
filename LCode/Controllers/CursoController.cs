@@ -30,7 +30,6 @@ namespace LCode.Controllers
         [HttpPost]
         public ActionResult CadastroCurso(Curso c)
         {
-
             if (ModelState.IsValid)
             {
                 Curso curso = new Curso
