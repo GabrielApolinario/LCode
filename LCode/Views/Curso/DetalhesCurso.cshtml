@@ -1,4 +1,4 @@
-﻿@model LCode.Models.Curso
+﻿@model IEnumerable<LCode.ViewModels.CursoVideoModuloViewModel>
 
 @{
     Layout = null;
@@ -98,7 +98,7 @@
 
                 <div class="banner-detalhes-info-item col-md-2">
                     <div class="banner-detalhes-info-item-text">
-                        <strong>15h</strong> P/ conclusão
+                        <strong>@Html.DisplayFor(model => model.Curso_duracao)</strong> P/ conclusão
                     </div>
                 </div>
                 <div class="banner-detalhes-info-item col-md-2">
@@ -123,8 +123,8 @@
                     <h2> O que você <span class="color-purple"> aprenderá</span></h2>
 
                     <h4 class="title-gray mt-5">Descrição</h4>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptate eum distinctio quos tempora modi in minus perspiciatis? Sunt atque necessitatibus impedit eos. Dolorum, cumque inventore. Nulla officiis velit incidunt corporis!</p>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptate eum distinctio quos tempora modi in minus perspiciatis? Sunt atque necessitatibus impedit eos. Dolorum, cumque inventore. Nulla officiis velit incidunt corporis!</p>
+                    <p>@Html.DisplayFor(model => model.Curso_descricao)</p>
+                    
 
                     <h4 class="title-gray mt-5">Conteúdo do Curso</h4>
                     <div class="accordion" id="accordionExample">

@@ -5,3 +5,5 @@ Debug/
 web.config
 applicationhost
 .vs/
+LCode/bin/LCode.dll
+LCode/bin/LCode.pdb
