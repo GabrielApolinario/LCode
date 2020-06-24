@@ -170,8 +170,10 @@
     <Compile Include="Controllers\CursoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\AutenticacaoController.cs" />
+    <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Controllers\VideoController.cs" />
     <Compile Include="Dados\Login.cs" />
+    <Compile Include="Dados\UsuarioAcoes.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -401,12 +403,12 @@
     <Content Include="Views\Home\Sobre.cshtml" />
     <Content Include="Views\Curso\Cursos.cshtml" />
     <Content Include="Views\Curso\DetalhesCurso.cshtml" />
+    <Content Include="Views\Usuario\Perfil.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="obj\Debug\TempPE\" />
     <Folder Include="obj\Release\" />
-    <Folder Include="Views\CursoExibicao\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -88,11 +88,13 @@ namespace LCode.Controllers
             return View(retorno);
         }
 
-        public ActionResult DetalhesCurso(CursoVideoModuloViewModel cvm)
+        
+        public ActionResult DetalhesCurso(int curso_id)
         {
-            
+            var retorno = bd.QueryDetalhesCurso(curso_id);
 
-            return View(cvm);
+            ViewData["videos"] = bd.QueryVideos(curso_id);
+            return View(retorno);
         }
 
     }

@@ -13,20 +13,17 @@ using System.Web.UI.WebControls;
 using Microsoft.Ajax.Utilities;
 using LCode.Controllers;
 using LCode.ViewModels;
+using System.Drawing.Design;
 
 namespace LCode.Models
 {
     public class BancoDeDados : IDisposable
     {
-        public MySqlConnection con;
+
+        MySqlConnection con = new MySqlConnection(ConfigurationManager.ConnectionStrings["BdConexao"].ConnectionString);
         public int novo_curso_id;
         public int mod_id;
 
-        public BancoDeDados()
-        {
-            con = new MySqlConnection(ConfigurationManager.ConnectionStrings["BdConexao"].ConnectionString);
-
-        }
         public void Dispose()
         {
             con.Dispose();
@@ -242,13 +239,17 @@ namespace LCode.Models
             return mod_id;
         }
 
-        public List<CursoVideoModuloViewModel> QueryDetalhesCurso(CursoVideoModuloViewModel cmv)
+        public CursoVideoModuloViewModel QueryDetalhesCurso(int curso_id)
         {
-            
+
             MySqlCommand cmd = new MySqlCommand("Curso_Completo", con);
-            cmd.Parameters.AddWithValue("proc_curso_id", cmv.Curso_id); 
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("proc_curso_id", curso_id);
+            con.Open();
             var retorno = cmd.ExecuteReader();
-            return DetalhesCurso(retorno);
+            return DetalhesCurso(retorno).FirstOrDefault();
+
+
         }
 
         //Retorna lista de cursos cadastrados
@@ -256,30 +257,91 @@ namespace LCode.Models
         {
             var cursos = new List<CursoVideoModuloViewModel>();
 
-            while (retorno.Read())
+            if (retorno.HasRows)
             {
-                var TempCurso = new CursoVideoModuloViewModel()
+                while (retorno.Read())
                 {
-                    Curso_id = Convert.ToInt32(retorno["curso_id"]),                    
-                    Curso_nome = retorno["curso_nome"].ToString(),
-                    Curso_descricao = retorno["curso_descricao"].ToString(),
-                    Curso_duracao = Convert.ToDouble(retorno["curso_duracao"]),
-                    Curso_valor = Convert.ToDouble(retorno["curso_valor"]),
 
-                    mod_nome = retorno["mod_nome"].ToString(),
-                    mod_desc = retorno["mod_desc"].ToString(),
+                    var TempCurso = new CursoVideoModuloViewModel()
 
-                    video_titulo = retorno["video_titulo"].ToString(),
-                    video_id = Convert.ToInt32(retorno["video_id"]),
-                    video_link = retorno["video_link"].ToString(),
-                    video_modulo = Convert.ToInt32(retorno["video_modulo"]),
-                    video_curso = Convert.ToInt32(retorno["video_titulo"]),
-                    video_descricao = retorno["video_descricao"].ToString(),                    
-                };
-                cursos.Add(TempCurso);
+                    {
+                        Curso_id = Convert.ToInt32(retorno["curso_id"]),
+                        Curso_nome = retorno["curso_nome"].ToString(),
+                        Curso_descricao = retorno["curso_descricao"].ToString(),
+                        Curso_duracao = Convert.ToDouble(retorno["curso_duracao"]),
+                        Curso_valor = Convert.ToDouble(retorno["curso_valor"]),
+
+                        mod_nome = retorno["mod_nome"].ToString(),
+                        mod_desc = retorno["mod_desc"].ToString(),
+
+                        video_titulo = retorno["video_titulo"].ToString(),
+                        video_id = Convert.ToInt32(retorno["video_id"]),
+                        video_link = retorno["video_link"].ToString(),
+                        video_modulo = Convert.ToInt32(retorno["video_modulo"]),
+                        video_curso = Convert.ToInt32(retorno["video_curso"]),
+                        video_descricao = retorno["video_descricao"].ToString(),
+                    };
+
+                
+                    cursos.Add(TempCurso);
+                }
+
             }
             retorno.Close();
             return cursos;
         }
+
+
+        public List<CursoVideoModuloViewModel> QueryVideos(int curso_id)
+        {
+
+            MySqlCommand cmd = new MySqlCommand("Curso_Completo", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("proc_curso_id", curso_id);
+            var retorno = cmd.ExecuteReader();       
+            return ListarVideos(retorno);
+
+        }
+
+        public List<CursoVideoModuloViewModel> ListarVideos(MySqlDataReader retorno)
+        {
+            var videosLista = new List<CursoVideoModuloViewModel>();
+
+            if (retorno.HasRows)
+            {
+                while (retorno.Read())
+                {
+                    var tempVideos = new CursoVideoModuloViewModel()
+                    {
+                        video_id = Convert.ToInt32(retorno["video_id"]),
+                        video_titulo = retorno["video_titulo"].ToString(),
+                        video_modulo = Convert.ToInt32(retorno["video_modulo"]),
+                        video_link = retorno["video_link"].ToString(),
+                        video_curso = Convert.ToInt32(retorno["video_curso"]),
+                        video_descricao = retorno["video_descricao"].ToString(),
+                    };
+                    videosLista.Add(tempVideos);
+                }
+            }
+            retorno.Close();
+            return videosLista;
+
+        }
+
+        public MySqlConnection AbreConexao()
+        {           
+            con.Open();
+
+            return con;
+        }
+
+        public MySqlConnection FecharConexao()
+        {
+            con.Close();
+            con.Dispose();
+
+            return con;
+        }
+
     }
 }

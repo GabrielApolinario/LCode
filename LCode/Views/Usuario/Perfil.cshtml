@@ -1,0 +1,83 @@
+﻿@model LCode.Models.Usuarios
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Perfil</title>
+</head>
+<body>
+    <div>
+        <hr />
+        @using (Html.BeginForm("Editar", "Usuario", new { usu_id = Model.Usu_id }))
+        {
+    <dl>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Usu_nome)
+        </dt>
+
+        <dd>
+            @Html.EditorFor(model => model.Usu_nome, new { htmlAttributes = new { @class = "form-control", @Value = Model.Usu_nome } })
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Usu_sobrenome)
+        </dt>
+
+        <dd>
+            @Html.EditorFor(model => model.Usu_sobrenome, new { htmlAttributes = new { @class = "form-control", @Value = Model.Usu_sobrenome } })
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Usu_email)
+        </dt>
+
+        <dd>
+            @Html.EditorFor(model => model.Usu_email, new { htmlAttributes = new { @class = "form-control", @Value = Model.Usu_email } })
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Usu_senha)
+        </dt>
+
+        <dd>
+            @Html.EditorFor(model => model.Usu_senha, new { htmlAttributes = new { @class = "form-control", @Value = Model.Usu_senha, @Type = "password" } })
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Usu_cpf_ou_cnpj)
+        </dt>
+
+        <dd>
+            @Html.EditorFor(model => model.Usu_cpf_ou_cnpj, new { htmlAttributes = new { @class = "form-control", @Value = Model.Usu_cpf_ou_cnpj } })
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Usu_data_nasc)
+        </dt>
+
+        <dd>
+            @Html.EditorFor(model => model.Usu_data_nasc, new { htmlAttributes = new { @class = "form-control", @Value = Model.Usu_data_nasc } })
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Usu_empresa)
+        </dt>
+
+        <dd>
+            @Html.EditorFor(model => model.Usu_empresa, new { htmlAttributes = new { @class = "form-control", @Value = Model.Usu_empresa } })
+        </dd>
+        <dd class="col-8 col-md-10 mx-auto">
+            <button type="submit" class="btn btn btn-block btn-purple-form mt-4 mb-5">Editar</button>
+        </dd>
+    </dl>
+        }
+        </div>
+</body>
+</html>

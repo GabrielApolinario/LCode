@@ -1,5 +1,5 @@
-﻿@model IEnumerable<LCode.ViewModels.CursoVideoModuloViewModel>
-
+﻿@model LCode.ViewModels.CursoVideoModuloViewModel
+@using LCode.ViewModels
 @{
     Layout = null;
 }
@@ -19,7 +19,6 @@
           crossorigin="anonymous">
 
 </head>
-
 <body>
     <script src="~/Scripts/bootstrap.min.js"></script>
 
@@ -98,7 +97,7 @@
 
                 <div class="banner-detalhes-info-item col-md-2">
                     <div class="banner-detalhes-info-item-text">
-                        <strong>@Html.DisplayFor(model => model.Curso_duracao)</strong> P/ conclusão
+                        <strong>@Html.DisplayFor(model => model.Curso_duracao) P/ conclusão</strong>                      
                     </div>
                 </div>
                 <div class="banner-detalhes-info-item col-md-2">
@@ -124,8 +123,6 @@
 
                     <h4 class="title-gray mt-5">Descrição</h4>
                     <p>@Html.DisplayFor(model => model.Curso_descricao)</p>
-                    
-
                     <h4 class="title-gray mt-5">Conteúdo do Curso</h4>
                     <div class="accordion" id="accordionExample">
                         <div class="card">
@@ -140,21 +137,17 @@
                             <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
                                 <div class="card-body">
                                     <ul class="list-group list-accordion list-group-flush">
-                                        <li class="list-group-item">
-                                            <span><i class="fas fa-play-circle icon"></i></span> Vídeo 1
+                                        @if (ViewData["videos"] != null)
+                                        {
+                                            foreach(var videos in (IEnumerable<CursoVideoModuloViewModel>)ViewData["videos"])
+                                            {
+                                                <li class="list-group-item">
+                                                    <span><i class="fas fa-play-circle icon"></i></span> @videos.video_titulo
 
-                                        </li>
-                                        <li class="list-group-item">
-                                            <span><i class="fas fa-play-circle icon"></i></span> Vídeo 2
-                                        </li>
-                                        <li class="list-group-item">
-                                            <span><i class="fas fa-play-circle icon"></i></span> Vídeo 3
-                                        </li>
-                                        <li class="list-group-item">
-                                            <span><i class="fas fa-play-circle icon"></i></span> Vídeo 4
-                                        </li>
+                                                </li>
+                                            }
+                                        }
                                     </ul>
-
                                 </div>
                             </div>
                         </div>
@@ -227,10 +220,12 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="card" style="width: 28rem;">
-                        <iframe height="300" src="https://www.youtube.com/embed/v2fqiy1YW9s" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <video height="300" allowfullscreen controls>
+                            <source src="@Url.Content(Model.video_link)" />
+                        </video>
                         <div class="card-body">
-                            <h5 class="card-title color-purple">Card title</h5>
-                            <p class="card-text">R$30,00</p>
+                            <h5 class="card-title color-purple">@Html.DisplayFor(model => model.Curso_nome)</h5>
+                            <p class="card-text">R$@Html.DisplayFor(model => model.Curso_valor)</p>
                         </div>
 
 
@@ -390,3 +385,166 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+    @*<html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title>DetalhesCurso</title>
+    </head>
+    <body>
+        <div>
+            <h4>CursoVideoModuloViewModel</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Curso_id)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Curso_id)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Curso_nome)
+                </dt>
+
+                <dd>
+                    
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Curso_valor)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Curso_valor)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Curso_duracao)
+                </dt>
+
+                <dd>
+                    
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Curso_descricao)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Curso_descricao)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Curso_status)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Curso_status)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Curso_categoria)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Curso_categoria)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.mod_id)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.mod_id)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.mod_nome)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.mod_nome)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.mod_desc)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.mod_desc)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.mod_curso)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.mod_curso)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.mod_qtd_video)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.mod_qtd_video)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.video_id)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.video_id)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.video_titulo)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.video_titulo)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.video_descricao)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.video_descricao)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.video_modulo)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.video_modulo)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.video_curso)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.video_curso)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.video_link)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.video_link)
+                </dd>
+
+            </dl>
+        </div>
+        <p>
+            @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+            @Html.ActionLink("Back to List", "Index")
+        </p>
+    </body>
+</html>*@
