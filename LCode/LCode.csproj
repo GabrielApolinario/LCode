@@ -411,7 +411,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="obj\Debug\TempPE\" />
     <Folder Include="obj\Release\" />
-    <Folder Include="Views\Carrinho\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
