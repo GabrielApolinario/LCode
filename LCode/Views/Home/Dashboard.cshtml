@@ -41,7 +41,7 @@
                         <i class="material-icons icon">
                             person
                         </i>
-                        <span class="text">@TempData["nome"] </span>
+                        <span class="text">@Session["Nome"]</span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="@Url.Action("Logout","Autenticacao")">Sair</a>
@@ -68,27 +68,30 @@
                             <span class="text">Perfil de usuário</span>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a href="@Url.Action("CadastroCurso","Curso")" class="nav-link px-2" target = "iframe-conteudo">
-                            <i class="fas fa-edit icon"></i>
-                            <span>
-                                <span class="text">Cadastro de Curso</span>
-                            </span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link px-2">
-                            <i class="fas fa-cog icon"></i>
-                            <span class="text">Configurações</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link px-2 sideMenuToggler">
-                            <i class="fas fa-th-list icon"></i>
-                            <span class="text">Redimencionar</span>
-                        </a>
-                    </li>
-                </ul>
+                    @if (Session["Adm"] != null || Session["Professor"] != null)
+                    {
+                        <li class="nav-item">
+                            <a href="@Url.Action("CadastroCurso", "Curso")" class="nav-link px-2" target="iframe-conteudo">
+                                <i class="fas fa-edit icon"></i>
+                                <span>
+                                    <span class="text">Cadastro de Curso</span>
+                                </span>
+                            </a>
+                        </li>
+                    }
+                        <li class="nav-item">
+                            <a href="#" class="nav-link px-2">
+                                <i class="fas fa-cog icon"></i>
+                                <span class="text">Configurações</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link px-2 sideMenuToggler">
+                                <i class="fas fa-th-list icon"></i>
+                                <span class="text">Redimencionar</span>
+                            </a>
+                        </li>
+                    </ul>
             </div>
         </div>
         <div class="content">
@@ -98,13 +101,14 @@
                         <div class="row">
                             <div class="col-12">
                              
-
-                                <iframe name="iframe-conteudo" src="@Url.Action("CadastroCurso","Curso")" scrolling="no" class="mt-5">
+                                @if (Session["Adm"] != null || Session["Professor"] != null)
+                                {
+                                <iframe name="iframe-conteudo" src="@Url.Action("CadastroCurso", "Curso")" scrolling="no" class="mt-5">
                                     <!--
                             Aqui é linkado as páginas referentes ao usuario
                                     -->
                                 </iframe>
-
+                                }
 
                                 <!-- <div class="row w-100 justify-content-center m-auto">
     <form class="mt-3 form-cad mt-5">

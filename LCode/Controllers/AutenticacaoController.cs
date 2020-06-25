@@ -32,6 +32,7 @@ namespace LCode.Controllers
             if (u.Usu_email != null && u.Usu_senha != null)
             {
                 FormsAuthentication.SetAuthCookie(Convert.ToString(u.Usu_id), false);
+                Session["Nome"] = u.Usu_nome.ToString();
                 Session["UsuEmail"] = u.Usu_email.ToString();
                 Session["UsuId"] = u.Usu_id.ToString();
 

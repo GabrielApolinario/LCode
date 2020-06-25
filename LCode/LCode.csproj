@@ -167,6 +167,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CompraController.cs" />
     <Compile Include="Controllers\CursoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\AutenticacaoController.cs" />
@@ -404,11 +405,13 @@
     <Content Include="Views\Curso\Cursos.cshtml" />
     <Content Include="Views\Curso\DetalhesCurso.cshtml" />
     <Content Include="Views\Usuario\Perfil.cshtml" />
+    <Content Include="Views\Compra\Carrinho.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="obj\Debug\TempPE\" />
     <Folder Include="obj\Release\" />
+    <Folder Include="Views\Carrinho\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
