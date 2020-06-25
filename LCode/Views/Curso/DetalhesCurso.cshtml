@@ -236,7 +236,7 @@
                             <li class="list-group-item list-group-video"><span><i class="fas fa-certificate icon"></i></span> Certificado de Conclusão</li>
                         </ul>
                         <div class="card-body">
-                            <a href="course.html"> <button type="button" class="btn btn-purple">Adicionar ao carrinho</button></a>
+                            <a href="@Url.Action("Carrinho","Compra", new { curso_id = Model.Curso_id })"> <button type="button" class="btn btn-purple">Adicionar ao carrinho</button></a>
                             <a href="about.html"> <button type="button" class="btn btn-outline-purple">Comprar</button></a>
                         </div>
                     </div>
