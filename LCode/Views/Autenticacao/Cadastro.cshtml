@@ -107,7 +107,7 @@
                                             </div>
 
                                             <div class="col-5 form-group mt-3 mx-auto">
-                                                <span class="far fa-calendar-alt"></span>@Html.EditorFor(model => model.Usu_data_nasc, new { htmlAttributes = new { @class = "form-control", placeholder = "Data de Nascimento", @Type = "date" } })
+                                               @Html.EditorFor(model => model.Usu_data_nasc, new { htmlAttributes = new { @class = "form-control", placeholder = "Data de Nascimento", @Type = "date" } })
                                                 @Html.ValidationMessageFor(model => model.Usu_data_nasc, "", new { @class = "text-danger" })
                                             </div>
 
