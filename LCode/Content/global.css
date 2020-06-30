@@ -113,6 +113,12 @@ p,span{
   color: #667eea;
   transition: all 300ms ease-in-out;
 }
+/*FORM*/
+
+
+.form-search {
+    margin-left: -3% !important;
+}
 
 /* HEADER */
 header{

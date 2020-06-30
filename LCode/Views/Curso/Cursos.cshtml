@@ -1,9 +1,5 @@
 ﻿@model IEnumerable<LCode.Models.Curso>
 
-@{
-    Layout = null;
-}
-
 <!DOCTYPE html>
 <head>
     <meta charset="utf-8">
@@ -12,7 +8,8 @@
     <link href="~/Content/course.css" rel="stylesheet" />
     <link rel="stylesheet" href="~/Content/global.css" />
     <link rel="stylesheet" href="~/Content/index.css">
-
+    <link rel="stylesheet" href="~/Content/login.css">
+    <link href="~/Content/course.css" rel="stylesheet" />
     <link rel="icon" type="~/Image/png" sizes="16x16" href="~/~/Image/favicon.png">
     <link rel="stylesheet"
           href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
@@ -21,75 +18,7 @@
 
 </head>
 
-<body>
-    <header>
-        <section id="nav-bar">
-            <nav class="navbar navbar-expand-lg navbar-light bg-purpk nav-pills">
-                <div class="d-flex flex-grow-1">
-                    <span class="w-100 d-lg-none d-block"></span>
-                    <a style="color: rgb(224, 224, 224);" class="navbar-brand d-none d-lg-inline-block h1 mb-0" href="index.html">
-                        <img src="~/Image/logo-LCode.png" width="30" height="30" class="d-inline-block align-top" alt="">
-                    </a>
-                    </a>
-                    <a class="navbar-brand-two mx-auto d-lg-none d-inline-block" href="#">
-                        <img src="~/Image/logo.png" alt="logo">
-                    </a>
-                    <div class="w-100 text-right">
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                    </div>
-                </div>
-                <div class="collapse navbar-collapse flex-grow-1 text-right" id="myNavbar">
-                    <ul class="navbar-nav ml-auto flex-nowrap">
-                        <li class="nav-item">
-                            <span class="span">@Html.ActionLink("HOME", "Index", "Home", new { area = "" }, new { @class = "nav-link m-2" })</span>
-                        </li>
-                        <li class="nav-item">
-                            <span class="span">@Html.ActionLink("CURSOS", "Cursos", "Home", new { area = "" }, new { @class = "nav-link m-2" })</span>
-                        </li>
-                        <li class="nav-item">
-                            <span class="span">@Html.ActionLink("SOBRE", "Sobre", "Home", new { area = "" }, new { @class = "nav-link m-2" })</span>
-                        </li>
-                        <li class="nav-item">
-                            <span class="span">@Html.ActionLink("CONTATO", "Contato", "Home", new { area = "" }, new { @class = "nav-link m-2" })</span>
-                        </li>
-                        @if (Session["Adm"] != null || Session["Professor"] != null || Session["Estudante"] != null)
-                        {
-                            <li class="nav-item">
-                                <span class="span">@Html.ActionLink("SAIR", "Logout", "Autenticacao", new { area = "" }, new { @class = "nav-link m-2" })</span>
-                            </li>
-                        }
-                        else
-                        {
-                            <li class="nav-item">
-                                <span class="span">@Html.ActionLink("CADASTRE-SE", "Cadastro", "Autenticacao", new { area = "" }, new { @class = "nav-link m-2" })</span>
-                            </li>
-                            <li class="nav-item">
-                                <span class="span">@Html.ActionLink("LOGIN", "Login", "Autenticacao", new { area = "" }, new { @class = "nav-link m-2" })</span>
-                            </li>
-                        }
-                    </ul>
-                </div>
-            </nav>
-        </section>
 
-
-        <!--------------------------BANNER-SECTION---------------------------->
-
-        <section id="banner">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6">
-                        <p class="promo-title" style="color: #FFF;">NOSSOS CURSOS</p>
-                        <p style="color: #FFF;">
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </header>
 
 
     <!--------------------------COURSES-SECTION---------------------------->
@@ -127,144 +56,7 @@
               
         </div>
     </section>
-        <!-- Footer -->
-        <footer class="page-footer font-small unique-color-dark">
-
-            <div style="background-color: #6351ce;">
-                <div class="container">
-
-
-                    <div class="row py-4 d-flex align-items-center">
-
-
-                        <div class="col-md-6 col-lg-5 text-center text-md-left mb-4 mb-md-0">
-                            <h6 class="mb-0">Conecte-se conosco nas redes sociais!</h6>
-                        </div>
-
-                        <div class="col-md-6 col-lg-7 text-center text-md-right">
-
-                            <!-- Facebook -->
-                            <a class="fb-ic">
-                                <i class="fab fa-facebook-f white-text mr-4"> </i>
-                            </a>
-                            <!-- Twitter -->
-                            <a class="tw-ic">
-                                <i class="fab fa-twitter white-text mr-4"> </i>
-                            </a>
-                            <!-- Google +-->
-                            <a class="gplus-ic">
-                                <i class="fab fa-google-plus-g white-text mr-4"> </i>
-                            </a>
-                            <!--Linkedin -->
-                            <a class="li-ic">
-                                <i class="fab fa-linkedin-in white-text mr-4"> </i>
-                            </a>
-                            <!--Instagram-->
-                            <a class="ins-ic">
-                                <i class="fab fa-instagram white-text"> </i>
-                            </a>
-
-                        </div>
-
-                    </div>
-
-
-                </div>
-            </div>
-
-            <!-- Footer Links -->
-            <div class="container text-center text-md-left mt-5">
-
-
-                <div class="row mt-3">
-
-
-                    <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-
-
-                        <h6 class="text-uppercase font-weight-bold">LCode</h6>
-                        <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
-                        <p>
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
-                        </p>
-
-                    </div>
-
-                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
-
-                        <!-- Links -->
-                        <h6 class="text-uppercase font-weight-bold">Produtos</h6>
-                        <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
-                        <p>
-                            <a href="#!">Cursos online</a>
-                        </p>
-                        <p>
-                            <a href="#!">Acesso ilimitado</a>
-                        </p>
-                        <p>
-                            <a href="#!">Certificado</a>
-                        </p>
-                        <p>
-                            <a href="#!">Chat para tirar dúvidas</a>
-                        </p>
-
-                    </div>
-
-                    <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
-
-                        <!-- Links -->
-                        <h6 class="text-uppercase font-weight-bold">Useful links</h6>
-                        <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
-                        <p>
-                            <a href="#!">Home</a>
-                        </p>
-                        <p>
-                            <a href="#!">Cursos</a>
-                        </p>
-                        <p>
-                            <a href="#!">Sobre</a>
-                        </p>
-                        <p>
-                            <a href="#!">Login</a>
-                        </p>
-
-                    </div>
-
-                    <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
-
-                        <!-- Links -->
-                        <h6 class="text-uppercase font-weight-bold">Contato</h6>
-                        <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
-                        <p>
-                            <i class="fas fa-home mr-3"></i>R.Guaipá, 678 - Vila Leopoldina
-                        </p>
-                        <p>
-                            <i class="fas fa-envelope mr-3"></i>developmentinfo@gmail.com
-                        </p>
-                        <p>
-                            <i class="fas fa-phone mr-3"></i> +55 11 3699-2270
-                        </p>
-                        <p>
-                            <i class="fas fa-print mr-3"></i>+55 11 3699-2270
-                        </p>
-
-                    </div>
-
-
-                </div>
-
-
-            </div>
-            <!-- Footer Links -->
-            <!-- Copyright -->
-            <div class="footer-copyright text-center py-3">
-                <p>© 2018 Copyright:LCode - Todos os direitos reservados</p>
-
-            </div>
-            <!-- Copyright -->
-
-        </footer>
+      
         <!-- Footer -->
         <script src="~/Scripts/bootstrap.min.js"></script>
         <script src="~/Scripts/global.js"></script>
