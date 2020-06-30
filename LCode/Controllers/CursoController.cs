@@ -7,12 +7,14 @@ using System.Web.Mvc;
 using LCode.ViewModels;
 using System.Configuration;
 using MySql.Data.MySqlClient;
+using LCode.Dados;
 
 namespace LCode.Controllers
 {
     public class CursoController : Controller
     {
         BancoDeDados bd = new BancoDeDados();
+        CursosAcoes ca = new CursosAcoes();
 
         // GET: Curso
         public ActionResult CadastroCurso()
@@ -129,6 +131,25 @@ namespace LCode.Controllers
             }
 
             ViewBag.modulos = new SelectList(items, "Value", "Text");
+        }
+
+        public ActionResult PesquisarCursos(FormCollection frm)
+        {
+            if(frm[""] != null)
+            {
+                try
+                {
+                    var pesquisa = frm[""];
+                    var retorno = ca.PesquisarCursos(pesquisa);
+                    return View(retorno);
+                }
+                catch 
+                {
+                    return View();
+                }
+            }
+
+            return RedirectToAction("Index", "Home");
         }
     }
 }
