@@ -13,8 +13,8 @@ namespace LCode.Dados
 
         public List<Curso> PesquisarCursos(string pesquisa)
         {
-            MySqlCommand cmd = new MySqlCommand("SELECT * FROM lc_cursoComprado WHERE curso_nome LIKE '%@pesquisa%'", bd.AbreConexao());
-            cmd.Parameters.AddWithValue("@pesquisa", pesquisa);
+            string query = String.Format("SELECT * FROM lc_curso WHERE curso_nome LIKE '%{0}%';", pesquisa);
+            MySqlCommand cmd = new MySqlCommand(query, bd.AbreConexao());
             var retorno = cmd.ExecuteReader();
             return GetCursos(retorno);
 
@@ -29,6 +29,7 @@ namespace LCode.Dados
             {
                 var TempCursos = new Curso()
                 {
+                    Curso_id = Convert.ToInt32(retorno["Curso_id"]),
                     Curso_nome = retorno["Curso_nome"].ToString(),
                     Curso_descricao = retorno["Curso_descricao"].ToString(),
                     Curso_valor = Convert.ToDouble(retorno["Curso_valor"]),                   

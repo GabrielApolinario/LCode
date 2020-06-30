@@ -135,11 +135,11 @@ namespace LCode.Controllers
 
         public ActionResult PesquisarCursos(FormCollection frm)
         {
-            if(frm[""] != null)
+            if(frm["pesquisar"] != null)
             {
                 try
                 {
-                    var pesquisa = frm[""];
+                    var pesquisa = frm["pesquisar"];
                     var retorno = ca.PesquisarCursos(pesquisa);
                     return View(retorno);
                 }

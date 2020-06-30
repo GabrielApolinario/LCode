@@ -408,6 +408,7 @@
     <Content Include="Views\Usuario\Perfil.cshtml" />
     <Content Include="Views\Compra\Carrinho.cshtml" />
     <Content Include="Views\Usuario\MeusCursos.cshtml" />
+    <Content Include="Views\Curso\PesquisarCursos.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

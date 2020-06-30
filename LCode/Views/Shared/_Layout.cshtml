@@ -67,10 +67,10 @@
                             Cursos on-line para você se tornar um profissional de sucesso. A chave para o desenvolvimento se encontra aqui!
                         </h5>
 
-                        <form>
+                        <form action="@Url.Action("PesquisarCursos", "Curso")" method="post">
                             <div class="form">
                                 <div class="col-md-12 form-group form-search mt-4 mx-auto">
-                                    <span class="fas fa-search"></span><input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Pesquisar um curso">
+                                    <span class="fas fa-search"></span><input type="text" class="form-control"  name="pesquisar" id="pesquisar" aria-describedby="emailHelp" placeholder="Pesquisar um curso">
                                 </div>
                             </div>
                         </form>
