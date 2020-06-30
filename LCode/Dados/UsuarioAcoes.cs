@@ -5,13 +5,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Data;
+using MySqlX.XDevAPI;
 
 namespace LCode.Dados
 {
     public class UsuarioAcoes
     {
         BancoDeDados bd = new BancoDeDados();
-
 
         public Usuarios GetUsuarios(int id_usu)
         {
@@ -54,6 +54,34 @@ namespace LCode.Dados
 
             cmd.ExecuteNonQuery();
             bd.FecharConexao();
+        }
+
+        public List<CursoComprado> GetMeusCursos(int usu_id)
+        {
+            MySqlCommand cmd = new MySqlCommand("SELECT * FROM lc_cursoComprado WHERE cursoComprado_usuario = @usu_id", bd.AbreConexao());
+            cmd.Parameters.AddWithValue("@usu_id", usu_id);
+            var retorno = cmd.ExecuteReader();
+            return MeusCursos(retorno);
+        }
+
+        public List<CursoComprado> MeusCursos(MySqlDataReader retorno)
+        {
+            var cursosComprados = new List<CursoComprado>();
+
+            while (retorno.Read())
+            {
+                var TempCursos = new CursoComprado()
+                {
+                    cursoComprado_id = Convert.ToInt32(retorno["cursoComprado_id"]),
+                    cursoComprado = Convert.ToInt32(retorno["cursoComprado"]),
+                    cursoComprado_usuario = Convert.ToInt32(retorno["cursoComprado_usuario"]),
+                    cursoComprado_favorito = retorno["cursoComprado_favorito"].ToString(),
+                };
+                cursosComprados.Add(TempCursos);
+            }
+            retorno.Close();
+            return cursosComprados;
+            
         }
     
 

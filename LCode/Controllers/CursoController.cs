@@ -5,6 +5,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using LCode.ViewModels;
+using System.Configuration;
+using MySql.Data.MySqlClient;
 
 namespace LCode.Controllers
 {
@@ -58,6 +60,8 @@ namespace LCode.Controllers
         public ActionResult AddModulo(Nullable<int> curso_id)
         {
             Modulo m = new Modulo();
+            GetModulos(Convert.ToInt32(curso_id));
+            m.modulos_lista = Request["modulos"];
             m.mod_curso = Convert.ToInt32(curso_id);
             return View(m);
 
@@ -96,6 +100,35 @@ namespace LCode.Controllers
             ViewData["videos"] = bd.QueryVideos(curso_id);
             return View(retorno);
         }
+       
+        public void GetModulos(int id_curso)
+        {
+            List<SelectListItem> items = new List<SelectListItem>();
+            string constr = ConfigurationManager.ConnectionStrings["BdConexao"].ConnectionString;
+            using (MySqlConnection con = new MySqlConnection(constr))
+            {
 
+                string query = string.Format("SELECT * FROM lc_modulo WHERE mod_curso = {0};", id_curso);
+                using (MySqlCommand cmd = new MySqlCommand(query))
+                {
+                    cmd.Connection = con;
+                    con.Open();
+                    using (MySqlDataReader sdr = cmd.ExecuteReader())
+                    {
+                        while (sdr.Read())
+                        {
+                            items.Add(new SelectListItem
+                            {
+                                Text = sdr["mod_nome"].ToString(),
+                                Value = sdr["mod_curso"].ToString()
+                            });
+                        }
+                    }
+                    con.Close();
+                }
+            }
+
+            ViewBag.modulos = new SelectList(items, "Value", "Text");
+        }
     }
 }

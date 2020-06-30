@@ -11,6 +11,7 @@ namespace LCode.Controllers
     public class UsuarioController : Controller
     {
         UsuarioAcoes ua = new UsuarioAcoes();
+        Usuarios u = new Usuarios();
 
         [HttpGet]
         public ActionResult Perfil()
@@ -37,6 +38,12 @@ namespace LCode.Controllers
             ua.EditaUsuario(u);
             
             return View();
+        }
+
+        public ActionResult MeusCursos()
+        {
+            var u = ua.GetMeusCursos(Convert.ToInt32(Session["UsuId"]));
+            return View(u);
         }
 
     }

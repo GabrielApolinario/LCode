@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
+
 
 namespace LCode.Models
 {
@@ -17,5 +19,6 @@ namespace LCode.Models
 
         public int mod_qtd_video { get; set; }
 
+        public string modulos_lista { get; set; }
     }
 }

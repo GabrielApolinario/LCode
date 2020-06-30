@@ -1,0 +1,59 @@
+﻿@model IEnumerable<LCode.Models.CursoComprado>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>MeusCursos</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.cursoComprado_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.cursoComprado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.cursoComprado_usuario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.cursoComprado_favorito)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.cursoComprado_id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cursoComprado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cursoComprado_usuario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cursoComprado_favorito)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

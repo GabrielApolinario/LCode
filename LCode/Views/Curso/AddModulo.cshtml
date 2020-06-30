@@ -62,7 +62,7 @@
                                     @Html.ValidationMessageFor(model => model.mod_qtd_video, "", new { @class = "text-danger" })
                                 </div>
 
-
+                                @Html.DropDownList("modulos", "Escolha o Módulo")
                             </div>
                             <div class="col-4 col-md-6 mx-auto">
                                 <button type="submit" class="btn btn btn-block btn-purple-form mt-4 mb-5">Cadastrar</button>

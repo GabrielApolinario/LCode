@@ -406,6 +406,7 @@
     <Content Include="Views\Curso\DetalhesCurso.cshtml" />
     <Content Include="Views\Usuario\Perfil.cshtml" />
     <Content Include="Views\Compra\Carrinho.cshtml" />
+    <Content Include="Views\Usuario\MeusCursos.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
