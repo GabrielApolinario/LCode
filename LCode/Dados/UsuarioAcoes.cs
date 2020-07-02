@@ -13,6 +13,90 @@ namespace LCode.Dados
     {
         BancoDeDados bd = new BancoDeDados();
 
+        public void ValidaLogin(Usuarios u)
+        {
+            //Apos o forms estar criado, fazer validacao aq
+
+            using (bd = new BancoDeDados())
+            {
+                string query = string.Format("SELECT * FROM lc_usuarios WHERE Usu_email = '{0}' AND Usu_Senha = '{1}' LIMIT 1;", u.Usu_email, u.Usu_senha);
+
+                MySqlDataReader retorno;
+
+                retorno = bd.RetornaComando(query);
+
+                if (retorno.HasRows)
+                {
+                    while (retorno.Read())
+                    {
+                        {
+                            u.Usu_id = Convert.ToInt32(retorno["usu_id"]);
+                            u.Usu_nome = Convert.ToString(retorno["usu_nome"]);
+                            u.Usu_email = Convert.ToString(retorno["usu_email"]);
+                            u.Usu_senha = Convert.ToString(retorno["usu_senha"]);
+                            u.Usu_hierarquia = Convert.ToString(retorno["usu_hierarquia"]);
+                        }
+                    }
+                    bd.Dispose();
+                }
+                else
+                {
+                    u.Usu_email = null;
+                    u.Usu_senha = null;
+                    u.Usu_hierarquia = null;
+                    bd.Dispose();
+                }
+            }
+
+        }
+
+        public Usuarios ValidarCadastro(Usuarios u)
+        {
+            using (bd = new BancoDeDados())
+            {
+                var strQuery = string.Format("SELECT * FROM lc_usuarios WHERE usu_email = '{0}';", u.Usu_email);
+                var retorno = bd.RetornaComando(strQuery);
+                return VerificarCadastro(retorno).FirstOrDefault();
+            }
+
+        }
+
+        public List<Usuarios> VerificarCadastro(MySqlDataReader retorno)
+        {
+            var usuarios = new List<Usuarios>();
+
+            while (retorno.Read())
+            {
+                var TempUsuario = new Usuarios()
+                {
+                    Usu_email = retorno["usu_email"].ToString(),
+                    Usu_cpf_ou_cnpj = retorno["usu_cpf_or_cnpj"].ToString(),
+                };
+                usuarios.Add(TempUsuario);
+            }
+            retorno.Close();
+            return usuarios;
+        }
+    public void InsereUsuario(Usuarios u)
+        {
+
+            MySqlCommand cmd = new MySqlCommand("Insere_Usuario", bd.AbreConexao());
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("proc_usu_email", u.Usu_email);
+            cmd.Parameters.AddWithValue("proc_usu_nome", u.Usu_nome);
+            cmd.Parameters.AddWithValue("proc_usu_sobrenome", u.Usu_sobrenome);
+            cmd.Parameters.AddWithValue("proc_usu_senha", u.Usu_senha);
+            cmd.Parameters.AddWithValue("proc_usu_hierarquia", u.Usu_hierarquia);
+            cmd.Parameters.AddWithValue("proc_usu_empresa", u.Usu_empresa);
+            cmd.Parameters.AddWithValue("proc_usu_pais", u.Usu_pais);
+            cmd.Parameters.AddWithValue("proc_usu_data_nasc", u.Usu_data_nasc);
+            cmd.Parameters.AddWithValue("proc_usu_cpf", u.Usu_cpf_ou_cnpj);
+
+            cmd.ExecuteNonQuery();
+
+        }
+
         public Usuarios GetUsuarios(int id_usu)
         {
             MySqlCommand cmd = new MySqlCommand("Select * from lc_usuarios WHERE usu_id = @proc_usu_id;", bd.AbreConexao());

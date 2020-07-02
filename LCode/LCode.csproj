@@ -174,7 +174,6 @@
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Controllers\VideoController.cs" />
     <Compile Include="Dados\CursosAcoes.cs" />
-    <Compile Include="Dados\Login.cs" />
     <Compile Include="Dados\UsuarioAcoes.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

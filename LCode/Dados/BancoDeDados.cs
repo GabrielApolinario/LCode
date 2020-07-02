@@ -24,6 +24,22 @@ namespace LCode.Models
         public int novo_curso_id;
         public int mod_id;
 
+        public MySqlConnection AbreConexao()
+        {
+            con.Open();
+
+            return con;
+        }
+
+        public MySqlConnection FecharConexao()
+        {
+            con.Close();
+            con.Dispose();
+
+            return con;
+        }
+
+
         public void Dispose()
         {
             con.Dispose();
@@ -40,56 +56,7 @@ namespace LCode.Models
             return cmd.ExecuteReader();
         }
 
-        public List<Curso> ListarCursos()
-        {
-            
-            var strQuery = "SELECT * FROM lc_Curso ORDER BY curso_categoria, curso_nome asc;";
-            MySqlCommand cmd = new MySqlCommand(strQuery, con);
-            var retorno = RetornaComando(strQuery);
-            return ListaDeCursos(retorno);
-        }
-
-        //Retorna lista de cursos cadastrados
-        public List<Curso> ListaDeCursos(MySqlDataReader retorno)
-        {
-            var cursos = new List<Curso>();
-
-            while (retorno.Read())
-            {
-                var TempCurso = new Curso()
-                {
-                    Curso_id = Convert.ToInt32(retorno["curso_id"]),
-                    Curso_nome = retorno["curso_nome"].ToString(),
-                    Curso_descricao = retorno["curso_descricao"].ToString(),
-                };
-                cursos.Add(TempCurso);
-            }
-            retorno.Close();
-            return cursos;
-        }
-
-        public void InsereUsuario(Usuarios u)
-        {
-
-            MySqlCommand cmd = new MySqlCommand("Insere_Usuario", con);
-            cmd.CommandType = CommandType.StoredProcedure;
-
-            cmd.Parameters.AddWithValue("proc_usu_email", u.Usu_email);
-            cmd.Parameters.AddWithValue("proc_usu_nome", u.Usu_nome);
-            cmd.Parameters.AddWithValue("proc_usu_sobrenome", u.Usu_sobrenome);
-            cmd.Parameters.AddWithValue("proc_usu_senha", u.Usu_senha);
-            cmd.Parameters.AddWithValue("proc_usu_hierarquia", u.Usu_hierarquia);
-            cmd.Parameters.AddWithValue("proc_usu_empresa", u.Usu_empresa);
-            cmd.Parameters.AddWithValue("proc_usu_pais", u.Usu_pais);
-            cmd.Parameters.AddWithValue("proc_usu_data_nasc", u.Usu_data_nasc);
-            cmd.Parameters.AddWithValue("proc_usu_cpf", u.Usu_cpf_ou_cnpj);
-
-            con.Open();
-
-            cmd.ExecuteNonQuery();
-
-        }
-
+ 
         public int InsereCurso(Curso c, int user_id)
         {
             MySqlCommand cmd = new MySqlCommand("Insere_Curso", con);
@@ -239,65 +206,13 @@ namespace LCode.Models
             return mod_id;
         }
 
-        public CursoVideoModuloViewModel QueryDetalhesCurso(int curso_id)
-        {
-
-            MySqlCommand cmd = new MySqlCommand("Curso_Completo", con);
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("proc_curso_id", curso_id);
-            con.Open();
-            var retorno = cmd.ExecuteReader();
-            return DetalhesCurso(retorno).FirstOrDefault();
-
-
-        }
-
-        //Retorna lista de cursos cadastrados
-        public List<CursoVideoModuloViewModel> DetalhesCurso(MySqlDataReader retorno)
-        {
-            var cursos = new List<CursoVideoModuloViewModel>();
-
-            if (retorno.HasRows)
-            {
-                while (retorno.Read())
-                {
-
-                    var TempCurso = new CursoVideoModuloViewModel()
-
-                    {
-                        Curso_id = Convert.ToInt32(retorno["curso_id"]),
-                        Curso_nome = retorno["curso_nome"].ToString(),
-                        Curso_descricao = retorno["curso_descricao"].ToString(),
-                        Curso_duracao = Convert.ToDouble(retorno["curso_duracao"]),
-                        Curso_valor = Convert.ToDouble(retorno["curso_valor"]),
-
-                        mod_nome = retorno["mod_nome"].ToString(),
-                        mod_desc = retorno["mod_desc"].ToString(),
-
-                        video_titulo = retorno["video_titulo"].ToString(),
-                        video_id = Convert.ToInt32(retorno["video_id"]),
-                        video_link = retorno["video_link"].ToString(),
-                        video_modulo = Convert.ToInt32(retorno["video_modulo"]),
-                        video_curso = Convert.ToInt32(retorno["video_curso"]),
-                        video_descricao = retorno["video_descricao"].ToString(),
-                    };
-
-                
-                    cursos.Add(TempCurso);
-                }
-
-            }
-            retorno.Close();
-            return cursos;
-        }
-
-
         public List<CursoVideoModuloViewModel> QueryVideos(int curso_id)
         {
 
-            MySqlCommand cmd = new MySqlCommand("Curso_Completo", con);
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("proc_curso_id", curso_id);
+            MySqlCommand cmd = new MySqlCommand("SELECT * FROM lc_video WHERE video_curso = @proc_curso_id ORDER BY video_id ASC;", con);
+            cmd.CommandType = CommandType.Text;
+            cmd.Parameters.AddWithValue("@proc_curso_id", curso_id);
+            con.Open();
             var retorno = cmd.ExecuteReader();       
             return ListarVideos(retorno);
 
@@ -316,31 +231,49 @@ namespace LCode.Models
                         video_id = Convert.ToInt32(retorno["video_id"]),
                         video_titulo = retorno["video_titulo"].ToString(),
                         video_modulo = Convert.ToInt32(retorno["video_modulo"]),
-                        video_link = retorno["video_link"].ToString(),
-                        video_curso = Convert.ToInt32(retorno["video_curso"]),
-                        video_descricao = retorno["video_descricao"].ToString(),
                     };
                     videosLista.Add(tempVideos);
                 }
             }
             retorno.Close();
+            FecharConexao();
             return videosLista;
 
         }
 
-        public MySqlConnection AbreConexao()
-        {           
-            con.Open();
+        public List<CursoVideoModuloViewModel> QueryModulos(int curso_id)
+        {
 
-            return con;
+            MySqlCommand cmd = new MySqlCommand("SELECT * FROM lc_modulo where mod_curso = @proc_curso_id ORDER BY mod_id ASC;", con);
+            cmd.CommandType = CommandType.Text;
+            cmd.Parameters.AddWithValue("@proc_curso_id", curso_id);
+            con.Open();
+            var retorno = cmd.ExecuteReader();
+            return ListarModulos(retorno);
+
         }
 
-        public MySqlConnection FecharConexao()
+        public List<CursoVideoModuloViewModel> ListarModulos(MySqlDataReader retorno)
         {
-            con.Close();
-            con.Dispose();
+            var videosLista = new List<CursoVideoModuloViewModel>();
 
-            return con;
+            if (retorno.HasRows)
+            {
+                while (retorno.Read())
+                {
+                    var tempVideos = new CursoVideoModuloViewModel()
+                    {
+                        mod_id = Convert.ToInt32(retorno["mod_id"]),
+                        mod_nome = retorno["mod_nome"].ToString(),
+
+                    };
+                    videosLista.Add(tempVideos);
+                }
+            }
+            retorno.Close();
+            FecharConexao();
+            return videosLista;
+
         }
 
     }

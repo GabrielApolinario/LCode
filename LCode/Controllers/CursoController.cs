@@ -89,17 +89,18 @@ namespace LCode.Controllers
 
         public ActionResult Cursos()
         {
-            var retorno = bd.ListarCursos();
+            var retorno = ca.ListarCursos();
 
             return View(retorno);
         }
 
         
-        public ActionResult DetalhesCurso(int curso_id)
+        public ActionResult DetalhesCurso(Nullable <int> curso_id)
         {
-            var retorno = bd.QueryDetalhesCurso(curso_id);
+            var retorno = ca.QueryDetalhesCurso(Convert.ToInt32(curso_id));
 
-            ViewData["videos"] = bd.QueryVideos(curso_id);
+            ViewData["modulos"] = bd.QueryModulos(Convert.ToInt32(curso_id));
+            ViewData["videos"] = bd.QueryVideos(Convert.ToInt32(curso_id));
             return View(retorno);
         }
        
@@ -141,15 +142,30 @@ namespace LCode.Controllers
                 {
                     var pesquisa = frm["pesquisar"];
                     var retorno = ca.PesquisarCursos(pesquisa);
+
+                    if(retorno.Count == 0)
+                    {
+                        ViewBag.curso = "Não foi encontrado nenhum curso";
+                    }
                     return View(retorno);
                 }
                 catch 
                 {
+                    ViewBag.curso = "Ocorreu um erro ao pesquisar o curso";
                     return View();
                 }
             }
 
             return RedirectToAction("Index", "Home");
         }
+
+        public ActionResult AssistirCurso(int curso_id)
+        {
+            
+            
+            return View();
+        }
+            
+            
     }
 }

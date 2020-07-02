@@ -129,7 +129,39 @@
                             <div class="card-header" id="headingOne">
                                 <h2 class="mb-0">
                                     <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                        Introdução
+                                        @if (ViewData["modulos"] != null)
+                                        {
+
+                                            foreach (var modulos in (IEnumerable<CursoVideoModuloViewModel>)ViewData["modulos"])
+                                            {
+                                                <div class="card-header" id="headingTwo">
+                                                    <h2 class="mb-0">
+                                                        <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                                            @modulos.mod_nome
+                                                        </button>
+                                                    </h2>
+                                                </div>
+                                                if (ViewData["videos"] != null)
+                                                {
+                                                    foreach (var videos in (IEnumerable<CursoVideoModuloViewModel>)ViewData["videos"])
+                                                    {
+                                                        if (@videos.video_titulo.Where(v => videos.video_modulo == modulos.mod_id).Select(v => videos.video_titulo).FirstOrDefault() != null)                                                        {
+                                                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                                                                <div class="card-body">
+                                                                    <ul class="list-group list-accordion list-group-flush">
+                                                                        <li class="list-group-item">
+                                                                                <span><i class="fas fa-play-circle icon"></i></span>@videos.video_titulo
+                                                                        </li>
+                                                
+                                                                    </ul>
+
+                                                                </div>
+                                                            </div>                                                                                                              
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
                                     </button>
                                 </h2>
                             </div>
@@ -137,21 +169,11 @@
                             <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
                                 <div class="card-body">
                                     <ul class="list-group list-accordion list-group-flush">
-                                        @if (ViewData["videos"] != null)
-                                        {
-                                            foreach(var videos in (IEnumerable<CursoVideoModuloViewModel>)ViewData["videos"])
-                                            {
-                                                <li class="list-group-item">
-                                                    <span><i class="fas fa-play-circle icon"></i></span> @videos.video_titulo
-
-                                                </li>
-                                            }
-                                        }
                                     </ul>
                                 </div>
                             </div>
                         </div>
-                        <div class="card">
+                        @*<div class="card">
                             <div class="card-header" id="headingTwo">
                                 <h2 class="mb-0">
                                     <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
@@ -214,14 +236,14 @@
 
                                 </div>
                             </div>
-                        </div>
+                        </div>*@
                     </div>
 
                 </div>
                 <div class="col-lg-6">
                     <div class="card" style="width: 28rem;">
                         <video height="300" allowfullscreen controls>
-                            <source src="@Url.Content(Model.video_link)" />
+                            @*<source src="@Url.Content(Model.video_link)" />*@
                         </video>
                         <div class="card-body">
                             <h5 class="card-title color-purple">@Html.DisplayFor(model => model.Curso_nome)</h5>

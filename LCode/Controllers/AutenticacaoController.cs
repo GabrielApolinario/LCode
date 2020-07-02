@@ -16,7 +16,7 @@ namespace LCode.Controllers
 {
     public class AutenticacaoController : Controller
     {
-        Login log = new Login();
+        UsuarioAcoes ac = new UsuarioAcoes();
         BancoDeDados bd = new BancoDeDados();
 
         public ActionResult Login()
@@ -27,7 +27,7 @@ namespace LCode.Controllers
         [HttpPost]
         public ActionResult Login(Usuarios u)
         {
-            log.ValidaLogin(u);
+            ac.ValidaLogin(u);
 
             if (u.Usu_email != null && u.Usu_senha != null)
             {
@@ -84,7 +84,7 @@ namespace LCode.Controllers
             if (ModelState.IsValid)
             {
                 
-                var retorno = log.ValidarCadastro(u);
+                var retorno = ac.ValidarCadastro(u);
 
                 if (retorno == null)
                 {
@@ -104,7 +104,7 @@ namespace LCode.Controllers
 
                     };
 
-                    bd.InsereUsuario(usuario);
+                    ac.InsereUsuario(usuario);
 
                     return View("Login");
                 }
@@ -137,6 +137,7 @@ namespace LCode.Controllers
 
         public ActionResult Logout()
         {
+            Session["Nome"] = null;
             Session["UsuEmail"] = null;
             Session["UsuId"] = null;
             Session["Adm"] = null;
