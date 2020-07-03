@@ -145,8 +145,7 @@
 
                                     if (ViewData["videos"] != null)
                                     {
-                                        foreach (var videos in (IEnumerable<CursoVideoModuloViewModel>
-                                            )ViewData["videos"])
+                                        foreach (var videos in (IEnumerable<CursoVideoModuloViewModel>)ViewData["videos"])
                                         {
                                             if (@videos.video_titulo.Where(v => videos.video_modulo == modulos.mod_id).Select(v => videos.video_titulo).FirstOrDefault() != null)
                                             {
@@ -165,7 +164,7 @@
                                         }
                                     }
                                 }
-                            }
+                             }
 
 
                         </div>

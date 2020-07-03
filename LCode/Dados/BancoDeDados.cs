@@ -231,6 +231,8 @@ namespace LCode.Models
                         video_id = Convert.ToInt32(retorno["video_id"]),
                         video_titulo = retorno["video_titulo"].ToString(),
                         video_modulo = Convert.ToInt32(retorno["video_modulo"]),
+                        video_link = retorno["video_link"].ToString(),
+                        
                     };
                     videosLista.Add(tempVideos);
                 }

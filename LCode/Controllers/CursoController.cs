@@ -162,8 +162,19 @@ namespace LCode.Controllers
         public ActionResult AssistirCurso(int curso_id)
         {
             
+            var retorno = ca.ValidarCursoComprado(Convert.ToInt32(Session["UsuId"]));
             
-            return View();
+            if (retorno != null)
+            {
+                var curso = ca.QueryDetalhesCurso(Convert.ToInt32(curso_id));
+
+                ViewData["modulos"] = bd.QueryModulos(Convert.ToInt32(curso_id));
+                ViewData["videos"] = bd.QueryVideos(Convert.ToInt32(curso_id));
+
+                return View(curso);
+            }
+
+            return View();           
         }
             
             

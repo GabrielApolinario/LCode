@@ -2,6 +2,7 @@
 using LCode.ViewModels;
 using Microsoft.Ajax.Utilities;
 using MySql.Data.MySqlClient;
+using MySqlX.XDevAPI;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -108,9 +109,6 @@ namespace LCode.Dados
                         Curso_descricao = retorno["curso_descricao"].ToString(),
                         Curso_duracao = Convert.ToDouble(retorno["curso_duracao"]),
                         Curso_valor = Convert.ToDouble(retorno["curso_valor"]),
-                        //mod_id = Convert.ToInt32(retorno["mod_id"]),
-                        //mod_nome = retorno["mod_nome"].ToString(),
-                        //mod_desc = retorno["mod_desc"].ToString(),
 
                     };
 
@@ -123,90 +121,32 @@ namespace LCode.Dados
                 return cursos;
 
         }
+        public List<CursoComprado> ValidarCursoComprado(int usu_id)
+        {
+            using (bd = new BancoDeDados())
+            {
+                var strQuery = string.Format("SELECT * FROM lc_cursoComprado WHERE cursoComprado_usuario = '{0}';", usu_id);
+                var retorno = bd.RetornaComando(strQuery);
+                return VerificarCompra(retorno);
+            }
 
-        //public List<CursoVideoModuloViewModel> QueryDetalhesCurso(int curso_id)
+        }
 
-        //{
+        public List<CursoComprado> VerificarCompra(MySqlDataReader retorno)
+        {
+            var usuarios = new List<CursoComprado>();
 
-        //    List<CursoVideoModuloViewModel> modulos = new List<CursoVideoModuloViewModel>();
-
-        //    MySqlCommand cmd = new MySqlCommand("select * from lc_modulo WHERE mod_curso = @proc_curso_id", bd.AbreConexao());
-        //    cmd.Parameters.AddWithValue("@proc_curso_id", curso_id);
-
-        //    MySqlDataAdapter sd = new MySqlDataAdapter(cmd);
-
-        //    DataTable dt = new DataTable();
-
-        //    sd.Fill(dt);
-
-        //    bd.FecharConexao();
-
-        //    foreach (DataRow retorno in dt.Rows)
-        //    {
-        //        var TempCurso = new CursoVideoModuloViewModel()
-
-        //        {
-        //            mod_id = Convert.ToInt32(retorno["mod_id"]),
-        //            mod_nome = retorno["mod_nome"].ToString(),
-        //            mod_desc = retorno["mod_desc"].ToString(),
-        //        };
-        //        modulos.Add(TempCurso);
-
-        //        MySqlCommand cmd_video = new MySqlCommand("select * from lc_video WHERE video_modulo = @proc_mod_id", bd.AbreConexao());
-        //        cmd_video.Parameters.AddWithValue("@proc_mod_id", TempCurso.mod_id);
-
-        //        MySqlDataAdapter sd_video = new MySqlDataAdapter(cmd_video);
-
-        //        DataTable dt_video = new DataTable();
-
-        //        sd_video.Fill(dt_video);
-        //        foreach (DataRow retorno_video in dt_video.Rows)
-
-        //        {
-        //            modulos.Add(
-        //            new CursoVideoModuloViewModel
-        //            {
-        //                video_titulo = retorno_video["video_titulo"].ToString(),
-        //            });
-        //        }
-
-        //        return modulos;
-
-        //    }
-        //    return modulos;
-        //}
+            while (retorno.Read())
+            {
+                var TempUsuario = new CursoComprado()
+                {
+                    cursoComprado_usuario = Convert.ToInt32(retorno["cursoComprado_usuario"]),
+                    cursoComprado = Convert.ToInt32(retorno["cursoComprado"]),
+                };
+                usuarios.Add(TempUsuario);
+            }
+            retorno.Close();
+            return usuarios;
+        }
     }
 }
-            //if (retorno.HasRows)
-            //{
-            //    while (retorno.Read())
-            //    {
-
-            //        var TempCurso = new CursoVideoModuloViewModel()
-
-            //        {
-            //            Curso_id = Convert.ToInt32(retorno["curso_id"]),
-            //            Curso_nome = retorno["curso_nome"].ToString(),
-            //            Curso_descricao = retorno["curso_descricao"].ToString(),
-            //            Curso_duracao = Convert.ToDouble(retorno["curso_duracao"]),
-            //            Curso_valor = Convert.ToDouble(retorno["curso_valor"]),
-
-            //            mod_nome = retorno["mod_nome"].ToString(),
-            //            mod_desc = retorno["mod_desc"].ToString(),
-
-            //            video_titulo = retorno["video_titulo"].ToString(),
-            //            video_id = Convert.ToInt32(retorno["video_id"]),
-            //            video_link = retorno["video_link"].ToString(),
-            //            video_modulo = Convert.ToInt32(retorno["video_modulo"]),
-            //            video_curso = Convert.ToInt32(retorno["video_curso"]),
-            //            video_descricao = retorno["video_descricao"].ToString(),
-            //        };
-
-
-            //        cursos.Add(TempCurso);
-            //    }
-
-            //}
-            //retorno.Close();
-            //bd.FecharConexao();
-            //return cursos;
