@@ -160,8 +160,7 @@ namespace LCode.Controllers
         }
 
         public ActionResult AssistirCurso(int curso_id)
-        {
-            
+        {           
             var retorno = ca.ValidarCursoComprado(Convert.ToInt32(Session["UsuId"]));
             
             if (retorno != null)
@@ -174,7 +173,7 @@ namespace LCode.Controllers
                 return View(curso);
             }
 
-            return View();           
+            return View();
         }
             
             

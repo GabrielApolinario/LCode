@@ -17,7 +17,7 @@ namespace LCode.Dados
 
         public List<Curso> PesquisarCursos(string pesquisa)
         {
-            string query = String.Format("SELECT * FROM lc_curso WHERE curso_nome LIKE '%{0}%';", pesquisa);
+            string query = String.Format("SELECT * FROM lc_curso WHERE curso_nome LIKE '%{0}%' OR curso_categoria LIKE '%{0}%';", pesquisa);
             MySqlCommand cmd = new MySqlCommand(query, bd.AbreConexao());
             var retorno = cmd.ExecuteReader();
             return GetCursos(retorno);
