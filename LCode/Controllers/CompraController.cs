@@ -43,8 +43,22 @@ namespace LCode.Controllers
                 Session["carrinho"] = carrinho;
             }
 
-            return View();
+            return View("Carrinho");
         }
+
+        public ActionResult RemoveCarrinho(int curso_id)
+        {
+            List<Curso> carrinho = (List<Curso>)Session["carrinho"];
+            var curso = curso_id;
+            carrinho.Remove(new Curso()
+            {
+                Curso_id = Convert.ToInt32(curso)
+            });
+            Session["carrinho"] = carrinho;
+
+            return View("Carrinho");
+        }
+
 
         public ActionResult Compra()
         {
