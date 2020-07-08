@@ -173,6 +173,7 @@
     <Compile Include="Controllers\AutenticacaoController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Controllers\VideoController.cs" />
+    <Compile Include="Dados\CompraAcoes.cs" />
     <Compile Include="Dados\CursosAcoes.cs" />
     <Compile Include="Dados\UsuarioAcoes.cs" />
     <Compile Include="Global.asax.cs">
