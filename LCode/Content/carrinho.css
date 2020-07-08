@@ -1,0 +1,116 @@
+﻿.card-cart {
+    background-color: rgb(255, 255, 255);
+    height: 4.5rem;
+    border-top: .2px solid #ccc;
+    line-height: 3.5rem;
+    border-collapse: separate;
+    overflow: hidden;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    border-radius: 15px;
+    border-collapse: separate;
+    border-spacing: 5em;
+}
+
+    .card-cart td {
+        -webkit-border-radius: 25px;
+        -moz-border-radius: 25px;
+        border-radius: 15px;
+    }
+
+.cart-img {
+    height: 4rem;
+    width: 4rem;
+    float: left;
+}
+
+.cart-title {
+    font-size: 25px;
+    color: #616161;
+    line-height: 50px;
+}
+
+.cart-text {
+    font-size: 22px;
+    color: #616161;
+}
+
+.cart-subtitle {
+    font-weight: bold;
+    margin-left: 30%;
+    color: #797979;
+    font-size: 17px;
+}
+
+.cart-price {
+    font-weight: bold;
+    font-size: 20px;
+    color: #797979;
+}
+
+.cart-icon {
+    font-size: 22px;
+    transition: all 300ms ease-in-out;
+    color: #797979;
+    margin-top:8px;
+}
+
+    .cart-icon:hover {
+        cursor: pointer;
+        color: #72008b;
+        transition: all 300ms ease-in-out;
+    }
+
+.cart-comprar {
+    background-color: rgb(241, 241, 241);
+    height: 30rem;
+    border-radius: 20px;
+    -webkit-box-shadow: 4px 6px 14px -6px rgba(0, 0, 0, 0.25);
+    -moz-box-shadow: 4px 6px 14px -6px rgba(0, 0, 0, 0.25);
+    box-shadow: 4px 6px 14px -6px rgba(0, 0, 0, 0.25);
+}
+
+    .cart-comprar > h5 {
+        font-size: 20px;
+    }
+
+.cart-price-comprar {
+    font-weight: bold;
+    font-size: 22px;
+    color: #6b6b6b;
+}
+
+.title-sumary {
+    text-transform: capitalize;
+    color: #585858;
+    font-weight: 300;
+}
+
+.btn-cart {
+    color: #fff;
+    border: none;
+    border-radius: 2rem;
+    padding: .6rem 0rem;
+    background-image: linear-gradient(to right, #667eea, #764ba2, #6B8DD6, #8E37D7);
+    font-weight: 600;
+    cursor: pointer;
+    text-align: center;
+    border: none;
+    background-size: 300% 100%;
+    -moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+    margin-left: 1%;
+}
+
+    .btn-cart:hover {
+        color: #fff;
+        background-image: linear-gradient(to right, #7300b5, #9500c6, #b800d7, #ff00f4);
+        box-shadow: 0 4px 15px 0 rgba(116, 79, 168, 0.75);
+        background-position: 100% 0;
+        -moz-transition: all .4s ease-in-out;
+        -o-transition: all .4s ease-in-out;
+        -webkit-transition: all .4s ease-in-out;
+        transition: all .4s ease-in-out;
+    }

@@ -1,7 +1,4 @@
 ﻿
-@{
-    Layout = null;
-}
 
 <!DOCTYPE html>
 
@@ -9,9 +6,131 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Carrinho</title>
+    <meta charset="utf-8">
+    <title>Cursos online, matricule-se já!</title>
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/global.css">
+    <link rel="stylesheet" href="~/Content/login.css">
+    <link rel="stylesheet" href="~/Content/carrinho.css">
+    <link rel="stylesheet" href="~/Content/detalhes-curso.css">
+    <link rel="icon" type="image/png" sizes="16x16" href="image/favicon.png">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
 </head>
 <body>
-    <div> 
-    </div>
+
+    <main>
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-12 col-md-12 col-lg-8 col-xl-8 mt-5">
+                    <table class="table table-borderless">
+                        <thead>
+                            <tr>
+                                <th class="cart-title">
+                                    <h2>Seu <span class="color-purple">carrinho</span></h2>
+                                </th>
+
+                                <th class="cart-title">
+                                    <h4>2 cursos</h4>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="card-cart">
+                                <td>
+                                    <img src="~/image/gabrielle.jpg" class="cart-img" />
+                                     <p class="cart-subtitle">Curso de Back end</p>
+
+                                </td>
+
+                                <td>
+                                    <p class="cart-price">R$ 40,99</p>
+                                </td>
+                                <td>
+                                    <p class="cart-icon"><i class="fas fa-trash-alt cart-icon"></i></p>
+                                </td>
+
+                            </tr>
+
+                            <tr class="card-cart">
+                                <td>
+                                    <img src="~/image/gabrielle.jpg" class="cart-img" />
+                                    <p class="cart-subtitle">Curso de Front-end</p>
+                                </td>
+
+                                <td>
+                                    <p class="cart-price">R$ 40,99</p>
+                                </td>
+                                <td>
+                                    <p class="cart-icon"><i class="fas fa-trash-alt cart-icon"></i></p>
+                                </td>
+
+                            </tr>
+                            <tr class="card-cart">
+                                <td>
+                                    <a href="course.html"> <button type="button" class="btn btn-outline-purple mt-5 ">Continuar comprando</button></a>
+                                </td>
+
+                                <td>
+                                </td>
+
+                                <td>
+                                </td>
+                            </tr>
+
+
+                        </tbody>
+
+                    </table>
+                </div>
+
+                <div class="col-12 col-md-12 col-lg-4 col-xl-4 cart-comprar mt-5">
+
+                    <table class="table table-borderless mt-5">
+                        <thead>
+                            <tr>
+                                <th class="cart-title">
+                                    <h2>Resumo</h2>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <p class="cart-text">Produtos:</p>
+                                </td>
+
+                                <td>
+                                    <p class="cart-price-comprar">2</p>
+                                </td>
+
+
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <p class="cart-text">TOTAL:</p>
+                                </td>
+
+                                <td>
+                                    <p class="cart-price-comprar">R$ 40,99</p>
+                                </td>
+
+
+                            </tr>
+                        </tbody>
+
+                    </table>
+                    <div class="col-12 col-md-12">
+                        <button type="submit" class="btn btn-block btn-cart">Comprar</button>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+        </div>
+    </main>
 </body>
 </html>
