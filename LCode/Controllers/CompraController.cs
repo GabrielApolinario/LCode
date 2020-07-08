@@ -43,6 +43,7 @@ namespace LCode.Controllers
                 });
 
                 ViewBag.total = cursosCarrinho.Sum(c => c.Curso_valor);
+                ViewBag.qtde = cursosCarrinho.Count();
             }
             return View(cursosCarrinho);
         }

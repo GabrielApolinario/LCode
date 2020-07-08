@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<LCode.Models.Curso>
 
 <!DOCTYPE html>
 
@@ -31,28 +31,33 @@
                                 </th>
 
                                 <th class="cart-title">
-                                    <h4>2 cursos</h4>
+                                    <h4>@ViewBag.qtde Cursos</h4>
                                 </th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr class="card-cart">
-                                <td>
-                                    <img src="~/image/gabrielle.jpg" class="cart-img" />
-                                     <p class="cart-subtitle">Curso de Back end</p>
+                            @if (Model != null)
+                            {
+                                foreach (var item in Model)
+                                {
+                                <tr class="card-cart">
+                                    <td>
+                                        <img src="~/image/gabrielle.jpg" class="cart-img" />
+                                         <p class="cart-subtitle">@Html.DisplayFor(model => item.Curso_nome)</p>
 
-                                </td>
+                                    </td>
 
-                                <td>
-                                    <p class="cart-price">R$ 40,99</p>
-                                </td>
-                                <td>
-                                    <p class="cart-icon"><i class="fas fa-trash-alt cart-icon"></i></p>
-                                </td>
+                                    <td>
+                                        <p class="cart-price">R$ @Html.DisplayFor(model => item.Curso_valor)</p>
+                                    </td>
+                                    <td>
+                                        <p class="cart-icon"><i class="fas fa-trash-alt cart-icon"></i></p>
+                                    </td>
 
-                            </tr>
-
-                            <tr class="card-cart">
+                                </tr>
+                                }
+                            }
+                            @*<tr class="card-cart">
                                 <td>
                                     <img src="~/image/gabrielle.jpg" class="cart-img" />
                                     <p class="cart-subtitle">Curso de Front-end</p>
@@ -65,10 +70,10 @@
                                     <p class="cart-icon"><i class="fas fa-trash-alt cart-icon"></i></p>
                                 </td>
 
-                            </tr>
+                            </tr>*@
                             <tr class="card-cart">
                                 <td>
-                                    <a href="course.html"> <button type="button" class="btn btn-outline-purple mt-5 ">Continuar comprando</button></a>
+                                    <a href="@Url.Action("Cursos","Curso")"> <button type="button" class="btn btn-outline-purple mt-5 ">Continuar Comprando</button></a>
                                 </td>
 
                                 <td>
@@ -101,7 +106,7 @@
                                 </td>
 
                                 <td>
-                                    <p class="cart-price-comprar">2</p>
+                                    <p class="cart-price-comprar">@ViewBag.qtde</p>
                                 </td>
 
 
@@ -113,7 +118,7 @@
                                 </td>
 
                                 <td>
-                                    <p class="cart-price-comprar">R$ 40,99</p>
+                                    <p class="cart-price-comprar">R$ @ViewBag.total</p>
                                 </td>
 
 
@@ -122,7 +127,7 @@
 
                     </table>
                     <div class="col-12 col-md-12">
-                        <button type="submit" class="btn btn-block btn-cart">Comprar</button>
+                        <a href="@Url.Action("Compra","Compra")"><button type="submit" class="btn btn-block btn-cart">Comprar</button> </a>
                     </div>
 
                 </div>
