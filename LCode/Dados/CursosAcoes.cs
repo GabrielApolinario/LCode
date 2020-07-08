@@ -77,12 +77,6 @@ namespace LCode.Dados
         public CursoVideoModuloViewModel QueryDetalhesCurso(int curso_id)
         {
 
-            //MySqlCommand cmd = new MySqlCommand("Curso_Completo", bd.AbreConexao());
-            //cmd.CommandType = CommandType.StoredProcedure;
-            //cmd.Parameters.AddWithValue("proc_curso_id", curso_id);
-            //var retorno = cmd.ExecuteReader();
-            //return DetalhesCurso(retorno).FirstOrDefault();
-
             MySqlCommand cmd = new MySqlCommand("Select * from lc_curso where curso_id = @proc_curso_id", bd.AbreConexao());
             cmd.CommandType = CommandType.Text;
             cmd.Parameters.AddWithValue("proc_curso_id", curso_id);
