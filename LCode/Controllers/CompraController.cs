@@ -41,9 +41,13 @@ namespace LCode.Controllers
                     Curso_valor = curso.Curso_valor
 
                 });
-
+                ViewBag.qtdeProdutos = cursosCarrinho.Count();
                 ViewBag.total = cursosCarrinho.Sum(c => c.Curso_valor);
-                ViewBag.qtde = cursosCarrinho.Count();
+                if (cursosCarrinho.Count() < 1)
+                    ViewBag.qtde = null;
+                else if (cursosCarrinho.Count() == 1)   
+                    ViewBag.qtde = cursosCarrinho.Count() + " Curso";
+                else ViewBag.qtde = cursosCarrinho.Count() + " Cursos";
             }
             return View(cursosCarrinho);
         }
@@ -52,27 +56,31 @@ namespace LCode.Controllers
         {
             if (Session["carrinho"] == null)
             {
-
-                List<Curso> carrinho = new List<Curso>();
-                var curso = curso_id;
+                List<Curso> carrinho = new List<Curso>();               
                 carrinho.Add(new Curso()
                 {
-                    Curso_id = Convert.ToInt32(curso)
+                    Curso_id = Convert.ToInt32(curso_id)
 
                 });
                 Session["carrinho"] = carrinho;
                 
             }
-
             else
             {
-                List<Curso> carrinho = (List<Curso>)Session["carrinho"];
-                var curso = curso_id;
-                carrinho.Add(new Curso()
+                List<Curso> carrinho = (List<Curso>)Session["carrinho"];              
+                if (carrinho.Where(c => c.Curso_id == curso_id) != null)
                 {
-                    Curso_id = Convert.ToInt32(curso)
-                });
-                Session["carrinho"] = carrinho;
+                    TempData["cursoJaEstaNoCarrinho"] = "O curso selecionado já foi adicionado anteriormente ao carrinho!";
+                    return RedirectToAction("Carrinho");
+                }
+                else
+                {
+                    carrinho.Add(new Curso()
+                    {
+                    Curso_id = Convert.ToInt32(curso_id)
+                    });
+                    Session["carrinho"] = carrinho;
+                }
             }
 
             return RedirectToAction("Carrinho");
@@ -80,12 +88,10 @@ namespace LCode.Controllers
 
         public ActionResult RemoveCarrinho(int curso_id)
         {
-            List<Curso> carrinho = (List<Curso>)Session["carrinho"];
-            var curso = curso_id;
-            carrinho.Remove(new Curso()
-            {
-                Curso_id = Convert.ToInt32(curso)
-            });
+            List<Curso> carrinho = (List<Curso>)Session["carrinho"];          
+
+            carrinho.RemoveAll(c => c.Curso_id == curso_id);
+          
             Session["carrinho"] = carrinho;
 
             return RedirectToAction("Carrinho");

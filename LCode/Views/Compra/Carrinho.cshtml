@@ -29,9 +29,14 @@
                                 <th class="cart-title">
                                     <h2>Seu <span class="color-purple">carrinho</span></h2>
                                 </th>
-
+                                @if (TempData["cursoJaEstaNoCarrinho"] != null)
+                                {
+                                    <th class="cart-title">
+                                        <h4>@TempData["cursoJaEstaNoCarrinho"]</h4>
+                                    </th>
+                                }
                                 <th class="cart-title">
-                                    <h4>@ViewBag.qtde Cursos</h4>
+                                    <h4>@ViewBag.qtde</h4>
                                 </th>
                             </tr>
                         </thead>
@@ -51,29 +56,15 @@
                                         <p class="cart-price">R$ @Html.DisplayFor(model => item.Curso_valor)</p>
                                     </td>
                                     <td>
-                                        <p class="cart-icon"><i class="fas fa-trash-alt cart-icon"></i></p>
+                                        <a href="@Url.Action("RemoveCarrinho","Compra", new { curso_id = item.Curso_id})"><p class="cart-icon"><i class="fas fa-trash-alt cart-icon"></i></p></a>
                                     </td>
 
                                 </tr>
                                 }
                             }
-                            @*<tr class="card-cart">
-                                <td>
-                                    <img src="~/image/gabrielle.jpg" class="cart-img" />
-                                    <p class="cart-subtitle">Curso de Front-end</p>
-                                </td>
-
-                                <td>
-                                    <p class="cart-price">R$ 40,99</p>
-                                </td>
-                                <td>
-                                    <p class="cart-icon"><i class="fas fa-trash-alt cart-icon"></i></p>
-                                </td>
-
-                            </tr>*@
                             <tr class="card-cart">
                                 <td>
-                                    <a href="@Url.Action("Cursos","Curso")"> <button type="button" class="btn btn-outline-purple mt-5 ">Continuar Comprando</button></a>
+                                    <a href="@Url.Action("Cursos","Curso")"><button type="button" class="btn btn-outline-purple mt-5 ">Continuar Comprando</button></a>
                                 </td>
 
                                 <td>
@@ -106,7 +97,7 @@
                                 </td>
 
                                 <td>
-                                    <p class="cart-price-comprar">@ViewBag.qtde</p>
+                                    <p class="cart-price-comprar">@ViewBag.qtdeProdutos</p>
                                 </td>
 
 
