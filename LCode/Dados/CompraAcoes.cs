@@ -56,5 +56,16 @@ namespace LCode.Dados
 
         }
 
+        public void CompraCurso(int curso_id, int usu_id)
+        {
+            string command = string.Format("INSERT INTO lc_compra (compra_curso, compra_data, compra_hora, compra_usu, compra_status, compra_pag_forma) VALUES ({0},{1},{2},{3},{4},{5})",
+               curso_id, DateTime.Today,DateTime.Now ,usu_id, 1, "");
+            
+            MySqlCommand cmd = new MySqlCommand(command, bd.AbreConexao());
+            cmd.ExecuteNonQuery();
+            bd.FecharConexao();
+
+        }
+
     }
 }

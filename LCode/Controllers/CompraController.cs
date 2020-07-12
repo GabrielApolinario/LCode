@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Security.Cryptography.X509Certificates;
 using System.Web;
 using System.Web.Mvc;
@@ -43,6 +44,7 @@ namespace LCode.Controllers
                 });
                 ViewBag.qtdeProdutos = cursosCarrinho.Count();
                 ViewBag.total = cursosCarrinho.Sum(c => c.Curso_valor);
+
                 if (cursosCarrinho.Count() < 1)
                     ViewBag.qtde = null;
                 else if (cursosCarrinho.Count() == 1)   
@@ -67,8 +69,10 @@ namespace LCode.Controllers
             }
             else
             {
-                List<Curso> carrinho = (List<Curso>)Session["carrinho"];              
-                if (carrinho.Where(c => c.Curso_id == curso_id) != null)
+                List<Curso> carrinho = (List<Curso>)Session["carrinho"];
+                bool confereCurso = carrinho.Any(c => c.Curso_id.Equals(curso_id));
+
+                if (confereCurso == true)
                 {
                     TempData["cursoJaEstaNoCarrinho"] = "O curso selecionado já foi adicionado anteriormente ao carrinho!";
                     return RedirectToAction("Carrinho");
@@ -77,12 +81,11 @@ namespace LCode.Controllers
                 {
                     carrinho.Add(new Curso()
                     {
-                    Curso_id = Convert.ToInt32(curso_id)
+                        Curso_id = Convert.ToInt32(curso_id)
                     });
                     Session["carrinho"] = carrinho;
                 }
             }
-
             return RedirectToAction("Carrinho");
         }
 
@@ -105,6 +108,18 @@ namespace LCode.Controllers
             else 
                 return RedirectToAction("Login", "Autenticacao");
 
+        }
+
+
+        [HttpPost]
+        public ActionResult Compra(Compra c)
+        {
+            foreach(var item in (List<Curso>)Session["carrinho"])
+            {
+                ca.CompraCurso(item.Curso_id, Convert.ToInt32(Session["UsuId"]));
+            }
+
+            return View();
         }
     }
 }
