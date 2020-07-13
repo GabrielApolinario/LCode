@@ -34,9 +34,7 @@ namespace LCode.Dados
             {
                 while (retorno.Read())
                 {
-
                     var TempCurso = new Curso()
-
                     {
                         Curso_id = Convert.ToInt32(retorno["curso_id"]),
                         Curso_nome = retorno["curso_nome"].ToString(),
@@ -45,8 +43,6 @@ namespace LCode.Dados
                         Curso_valor = Convert.ToDouble(retorno["curso_valor"]),
 
                     };
-
-
                     cursos.Add(TempCurso);
                 }
             }
@@ -64,8 +60,6 @@ namespace LCode.Dados
             MySqlCommand cmd = new MySqlCommand(command, bd.AbreConexao());
             cmd.ExecuteNonQuery();
             bd.FecharConexao();
-
         }
-
     }
 }

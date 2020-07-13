@@ -1,0 +1,35 @@
+﻿    @{
+    Layout = null;
+    }
+
+    <!DOCTYPE html>
+
+    <html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title>Certificado</title>
+    </head>
+    <body>
+        <div>
+            <h4>Curso</h4>
+            <hr />
+        </div>
+        <div>
+            @if (ViewData["usuario"] != null)
+            {
+                var usuario = ViewData["usuario"] as IEnumerable<LCode.Models.Usuarios>;
+                <div>
+                    @usuario.Select(u => u.Usu_nome)
+                </div>
+            }
+            @if (ViewData["curso"] != null)
+            {
+                var curso = ViewData["curso"] as IEnumerable<LCode.Models.Curso>;
+                <div>
+                    @curso.Select(c => c.Curso_nome)
+                </div>
+            }
+</div>
+
+    </body>
+</html>
