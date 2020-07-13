@@ -103,23 +103,42 @@ namespace LCode.Controllers
 
         public ActionResult Compra()
         {
-            if (Session["Adm"] != null || Session["Professor"] != null || Session["Estudante"] != null)
-                return View();
-            else 
-                return RedirectToAction("Login", "Autenticacao");
 
+            List<Curso> cursosCarrinho = new List<Curso>();
+            Curso retorno = new Curso();
+
+            if (Session["Adm"] != null || Session["Professor"] != null || Session["Estudante"] != null)
+            {
+                foreach (var item in (List<Curso>)Session["carrinho"])
+                {
+                    retorno = ca.CursoCarrinho(item.Curso_id);
+
+                    var curso = retorno;
+
+                    cursosCarrinho.Add(new Curso()
+                    {
+                        Curso_id = Convert.ToInt32(curso.Curso_id),
+
+                    });
+                }
+                return View(cursosCarrinho);
+            }
+            else
+                return RedirectToAction("Login", "Autenticacao");
         }
 
 
         [HttpPost]
-        public ActionResult Compra(Compra c)
+        public ActionResult Compra(Curso c, FormCollection frm)
         {
-            foreach(var item in (List<Curso>)Session["carrinho"])
+            string formaPagamento = frm["Pagamento"].ToString();
+
+            foreach (var item in (List<Curso>)Session["carrinho"])
             {
-                ca.CompraCurso(item.Curso_id, Convert.ToInt32(Session["UsuId"]));
+                ca.CompraCurso(item.Curso_id, Convert.ToInt32(Session["UsuId"]), formaPagamento);
             }
 
-            return View();
+            return RedirectToAction("Index", "Home");
         }
     }
 }

@@ -39,5 +39,7 @@ namespace LCode.Models
         [Required(ErrorMessage = "Selecione uma categoria para o curso")]
         public int Curso_categoria { get; set; }
 
+        public string Compra_pag_forma { get; set; }
+
     }
 }
