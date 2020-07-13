@@ -1,4 +1,8 @@
-﻿.card-cart {
+﻿.title-head {
+    font-size: 1.5rem;
+}
+
+.card-cart {
     background-color: rgb(255, 255, 255);
     height: 4.5rem;
     border-top: .2px solid #ccc;
@@ -12,11 +16,12 @@
     border-spacing: 5em;
 }
 
-    .card-cart td {
-        -webkit-border-radius: 25px;
-        -moz-border-radius: 25px;
-        border-radius: 15px;
-    }
+.card-pay {
+    background-color: rgba(255, 255, 255, 0.055);
+    height: 4rem;
+    line-height: 2.5rem;
+    border-top: 1px solid rgba(214, 214, 214, 0.178);
+}
 
 .cart-img {
     height: 4rem;
@@ -42,6 +47,16 @@
     font-size: 17px;
 }
 
+.cart-subtitle-pay {
+    color: #ebebeb;
+    line-height: 50px;
+}
+
+.cart-price-pay {
+    color: #ebebeb !important;
+    line-height: 50px;
+}
+
 .cart-price {
     font-weight: bold;
     font-size: 20px;
@@ -52,7 +67,6 @@
     font-size: 22px;
     transition: all 300ms ease-in-out;
     color: #797979;
-    margin-top:8px;
 }
 
     .cart-icon:hover {
@@ -114,3 +128,172 @@
         -webkit-transition: all .4s ease-in-out;
         transition: all .4s ease-in-out;
     }
+
+.icon-pay-mastercard {
+    font-size: 20px;
+    background: rgb(255, 0, 0);
+    background: linear-gradient(90deg, rgba(255, 0, 0, 1) 0%, rgba(247, 170, 0, 1) 100%);
+}
+
+.icon-pay-visa {
+    font-size: 20px;
+    background: rgb(255, 255, 255);
+    color: #1a1f71;
+}
+
+.icon-pay-cartao {
+    font-size: 20px;
+    color: rgba(41, 41, 41, 0.842);
+}
+
+.jumbotron-pay {
+    top: 30% !important;
+}
+
+.white {
+    color: rgb(255, 255, 255);
+}
+
+.cart-price-total {
+    background-color: #eb7aff;
+    width: 200px;
+    height: 4rem;
+    border-radius: 15px;
+    color:rgb(249, 249, 249);
+}
+
+    .cart-price-total h3 {
+        line-height: 60px;
+        text-align: center;
+        color: rgb(249, 249, 249);
+    }
+
+.total {
+    line-height: 60px;
+    color: rgb(249, 249, 249);
+}
+
+.progress {
+    display: flex;
+    margin-bottom: 0px;
+    justify-content: space-between;
+    height: 4rem;
+    background: rgb(255, 255, 255);
+}
+
+.step {
+    box-sizing: border-box;
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    margin-bottom: 10px;
+    border: 4px solid #fff;
+    border-radius: 50%;
+    background-color: #efefef;
+}
+
+.progress-bar {
+    background-color: #007bff;
+}
+
+.step:after {
+    position: absolute;
+    z-index: -1;
+    top: 5px;
+    left: 22px;
+    width: 200px;
+    height: 6px;
+    content: '';
+    background-color: #efefef;
+}
+
+.step:before {
+    color: #2e2e2e;
+    position: absolute;
+    top: 40px;
+}
+
+.step:last-child:after {
+    content: none;
+}
+
+.step.active {
+    background-color: #1abc9c;
+}
+
+    .step.active:after {
+        background-color: #1abc9c;
+    }
+
+    .step.active:before {
+        color: #1abc9c;
+    }
+
+    .step.active + .step {
+        background-color: #1abc9c;
+    }
+
+        .step.active + .step:before {
+            color: #1abc9c;
+        }
+
+.step:nth-child(1):before {
+    content: 'Carrinho';
+}
+
+.step:nth-child(2):before {
+    right: -40px;
+    content: 'Confirmação';
+}
+
+.step:nth-child(3):before {
+    right: -30px;
+    content: 'Pagamento';
+}
+
+.step:nth-child(4):before {
+    right: 0;
+    content: 'Finalizar';
+}
+
+.payment-method {
+    display: flex;
+    margin-bottom: 10px;
+    justify-content: space-between;
+    margin-left: 2%;
+}
+
+.method {
+    display: flex;
+    flex-direction: column;
+    width: 252px;
+    height: 122px;
+    padding-top: 20px;
+    cursor: pointer;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    background-color: rgb(249, 249, 249);
+    justify-content: center;
+    align-items: center;
+}
+
+.card-logos {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+    .card-logos img {
+        width: 55px;
+        height: 33px;
+    }
+
+.radio-input {
+    margin-top: 20px;
+}
+
+input[type='radio'] {
+    display: inline-block;
+}
