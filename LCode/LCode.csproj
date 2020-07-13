@@ -182,7 +182,6 @@
     <Compile Include="Dados\BancoDeDados.cs" />
     <Compile Include="Models\Categoria.cs" />
     <Compile Include="Models\Certificado.cs" />
-    <Compile Include="Models\Compra.cs" />
     <Compile Include="Models\Curso.cs" />
     <Compile Include="Models\CursoComprado.cs" />
     <Compile Include="Models\Digital.cs" />

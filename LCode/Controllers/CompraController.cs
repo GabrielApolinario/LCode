@@ -101,7 +101,7 @@ namespace LCode.Controllers
         }
 
 
-        public ActionResult Compra()
+        public ActionResult Compra(Nullable<int> curso_id)
         {
 
             List<Curso> cursosCarrinho = new List<Curso>();
@@ -109,6 +109,24 @@ namespace LCode.Controllers
 
             if (Session["Adm"] != null || Session["Professor"] != null || Session["Estudante"] != null)
             {
+                if (curso_id != null)
+                {
+                    retorno = ca.CursoCarrinho(Convert.ToInt32(curso_id));
+
+                    var curso = retorno;
+
+                    cursosCarrinho.Add(new Curso()
+                    {
+                        Curso_nome = curso.Curso_nome.ToString(),
+                        Curso_descricao = curso.Curso_descricao.ToString(),
+                        Curso_duracao = Convert.ToDouble(curso.Curso_duracao),
+                        Curso_valor = Convert.ToDouble(curso.Curso_valor),
+                        Curso_id = Convert.ToInt32(curso.Curso_id),
+
+                    });
+                    return View(cursosCarrinho);
+                }
+
                 foreach (var item in (List<Curso>)Session["carrinho"])
                 {
                     retorno = ca.CursoCarrinho(item.Curso_id);
@@ -116,7 +134,11 @@ namespace LCode.Controllers
                     var curso = retorno;
 
                     cursosCarrinho.Add(new Curso()
-                    {
+                    {                       
+                        Curso_nome = curso.Curso_nome.ToString(),
+                        Curso_descricao = curso.Curso_descricao.ToString(),
+                        Curso_duracao = Convert.ToDouble(curso.Curso_duracao),
+                        Curso_valor = Convert.ToDouble(curso.Curso_valor),
                         Curso_id = Convert.ToInt32(curso.Curso_id),
 
                     });

@@ -101,70 +101,6 @@
 
 
                         </div>
-                        @*<div class="card">
-                            <div class="card-header" id="headingTwo">
-                                <h2 class="mb-0">
-                                    <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                        Conteúdo 1
-                                    </button>
-                                </h2>
-                            </div>
-                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-                                <div class="card-body">
-                                    <ul class="list-group list-accordion list-group-flush">
-                                        <li class="list-group-item">
-                                            <span><i class="fas fa-play-circle icon"></i></span> Vídeo 1
-
-                                        </li>
-                                        <li class="list-group-item">
-                                            <span><i class="fas fa-play-circle icon"></i></span> Vídeo 2
-                                        </li>
-                                        <li class="list-group-item">
-                                            <span><i class="fas fa-play-circle icon"></i></span> Vídeo 3
-                                        </li>
-                                        <li class="list-group-item">
-                                            <span><i class="fas fa-play-circle icon"></i></span> Vídeo 4
-                                        </li>
-                                        <li class="list-group-item">
-                                            <span><i class="fas fa-play-circle icon"></i></span> Vídeo 5
-                                        </li>
-                                        <li class="list-group-item">
-                                            <span><i class="fas fa-play-circle icon"></i></span> Vídeo 6
-                                        </li>
-                                    </ul>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-header" id="headingThree">
-                                <h2 class="mb-0">
-                                    <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                        Conteúdo 2
-                                    </button>
-                                </h2>
-                            </div>
-                            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-                                <div class="card-body">
-                                    <ul class="list-group list-accordion list-group-flush">
-                                        <li class="list-group-item">
-                                            <span><i class="fas fa-play-circle icon"></i></span> Vídeo 1
-
-                                        </li>
-                                        <li class="list-group-item">
-                                            <span><i class="fas fa-play-circle icon"></i></span> Vídeo 2
-                                        </li>
-                                        <li class="list-group-item">
-                                            <span><i class="fas fa-play-circle icon"></i></span> Vídeo 3
-                                        </li>
-                                        <li class="list-group-item">
-                                            <span><i class="fas fa-play-circle icon"></i></span> Vídeo 4
-                                        </li>
-                                    </ul>
-
-                                </div>
-                            </div>
-                        </div>*@
                     </div>
                
                 <div class="col-lg-6">
@@ -186,7 +122,7 @@
                         </ul>
                         <div class="card-body">
                             <a href="@Url.Action("AddCarrinho","Compra", new { curso_id = Model.Curso_id })"> <button type="button" class="btn btn-purple">Adicionar ao carrinho</button></a>
-                            <a href="about.html"> <button type="button" class="btn btn-outline-purple">Comprar</button></a>
+                            <a href="@Url.Action("Compra", "Compra", new {curso_id = Model.Curso_id })"> <button type="button" class="btn btn-outline-purple">Comprar</button></a>
                         </div>
                     </div>
                 </div>
