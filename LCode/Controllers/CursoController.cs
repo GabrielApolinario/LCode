@@ -15,7 +15,7 @@ namespace LCode.Controllers
     {
         BancoDeDados bd = new BancoDeDados();
         CursosAcoes ca = new CursosAcoes();
-
+        UsuarioAcoes ua = new UsuarioAcoes();
         // GET: Curso
         public ActionResult CadastroCurso()
         {
@@ -172,6 +172,14 @@ namespace LCode.Controllers
 
                 return View(curso);
             }
+
+            return View();
+        }
+
+        public ActionResult Certificado(int curso_id, int usu_id)
+        {
+            ViewData["curso"] = ca.QueryDetalhesCurso(curso_id);
+            ViewData["usuario"] = ua.GetUsuarios(usu_id);
 
             return View();
         }

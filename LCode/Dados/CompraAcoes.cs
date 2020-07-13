@@ -34,9 +34,7 @@ namespace LCode.Dados
             {
                 while (retorno.Read())
                 {
-
                     var TempCurso = new Curso()
-
                     {
                         Curso_id = Convert.ToInt32(retorno["curso_id"]),
                         Curso_nome = retorno["curso_nome"].ToString(),
@@ -45,8 +43,6 @@ namespace LCode.Dados
                         Curso_valor = Convert.ToDouble(retorno["curso_valor"]),
 
                     };
-
-
                     cursos.Add(TempCurso);
                 }
             }
@@ -59,13 +55,11 @@ namespace LCode.Dados
         public void CompraCurso(int curso_id, int usu_id, string formaPagamento)
         {
             string command = string.Format("INSERT INTO lc_compra (compra_curso, compra_data, compra_hora, compra_usu, compra_status, compra_pag_forma) VALUES ({0},'{1}','{2}',{3},{4},'{5}')",
-               curso_id, DateTime.Today.ToString("yyyyMMdd"),DateTime.Now.TimeOfDay ,usu_id, 1, formaPagamento);
+               curso_id, DateTime.Today.ToString("yyyyMMdd"),DateTime.Now.TimeOfDay ,usu_id, "PAGO", formaPagamento);
             
             MySqlCommand cmd = new MySqlCommand(command, bd.AbreConexao());
             cmd.ExecuteNonQuery();
             bd.FecharConexao();
-
         }
-
     }
 }
