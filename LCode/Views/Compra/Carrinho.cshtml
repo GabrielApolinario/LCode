@@ -23,18 +23,22 @@
         <div class="container mt-5">
             <div class="row">
                 <div class="col-12 col-md-12 col-lg-8 col-xl-8 mt-5">
+                    @if (TempData["cursoJaEstaNoCarrinho"] != null)
+                    {
+                        
+                            <div class="alert alert-danger" role="alert">
+                                <strong>Oh não! </strong>@TempData["cursoJaEstaNoCarrinho"]
+                            </div>
+
+                        
+                    }
                     <table class="table table-borderless">
                         <thead>
                             <tr>
                                 <th class="cart-title">
                                     <h2>Seu <span class="color-purple">carrinho</span></h2>
                                 </th>
-                                @if (TempData["cursoJaEstaNoCarrinho"] != null)
-                                {
-                                    <th class="cart-title">
-                                        <h4>@TempData["cursoJaEstaNoCarrinho"]</h4>
-                                    </th>
-                                }
+
                                 <th class="cart-title">
                                     <h4>@ViewBag.qtde</h4>
                                 </th>
@@ -45,21 +49,21 @@
                             {
                                 foreach (var item in Model)
                                 {
-                                <tr class="card-cart">
-                                    <td>
-                                        <img src="~/image/gabrielle.jpg" class="cart-img" />
-                                         <p class="cart-subtitle">@Html.DisplayFor(model => item.Curso_nome)</p>
+                                    <tr class="card-cart">
+                                        <td>
+                                            <img src="~/image/gabrielle.jpg" class="cart-img" />
+                                            <p class="cart-subtitle">@Html.DisplayFor(model => item.Curso_nome)</p>
 
-                                    </td>
+                                        </td>
 
-                                    <td>
-                                        <p class="cart-price">R$ @Html.DisplayFor(model => item.Curso_valor)</p>
-                                    </td>
-                                    <td>
-                                        <a href="@Url.Action("RemoveCarrinho","Compra", new { curso_id = item.Curso_id})"><p class="cart-icon"><i class="fas fa-trash-alt cart-icon"></i></p></a>
-                                    </td>
+                                        <td>
+                                            <p class="cart-price">R$ @Html.DisplayFor(model => item.Curso_valor)</p>
+                                        </td>
+                                        <td>
+                                            <a href="@Url.Action("RemoveCarrinho","Compra", new { curso_id = item.Curso_id})"><p class="cart-icon"><i class="fas fa-trash-alt cart-icon"></i></p></a>
+                                        </td>
 
-                                </tr>
+                                    </tr>
                                 }
                             }
                             <tr class="card-cart">
