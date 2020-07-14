@@ -1,4 +1,4 @@
-﻿@model IEnumerable<LCode.Models.CursoComprado>
+﻿@model IEnumerable<LCode.Models.Curso>
 
 @{
     Layout = null;
@@ -18,16 +18,16 @@
     <table class="table">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.cursoComprado_id)
+                @Html.DisplayNameFor(model => model.Curso_nome)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.cursoComprado)
+                @Html.DisplayNameFor(model => model.Curso_descricao)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.cursoComprado_usuario)
+                @Html.DisplayNameFor(model => model.Curso_valor)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.cursoComprado_favorito)
+                @Html.DisplayNameFor(model => model.Curso_duracao)
             </th>
             <th></th>
         </tr>
@@ -35,21 +35,16 @@
     @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.cursoComprado_id)
+                @Html.DisplayFor(modelItem => item.Curso_nome)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.cursoComprado)
+                @Html.DisplayFor(modelItem => item.Curso_descricao)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.cursoComprado_usuario)
+                @Html.DisplayFor(modelItem => item.Curso_valor)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.cursoComprado_favorito)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                @Html.DisplayFor(modelItem => item.Curso_duracao)
             </td>
         </tr>
     }

@@ -71,33 +71,18 @@
                                 <div class="jumbotron jumbotron-pay">
 
                                     <table class="table table-borderless mt-5">
+                                        @foreach (var item in Model)
+                                        {
                                         <tr class="card-cart card-pay">
                                             <td>
                                                 <img src="~/image/banner-5.jpg" class="cart-img">
-                                                <p class="cart-subtitle cart-subtitle-pay">Curso de Back end</p>
+                                                <p class="cart-subtitle cart-subtitle-pay">@Html.DisplayFor(model => item.Curso_nome)</p>
                                             </td>
                                             <td>
-                                                <p class="cart-price cart-price-pay">R$ 40,99</p>
+                                                <p class="cart-price cart-price-pay">R$ @Html.DisplayFor(model => item.Curso_valor)</p>
                                             </td>
                                         </tr>
-                                        <tr class="card-cart card-pay">
-                                            <td>
-                                                <img src="~/image/banner-5.jpg" class="cart-img">
-                                                <p class="cart-subtitle cart-subtitle-pay">Curso de Back end</p>
-                                            </td>
-                                            <td>
-                                                <p class="cart-price cart-price-pay">R$ 59,99</p>
-                                            </td>
-                                        </tr>
-                                        <tr class="card-cart card-pay">
-                                            <td>
-                                                <img src="~/image/banner-5.jpg" class="cart-img">
-                                                <p class="cart-subtitle cart-subtitle-pay">Curso de Back end</p>
-                                            </td>
-                                            <td>
-                                                <p class="cart-price cart-price-pay">R$ 19,99</p>
-                                            </td>
-                                        </tr>
+                                        }
                                     </table>
 
                                     <table class="table table-borderless">
@@ -115,7 +100,7 @@
                                             </td>
                                             <td>
                                                 <div class="cart-price-total">
-                                                    <h3>R$ 120,97‬</h3>
+                                                    <h3>R$ @TempData["total"]‬</h3>
                                                 </div>
                                             </td>
                                         </tr>
@@ -139,68 +124,72 @@
                                     </div>
                                 </div>
                                 <div class="row w-100  m-auto">
-                                    <form class="mt-3">
-                                        <div class="form-row ">
-                                            <h5 class="ml-4">Forma de pagamento</h5>
-                                            <div class="col-lg-12">
-                                                <div class="payment-method">
-                                                    <label for="card" class="method card">
-                                                        <div class="card-logos">
-                                                            <img src="~/image/visa-logo.png" />
-                                                            <img src="~/image/mastercard.png" />
-                                                        </div>
+                                    @using (Html.BeginForm("Compra", "Compra", FormMethod.Post))
+                                    {
+                                        <div class="col-md-10">                                          
+                                            <form class="mt-3">
+                                                <div class="form-row ">
+                                                    <h5 class="ml-4">Forma de pagamento</h5>
+                                                    <div class="col-lg-12">
+                                                        <div class="payment-method">
+                                                            <label for="card" class="method card">
+                                                                <div class="card-logos">
+                                                                    <img src="~/image/visa-logo.png" />
+                                                                    <img src="~/image/mastercard.png" />
+                                                                </div>
 
-                                                        <div class="radio-input">
-                                                            <input id="card" type="radio" name="payment">
-                                                            Cartão de crédito
-                                                        </div>
-                                                    </label>
+                                                                <div class="radio-input">
+                                                                    <input id="card" type="radio" name="cartao" value="cartao">
+                                                                    Cartão de Crédito
+                                                                </div>
+                                                            </label>
 
-                                                    <label for="paypal" class="method paypal">
-                                                        <div class="card-logos">
-                                                            <img src="~/image/boleto.png" />
+                                                            <label for="paypal" class="method paypal">
+                                                                <div class="card-logos">
+                                                                    <img src="~/image/boleto.png" />
+                                                                </div>
+                                                                <div class="radio-input">
+                                                                    <input id="paypal" type="radio"  name="boleto" value="boleto">
+                                                                    Boleto Bancário
+                                                                </div>
+                                                            </label>
                                                         </div>
-                                                        <div class="radio-input">
-                                                            <input id="paypal" type="radio" name="payment">
-                                                            Boleto bancário
-                                                        </div>
-                                                    </label>
+                                                    </div>
+                                                    <hr>
+
+
+                                                    <div class="col-5 form-group mt-3 mx-auto">
+                                                        <span class="far fa-credit-card"></span><input type="tel" class="form-control" id="exampleInputEmail1" placeholder="Nome no cartão">
+                                                    </div>
+
+                                                    <div class="col-5 form-group mt-3 mx-auto">
+                                                        <span class="far fa-credit-card"></span><input type="text" class="form-control" id="exampleInputEmail1" placeholder="CPF">
+                                                    </div>
+
+                                                    <div class="col-11 form-group mt-3 mx-auto">
+                                                        <span class="far fa-credit-card"></span><input type="text" class="form-control" id="exampleInputEmail1" placeholder="Número do cartão">
+                                                    </div>
+
+                                                    <div class="col-3 form-group mt-3 mx-auto">
+                                                        <span class="far fa-credit-card"></span><input type="number" class="form-control" id="exampleInputEmail1" placeholder="MM">
+                                                    </div>
+
+                                                    <div class="col-3 form-group mt-3 mx-auto">
+                                                        <span class="far fa-credit-card"></span><input type="text" class="form-control" id="exampleInputEmail1" placeholder="AAAA">
+                                                    </div>
+
+                                                    <div class="col-3 form-group mt-3 mx-auto">
+                                                        <span class="far fa-credit-card"></span><input type="number" class="form-control" id="exampleInputEmail1" placeholder="CVV">
+                                                    </div>
+
                                                 </div>
-                                            </div>
-                                            <hr>
-
-
-                                            <div class="col-5 form-group mt-3 mx-auto">
-                                                <span class="far fa-credit-card"></span><input type="telefone" class="form-control" id="exampleInputEmail1" placeholder="Nome no cartão">
-                                            </div>
-
-                                            <div class="col-5 form-group mt-3 mx-auto">
-                                                <span class="far fa-credit-card"></span><input type="text" class="form-control" id="exampleInputEmail1" placeholder="CPF">
-                                            </div>
-
-                                            <div class="col-11 form-group mt-3 mx-auto">
-                                                <span class="far fa-credit-card"></span><input type="text" class="form-control" id="exampleInputEmail1" placeholder="Número do cartão">
-                                            </div>
-
-                                            <div class="col-3 form-group mt-3 mx-auto">
-                                                <span class="far fa-credit-card"></span><input type="number" class="form-control" id="exampleInputEmail1" placeholder="MM">
-                                            </div>
-
-                                            <div class="col-3 form-group mt-3 mx-auto">
-                                                <span class="far fa-credit-card"></span><input type="text" class="form-control" id="exampleInputEmail1" placeholder="AAAA">
-                                            </div>
-
-                                            <div class="col-3 form-group mt-3 mx-auto">
-                                                <span class="far fa-credit-card"></span><input type="number" class="form-control" id="exampleInputEmail1" placeholder="CVV">
-                                            </div>
-
+                                                <div class="col-8 col-md-10 mx-auto">
+                                                    <button type="submit" class="btn btn btn-block btn-purple-form mt-4 mb-5">Finalizar Pagamento</button>
+                                                </div>
+                                            </form>
                                         </div>
-                                        <div class="col-8 col-md-10 mx-auto">
-                                            <button type="submit" class="btn btn btn-block btn-purple-form mt-4 mb-5">Finalizar Pagamento</button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
+                                     }
+                                    </div>
                         </div>
                     </div>
                 </div>
@@ -209,8 +198,6 @@
         </main>
     </header>
 </body>
-
-<h2>Compra</h2>
 
 
 @Html.AntiForgeryToken()
@@ -224,21 +211,7 @@
         @Html.DisplayFor(model => item.Curso_id)
     }
 </div>
-@using (Html.BeginForm("Compra", "Compra", FormMethod.Post))
-{
-    <div class="col-md-10">
-        @Html.DropDownList("Pagamento", new List<SelectListItem>
-                                        {
-                                        new SelectListItem() {Text = "Cartão de crédito", Value = "Cartao"},
-                                        new SelectListItem() {Text = "Boleto", Value = "Boleto"},
-                                        }, "Selecione o tipo de pagamento", new { @class = "form-control" })
-    </div>
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Create" class="btn btn-default" />
-        </div>
-    </div>
-}
+
 
 
 

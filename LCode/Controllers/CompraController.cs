@@ -43,7 +43,7 @@ namespace LCode.Controllers
 
                 });
                 ViewBag.qtdeProdutos = cursosCarrinho.Count();
-                ViewBag.total = cursosCarrinho.Sum(c => c.Curso_valor);
+                TempData["total"] = cursosCarrinho.Sum(c => c.Curso_valor);
 
                 if (cursosCarrinho.Count() < 1)
                     ViewBag.qtde = null;
@@ -124,6 +124,9 @@ namespace LCode.Controllers
                         Curso_id = Convert.ToInt32(curso.Curso_id),
 
                     });
+
+                    TempData["total"] = cursosCarrinho.Sum(c => c.Curso_valor);
+                    
                     return View(cursosCarrinho);
                 }
 
@@ -140,8 +143,9 @@ namespace LCode.Controllers
                         Curso_duracao = Convert.ToDouble(curso.Curso_duracao),
                         Curso_valor = Convert.ToDouble(curso.Curso_valor),
                         Curso_id = Convert.ToInt32(curso.Curso_id),
-
                     });
+
+                    TempData["total"] = cursosCarrinho.Sum(c => c.Curso_valor);
                 }
                 return View(cursosCarrinho);
             }
@@ -157,8 +161,10 @@ namespace LCode.Controllers
 
             foreach (var item in (List<Curso>)Session["carrinho"])
             {
-                ca.CompraCurso(item.Curso_id, Convert.ToInt32(Session["UsuId"]), formaPagamento);
+                ca.CompraCurso(item.Curso_id, Convert.ToInt32(Session["UsuId"]), formaPagamento);           
             }
+
+
 
             return RedirectToAction("Index", "Home");
         }
