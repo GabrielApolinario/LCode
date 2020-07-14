@@ -155,16 +155,23 @@ namespace LCode.Controllers
 
 
         [HttpPost]
-        public ActionResult Compra(Curso c, FormCollection frm)
+        public ActionResult Compra(Curso c, FormCollection frm, Nullable<int> curso_id)
         {
-            string formaPagamento = frm["Pagamento"].ToString();
+            string formaPagamento = frm["pagamento"].ToString();
 
-            foreach (var item in (List<Curso>)Session["carrinho"])
+            //tring curso_id = Request.QueryString["curso_id"];
+
+            if (Session["carrinho"] != null)
             {
-                ca.CompraCurso(item.Curso_id, Convert.ToInt32(Session["UsuId"]), formaPagamento);           
+                foreach (var item in (List<Curso>)Session["carrinho"])
+                {
+                    ca.CompraCurso(item.Curso_id, Convert.ToInt32(Session["UsuId"]), formaPagamento);
+                }
             }
-
-
+            if (curso_id != null)
+            {
+                ca.CompraCurso(Convert.ToInt32(curso_id), Convert.ToInt32(Session["UsuId"]), formaPagamento);
+            }
 
             return RedirectToAction("Index", "Home");
         }
