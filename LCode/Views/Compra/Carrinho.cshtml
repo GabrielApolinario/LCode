@@ -113,7 +113,7 @@
                                 </td>
 
                                 <td>
-                                    <p class="cart-price-comprar">R$ @ViewBag.total</p>
+                                    <p class="cart-price-comprar">R$ @TempData["total"]</p>
                                 </td>
 
 
@@ -122,7 +122,7 @@
 
                     </table>
                     <div class="col-12 col-md-12">
-                        <a href="@Url.Action("Compra","Compra", new { valor = ViewBag.total })"><button type="submit" class="btn btn-block btn-cart">Comprar</button> </a>
+                        <a href="@Url.Action("Compra","Compra")"><button type="submit" class="btn btn-block btn-cart">Comprar</button> </a>
                     </div>
 
                 </div>

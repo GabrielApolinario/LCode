@@ -140,26 +140,26 @@ namespace LCode.Dados
             bd.FecharConexao();
         }
 
-        public List<CursoComprado> GetMeusCursos(int usu_id)
+        public List<Curso> GetMeusCursos(int usu_id)
         {
-            MySqlCommand cmd = new MySqlCommand("SELECT * FROM lc_cursoComprado WHERE cursoComprado_usuario = @usu_id", bd.AbreConexao());
+            MySqlCommand cmd = new MySqlCommand("SELECT * FROM lc_cursocomprado cc, lc_curso c WHERE cc.cursoComprado = c.curso_id AND cc.cursoComprado_usuario = @usu_id", bd.AbreConexao());
             cmd.Parameters.AddWithValue("@usu_id", usu_id);
             var retorno = cmd.ExecuteReader();
             return MeusCursos(retorno);
         }
 
-        public List<CursoComprado> MeusCursos(MySqlDataReader retorno)
+        public List<Curso> MeusCursos(MySqlDataReader retorno)
         {
-            var cursosComprados = new List<CursoComprado>();
+            var cursosComprados = new List<Curso>();
 
             while (retorno.Read())
             {
-                var TempCursos = new CursoComprado()
+                var TempCursos = new Curso()
                 {
-                    cursoComprado_id = Convert.ToInt32(retorno["cursoComprado_id"]),
-                    cursoComprado = Convert.ToInt32(retorno["cursoComprado"]),
-                    cursoComprado_usuario = Convert.ToInt32(retorno["cursoComprado_usuario"]),
-                    cursoComprado_favorito = retorno["cursoComprado_favorito"].ToString(),
+                    Curso_id = Convert.ToInt32(retorno["curso_id"]),
+                    Curso_nome = retorno["curso_nome"].ToString(),
+                    Curso_descricao = retorno["curso_descricao"].ToString(),
+                    Curso_valor = Convert.ToDouble(retorno["curso_valor"]),
                 };
                 cursosComprados.Add(TempCursos);
             }
