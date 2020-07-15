@@ -125,69 +125,78 @@
                                     </div>
                                 </div>
                                 <div class="row w-100  m-auto">
+                                    @if (TempData["cursoJaComprado"] != null)
+                                    {
+
+                                        <div class="alert alert-danger" role="alert">
+                                            <strong>Oh não! </strong>@TempData["cursoJaComprado"]
+                                        </div>
+
+
+                                    }
                                     @using (Html.BeginForm("Compra", "Compra", new { curso_id = Request.QueryString["curso_id"] }, FormMethod.Post))
                                     {
 
-                                            <form class="mt-3">
-                                                <div class="form-row ">
-                                                    <h5 class="ml-4">Forma de pagamento</h5>
-                                                    <div class="col-lg-12">
-                                                        <div class="payment-method">
-                                                            <label for="card" class="method card">
-                                                                <div class="card-logos">
-                                                                    <img src="~/image/visa-logo.png" />
-                                                                    <img src="~/image/mastercard.png" />
-                                                                </div>
-                                                                <div class="radio-input">
-                                                                    <input id="card" type="radio" name="pagamento" value="Cartao">
-                                                                    Cartão de crédito
-                                                                </div>
-                                                            </label>
+                                        <form class="mt-3">
+                                            <div class="form-row ">
+                                                <h5 class="ml-4">Forma de pagamento</h5>
+                                                <div class="col-lg-12">
+                                                    <div class="payment-method">
+                                                        <label for="card" class="method card">
+                                                            <div class="card-logos">
+                                                                <img src="~/image/visa-logo.png" />
+                                                                <img src="~/image/mastercard.png" />
+                                                            </div>
+                                                            <div class="radio-input">
+                                                                <input id="card" type="radio" name="pagamento" value="Cartao">
+                                                                Cartão de crédito
+                                                            </div>
+                                                        </label>
 
-                                                            <label for="paypal" class="method paypal">
-                                                                <div class="card-logos">
-                                                                    <img src="~/image/boleto.png" />
-                                                                </div>
-                                                                <div class="radio-input">
-                                                                    <input id="paypal" type="radio" name="pagamento" value="Boleto">
-                                                                    Boleto bancário
-                                                                </div>
-                                                            </label>
-                                                        </div>
+                                                        <label for="paypal" class="method paypal">
+                                                            <div class="card-logos">
+                                                                <img src="~/image/boleto.png" />
+                                                            </div>
+                                                            <div class="radio-input">
+                                                                <input id="paypal" type="radio" name="pagamento" value="Boleto">
+                                                                Boleto bancário
+                                                            </div>
+                                                        </label>
                                                     </div>
-                                                    <hr>
-
-
-                                                    <div class="col-5 form-group mt-3 mx-auto">
-                                                        <span class="far fa-credit-card"></span><input type="tel" class="form-control" id="exampleInputEmail1" placeholder="Nome no cartão">
-                                                    </div>
-
-                                                    <div class="col-5 form-group mt-3 mx-auto">
-                                                        <span class="far fa-credit-card"></span><input type="text" class="form-control" id="exampleInputEmail1" placeholder="CPF">
-                                                    </div>
-
-                                                    <div class="col-11 form-group mt-3 mx-auto">
-                                                        <span class="far fa-credit-card"></span><input type="text" class="form-control" id="exampleInputEmail1" placeholder="Número do cartão">
-                                                    </div>
-
-                                                    <div class="col-3 form-group mt-3 mx-auto">
-                                                        <span class="far fa-credit-card"></span><input type="number" class="form-control" id="exampleInputEmail1" placeholder="MM">
-                                                    </div>
-
-                                                    <div class="col-3 form-group mt-3 mx-auto">
-                                                        <span class="far fa-credit-card"></span><input type="text" class="form-control" id="exampleInputEmail1" placeholder="AAAA">
-                                                    </div>
-
-                                                    <div class="col-3 form-group mt-3 mx-auto">
-                                                        <span class="far fa-credit-card"></span><input type="number" class="form-control" id="exampleInputEmail1" placeholder="CVV">
-                                                    </div>
-
                                                 </div>
-                                                <div class="col-8 col-md-10 mx-auto">
-                                                    <button type="submit" class="btn btn btn-block btn-purple-form mt-4 mb-5">Finalizar Pagamento</button>
+                                                <hr>
+
+
+                                                <div class="col-5 form-group mt-3 mx-auto">
+                                                    <span class="far fa-credit-card"></span><input type="tel" class="form-control" id="exampleInputEmail1" placeholder="Nome no cartão">
                                                 </div>
-                                            </form>
-                                        
+
+                                                <div class="col-5 form-group mt-3 mx-auto">
+                                                    <span class="far fa-credit-card"></span><input type="text" class="form-control" id="exampleInputEmail1" placeholder="CPF">
+                                                </div>
+
+                                                <div class="col-11 form-group mt-3 mx-auto">
+                                                    <span class="far fa-credit-card"></span><input type="text" class="form-control" id="exampleInputEmail1" placeholder="Número do cartão">
+                                                </div>
+
+                                                <div class="col-3 form-group mt-3 mx-auto">
+                                                    <span class="far fa-credit-card"></span><input type="number" class="form-control" id="exampleInputEmail1" placeholder="MM">
+                                                </div>
+
+                                                <div class="col-3 form-group mt-3 mx-auto">
+                                                    <span class="far fa-credit-card"></span><input type="text" class="form-control" id="exampleInputEmail1" placeholder="AAAA">
+                                                </div>
+
+                                                <div class="col-3 form-group mt-3 mx-auto">
+                                                    <span class="far fa-credit-card"></span><input type="number" class="form-control" id="exampleInputEmail1" placeholder="CVV">
+                                                </div>
+
+                                            </div>
+                                            <div class="col-8 col-md-10 mx-auto">
+                                                <button type="submit" class="btn btn btn-block btn-purple-form mt-4 mb-5">Finalizar Pagamento</button>
+                                            </div>
+                                        </form>
+
                                     }
                                 </div>
                             </div>

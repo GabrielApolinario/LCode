@@ -61,5 +61,30 @@ namespace LCode.Dados
             cmd.ExecuteNonQuery();
             bd.FecharConexao();
         }
+
+        public CursoComprado CursoJaComprado(int usu_id, int curso_id)
+        {
+            using (bd = new BancoDeDados())
+            {
+                var strQuery = string.Format("SELECT * FROM lc_cursoComprado WHERE cursoComprado_usuario = '{0}' AND cursoComprado = {1};", usu_id, curso_id);
+                var retorno = bd.RetornaComando(strQuery);
+                return VerificarCompra(retorno);
+            }
+
+        }
+
+        public CursoComprado VerificarCompra(MySqlDataReader retorno)
+        {
+            CursoComprado cursoComprado = new CursoComprado();
+
+            if (retorno.HasRows)
+            {
+                retorno.Read();
+                cursoComprado.cursoComprado_usuario = Convert.ToInt32(retorno["cursoComprado_usuario"]);
+                cursoComprado.cursoComprado = Convert.ToInt32(retorno["cursoComprado"]);
+            }
+            retorno.Close();
+            return cursoComprado;
+        }
     }
 }

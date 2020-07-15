@@ -25,12 +25,21 @@
                 <div class="col-12 col-md-12 col-lg-8 col-xl-8 mt-5">
                     @if (TempData["cursoJaEstaNoCarrinho"] != null)
                     {
-                        
-                            <div class="alert alert-danger" role="alert">
-                                <strong>Oh não! </strong>@TempData["cursoJaEstaNoCarrinho"]
-                            </div>
 
-                        
+                        <div class="alert alert-danger" role="alert">
+                            <strong>Oh não! </strong>@TempData["cursoJaEstaNoCarrinho"]
+                        </div>
+
+
+                    }
+                    @if (TempData["cursoJaComprado"] != null)
+                    {
+
+                        <div class="alert alert-danger" role="alert">
+                            <strong>Oh não! </strong>@TempData["cursoJaComprado"]
+                        </div>
+
+
                     }
                     <table class="table table-borderless">
                         <thead>

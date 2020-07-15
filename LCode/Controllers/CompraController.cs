@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Net.Mail;
 using System.Security.Cryptography.X509Certificates;
 using System.Web;
 using System.Web.Mvc;
@@ -9,6 +10,10 @@ using System.Web.Security;
 using LCode.Dados;
 using LCode.Models;
 using LCode.ViewModels;
+using System.Configuration;
+using System.Web.Configuration;
+using System.Net.Configuration;
+using System.Net.Mime;
 
 namespace LCode.Controllers
 {
@@ -58,6 +63,14 @@ namespace LCode.Controllers
         {
             if (Session["carrinho"] == null)
             {
+                var retornaCurso = ca.CursoJaComprado(Convert.ToInt32(Session["usuId"]), curso_id);
+
+                if (retornaCurso != null)
+                {
+                    TempData["CursoJaComprado"] = "Você já adquiriu esse curso anteriormente em sua conta!";
+                    return RedirectToAction("Carrinho", "Compra");
+                };
+
                 List<Curso> carrinho = new List<Curso>();               
                 carrinho.Add(new Curso()
                 {
@@ -69,6 +82,14 @@ namespace LCode.Controllers
             }
             else
             {
+                var retornaCurso = ca.CursoJaComprado(Convert.ToInt32(Session["usuId"]),curso_id);
+                
+                if (retornaCurso != null)
+                {
+                    TempData["CursoJaComprado"] = "Você já adquiriu esse curso anteriormente em sua conta!";
+                    return RedirectToAction("Carrinho", "Compra");
+                };
+
                 List<Curso> carrinho = (List<Curso>)Session["carrinho"];
                 bool confereCurso = carrinho.Any(c => c.Curso_id.Equals(curso_id));
 
@@ -111,6 +132,14 @@ namespace LCode.Controllers
             {
                 if (curso_id != null)
                 {
+                    var retornaCurso = ca.CursoJaComprado(Convert.ToInt32(Session["usuId"]), Convert.ToInt32(curso_id));
+
+                    if (retornaCurso != null)
+                    {
+                        TempData["CursoJaComprado"] = "Você já adquiriu esse curso anteriormente em sua conta!";
+                        return View("Carrinho", "Compra");
+                    };
+
                     retorno = ca.CursoCarrinho(Convert.ToInt32(curso_id));
 
                     var curso = retorno;
@@ -171,6 +200,36 @@ namespace LCode.Controllers
             if (curso_id != null)
             {
                 ca.CompraCurso(Convert.ToInt32(curso_id), Convert.ToInt32(Session["UsuId"]), formaPagamento);
+            }
+            string destino = Session["UsuEmail"].ToString();
+            MailMessage mail = new MailMessage();
+            mail.From = new MailAddress("gab.apolinario@hotmail.com");
+            mail.To.Add(destino);
+            mail.Subject = "Obrigado por comprar o nosso curso!";
+
+            LinkedResource image = new LinkedResource(@"C:\Users\gabap\Desktop\Projetos\LCode\LCode\image\avatar.png");
+            image.ContentType = new ContentType(MediaTypeNames.Image.Jpeg);
+
+            AlternateView htmlview = AlternateView.CreateAlternateViewFromString("Texto teste. <img src=cid:MyPic>", null, "text/html");
+
+            htmlview.LinkedResources.Add(image);
+            mail.AlternateViews.Add(htmlview);
+
+            string user = ConfigurationManager.AppSettings["usersmtp"].ToString();
+            string senha = ConfigurationManager.AppSettings["senhasmtp"].ToString();
+
+            try
+            {
+                SmtpClient smtp = new SmtpClient("smtp.live.com");
+                smtp.Port = 587;
+                smtp.UseDefaultCredentials = false;
+                smtp.Credentials = new System.Net.NetworkCredential(user, senha);
+                smtp.EnableSsl = true;
+                smtp.Send(mail);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.InnerException);
             }
 
             return RedirectToAction("Index", "Home");
