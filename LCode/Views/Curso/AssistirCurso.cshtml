@@ -5,13 +5,180 @@
 
 <!DOCTYPE html>
 
-<html>
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <title>AssistirCurso</title>
+    <meta charset="utf-8">
+    <title>Assistir curso</title>
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/login.css">
+    <link rel="stylesheet" href="~/Content/assistir.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" sizes="16x16" href="image/favicon.png">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
 </head>
+
 <body>
-    <div> 
-    </div>
-</body>
-</html>
+    <script src="js/bootstrap.min.js"></script>
+    <header>
+
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-purpk nav-pills">
+            <div class="d-flex flex-grow-1">
+                <span class="w-100 d-lg-none d-block"></span>
+                <img src="image/logo.png" width="150" height="40" class="d-inline-block align-top" alt=""></a>
+                </a>
+                <div class="w-100 text-right">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </div>
+            </div>
+            <div class="collapse navbar-collapse flex-grow-1 text-right" id="myNavbar">
+                <ul class="navbar-nav ml-auto flex-nowrap">
+                    <li class="nav-item">
+                        <span class="span"><a href="index.html" class="nav-link m-2">HOME</a></span>
+                    </li>
+                    <li class="nav-item">
+                        <span class="span"><a href="course.html" class="nav-link m-2">CURSOS</a></span>
+                    </li>
+                    <li class="nav-item">
+                        <span class="span"><a href="about.html" class="nav-link m-2 active-1">SOBRE</a></span>
+                    </li>
+                    <li class="nav-item">
+                        <span class="span"><a href="contato.html" class="nav-link m-2 active-1">CONTATO</a></span>
+                    </li>
+                    <li class="nav-item">
+                        <span class="span"> <a href="login.html" class="nav-link m-2">CADASTRE-SE</a></span>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+    </header>
+    <main>
+        <div class="container">
+
+            <div class="col-lg-12 mt-5">
+                <h2>Curso de <span class="color-purple">HTML</span></h2>
+            </div>
+
+            <div class="row">
+                <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8 mt-1">
+
+                    <iframe width="560" height="315" name="iframe-assistir" src="https://www.youtube.com/embed/4dQtz1PpY9A" frameborder="0" allowfullscreen scrolling="no" class="mt-5">
+                    </iframe>
+
+                </div>
+                <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+
+                    <h4 class="title-gray mt-3">Conteúdo do Curso</h4>
+                    <div class="accordion" id="accordionExample">
+                        <div class="card">
+                            <div class="card-header" id="headingOne">
+                                <h2 class="mb-0">
+                                    <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                        <h5 class="title-module">Introdução</h5>
+                                    </button>
+                                </h2>
+                            </div>
+
+                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                <div class="card-body">
+                                    <ul class="list-group list-accordion list-group-flush">
+                                        <li class=" list-group-item ">
+                                            <span><i class="fas fa-play-circle icon "></i></span>
+                                            <a href="https://www.youtube.com/embed/epDCjksKMok " target="iframe-assistir" class="link-video active">Vídeo 1</a>
+                                        </li>
+                                        <li class="list-group-item ">
+                                            <span><i class="fas fa-play-circle icon "></i></span>
+                                            <a href="https://www.youtube.com/embed/epDCjksKMok " target="iframe-assistir" class="link-video ">Vídeo 2</a>
+                                        </li>
+                                        <li class="list-group-item ">
+                                            <span><i class="fas fa-play-circle icon "></i></span> Vídeo 3
+                                        </li>
+                                        <li class="list-group-item ">
+                                            <span><i class="fas fa-play-circle icon "></i></span> Vídeo 4
+                                        </li>
+                                    </ul>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                            <div class="card-body">
+                                <ul class="list-group list-accordion list-group-flush">
+                                    <li class="list-group-item">
+                                        <span><i class="fas fa-play-circle icon"></i></span> Vídeo 1
+
+                                    </li>
+                                    <li class="list-group-item">
+                                        <span><i class="fas fa-play-circle icon"></i></span> Vídeo 2
+                                    </li>
+                                    <li class="list-group-item">
+                                        <span><i class="fas fa-play-circle icon"></i></span> Vídeo 3
+                                    </li>
+                                    <li class="list-group-item">
+                                        <span><i class="fas fa-play-circle icon"></i></span> Vídeo 4
+                                    </li>
+                                    <li class="list-group-item">
+                                        <span><i class="fas fa-play-circle icon"></i></span> Vídeo 5
+                                    </li>
+                                    <li class="list-group-item">
+                                        <span><i class="fas fa-play-circle icon"></i></span> Vídeo 6
+                                    </li>
+                                </ul>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingThree">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    Conteúdo 2
+                                </button>
+                            </h2>
+                        </div>
+                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                            <div class="card-body">
+                                <ul class="list-group list-accordion list-group-flush">
+                                    <li class="list-group-item">
+                                        <span><i class="fas fa-play-circle icon"></i></span> Vídeo 1
+
+                                    </li>
+                                    <li class="list-group-item">
+                                        <span><i class="fas fa-play-circle icon"></i></span> Vídeo 2
+                                    </li>
+                                    <li class="list-group-item">
+                                        <span><i class="fas fa-play-circle icon"></i></span> Vídeo 3
+                                    </li>
+                                    <li class="list-group-item">
+                                        <span><i class="fas fa-play-circle icon"></i></span> Vídeo 4
+                                    </li>
+                                </ul>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row ">
+                <div class="col-12 ">
+                    <div class="col-lg-12 mt-5 ">
+                        <h3 class="ml-3 "><span class="color-purple ">Descrição</span> da aula</h3>
+                        <div class="col-8 description mt-3 ">
+                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sed laboriosam aperiam fugit odio voluptates error quia totam officia doloribus nam veniam, dolores nobis eos. Similique ad ullam earum amet quod!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </main>
+    <script src="js/global.js "></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js " integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo " crossorigin="anonymous ">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js " integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49 " crossorigin="anonymous "></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js " integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy " crossorigin="anonymous "></script>
