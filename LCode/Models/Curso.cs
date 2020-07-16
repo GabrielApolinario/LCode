@@ -41,5 +41,10 @@ namespace LCode.Models
 
         public string Compra_pag_forma { get; set; }
 
+        public string Imagem_link { get; set; }
+
+        [Required(ErrorMessage = "Selecione uma imagem para o curso")]
+        public HttpPostedFileBase Imagem { get; set; }
+
     }
 }

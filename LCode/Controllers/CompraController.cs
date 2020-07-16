@@ -43,8 +43,8 @@ namespace LCode.Controllers
                 {
                     Curso_id = Convert.ToInt32(curso.Curso_id),
                     Curso_nome = curso.Curso_nome,
-                    //Curso_descricao = curso.Curso_descricao,
-                    Curso_valor = curso.Curso_valor
+                    Curso_valor = curso.Curso_valor,
+                    Imagem_link = curso.Imagem_link,
 
                 });
                 ViewBag.qtdeProdutos = cursosCarrinho.Count();
@@ -151,6 +151,7 @@ namespace LCode.Controllers
                         Curso_duracao = Convert.ToDouble(curso.Curso_duracao),
                         Curso_valor = Convert.ToDouble(curso.Curso_valor),
                         Curso_id = Convert.ToInt32(curso.Curso_id),
+                        Imagem_link = curso.Imagem_link.ToString(),
 
                     });
 
@@ -172,6 +173,7 @@ namespace LCode.Controllers
                         Curso_duracao = Convert.ToDouble(curso.Curso_duracao),
                         Curso_valor = Convert.ToDouble(curso.Curso_valor),
                         Curso_id = Convert.ToInt32(curso.Curso_id),
+                        Imagem_link = curso.Imagem_link.ToString(),
                     });
 
                     TempData["total"] = cursosCarrinho.Sum(c => c.Curso_valor);
@@ -201,9 +203,9 @@ namespace LCode.Controllers
             {
                 ca.CompraCurso(Convert.ToInt32(curso_id), Convert.ToInt32(Session["UsuId"]), formaPagamento);
             }
-            string destino = Session["UsuEmail"].ToString(); //"gabitorres118@gmail.com";
+            string destino = Session["UsuEmail"].ToString(); //"wellissonrodrigues12@gmail.com";//"gabitorres118@gmail.com";
             MailMessage mail = new MailMessage();
-            mail.From = new MailAddress("gab.apolinario@hotmail.com");
+            mail.From = new MailAddress("developmentkey.info@gmail.com");
             mail.To.Add(destino);
             mail.Subject = "Obrigado por comprar o nosso curso!";
 
@@ -221,10 +223,10 @@ namespace LCode.Controllers
 
             try
             {
-                SmtpClient smtp = new SmtpClient("smtp.live.com");
-                smtp.Port = 587;
+                SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
                 smtp.UseDefaultCredentials = false;
                 smtp.Credentials = new System.Net.NetworkCredential(user, senha);
+                smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
                 smtp.EnableSsl = true;
                 smtp.Send(mail);
             }

@@ -41,6 +41,7 @@ namespace LCode.Dados
                         Curso_descricao = retorno["curso_descricao"].ToString(),
                         Curso_duracao = Convert.ToDouble(retorno["curso_duracao"]),
                         Curso_valor = Convert.ToDouble(retorno["curso_valor"]),
+                        Imagem_link = retorno["curso_imagem"].ToString(),
 
                     };
                     cursos.Add(TempCurso);

@@ -8,6 +8,7 @@ using LCode.ViewModels;
 using System.Configuration;
 using MySql.Data.MySqlClient;
 using LCode.Dados;
+using System.IO;
 
 namespace LCode.Controllers
 {
@@ -37,6 +38,20 @@ namespace LCode.Controllers
         {
             if (ModelState.IsValid)
             {
+                string FileName = Path.GetFileNameWithoutExtension(c.Imagem.FileName);
+
+                string FileExtension = Path.GetExtension(c.Imagem.FileName);
+
+                FileName = DateTime.Now.ToString("ddMMyyyyHHmmss") + "-" + FileName.Trim() + FileExtension;
+
+                string UploadPath = Server.MapPath("~/ImagensCurso/");
+
+                c.Imagem_link = UploadPath + FileName;
+
+                c.Imagem.SaveAs(c.Imagem_link);
+
+                c.Imagem_link = "~/ImagensCurso/" + FileName;
+
                 Curso curso = new Curso
                 {
                     Curso_nome = c.Curso_nome,
@@ -44,6 +59,7 @@ namespace LCode.Controllers
                     Curso_duracao = c.Curso_duracao,
                     Curso_valor = c.Curso_valor,
                     Curso_categoria = c.Curso_categoria,
+                    Imagem_link = c.Imagem_link,
                 };
 
                 bd.InsereCurso(curso, Convert.ToInt32(Session["UsuId"]));

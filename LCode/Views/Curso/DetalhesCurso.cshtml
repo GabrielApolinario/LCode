@@ -27,7 +27,7 @@
 
                 <div class="banner-detalhes-info-item col-md-2">
                     <div class="banner-detalhes-info-item-text">
-                        <strong>@Html.DisplayFor(model => model.Curso_duracao) P/ conclusão</strong>                      
+                        <strong>@Html.DisplayFor(model => model.Curso_duracao)h p/ conclusão</strong>                      
                     </div>
                 </div>
                 <div class="banner-detalhes-info-item col-md-2">
@@ -38,7 +38,7 @@
 
                 <div class="banner-detalhes-info-item col-md-2">
                     <div class="banner-detalhes-info-item-text">
-                        <strong>32</strong> Atividades
+                        <strong>@Html.DisplayFor(model => model.video_id).ToString().Count()</strong> Atividades
                     </div>
                 </div>
             </div>
@@ -116,7 +116,7 @@
 
                         <ul class="list-group">
                             <li class="list-group-item list-group-video title-gray">Este curso inclui</li>
-                            <li class="list-group-item list-group-video"><span><i class="fas fa-play-circle icon"></i></span>Vídeos com 50hrs</li>
+                            <li class="list-group-item list-group-video"><span><i class="fas fa-play-circle icon"></i></span>Vídeos com @Html.DisplayFor(model => model.Curso_duracao)hrs</li>
                             <li class="list-group-item list-group-video"><span><i class="fas fa-mobile-alt icon"></i></span> Acesso no dispositivo móvel </li>
                             <li class="list-group-item list-group-video"><span><i class="fas fa-certificate icon"></i></span> Certificado de Conclusão</li>
                         </ul>

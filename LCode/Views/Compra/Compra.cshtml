@@ -40,20 +40,32 @@
                     <div class="collapse navbar-collapse flex-grow-1 text-right" id="myNavbar">
                         <ul class="navbar-nav ml-auto flex-nowrap">
                             <li class="nav-item">
-                                <span class="span"><a href="index.html" class="nav-link m-2">HOME</a></span>
+                                <span class="span">@Html.ActionLink("HOME", "Index", "Home", new { area = "" }, new { @class = "nav-link m-2" })</span>
                             </li>
                             <li class="nav-item">
-                                <span class="span"><a href="course.html" class="nav-link m-2">CURSOS</a></span>
+                                <span class="span">@Html.ActionLink("CURSOS", "Cursos", "Curso", new { area = "" }, new { @class = "nav-link m-2" })</span>
                             </li>
                             <li class="nav-item">
-                                <span class="span"><a href="about.html" class="nav-link m-2 active-1">SOBRE</a></span>
+                                <span class="span">@Html.ActionLink("SOBRE", "Sobre", "Home", new { area = "" }, new { @class = "nav-link m-2" })</span>
                             </li>
                             <li class="nav-item">
-                                <span class="span"><a href="contato.html" class="nav-link m-2 active-1">CONTATO</a></span>
+                                <span class="span">@Html.ActionLink("CONTATO", "Contato", "Home", new { area = "" }, new { @class = "nav-link m-2" })</span>
                             </li>
-                            <li class="nav-item">
-                                <span class="span"> <a href="login.html" class="nav-link m-2">CADASTRE-SE</a></span>
-                            </li>
+                            @if (Session["Adm"] != null || Session["Professor"] != null || Session["Estudante"] != null)
+                            {
+                                <li class="nav-item">
+                                    <span class="span">@Html.ActionLink("SAIR", "Logout", "Autenticacao", new { area = "" }, new { @class = "nav-link m-2" })</span>
+                                </li>
+                            }
+                            else
+                            {
+                                <li class="nav-item">
+                                    <span class="span">@Html.ActionLink("CADASTRE-SE", "Cadastro", "Autenticacao", new { area = "" }, new { @class = "nav-link m-2" })</span>
+                                </li>
+                                <li class="nav-item">
+                                    <span class="span">@Html.ActionLink("LOGIN", "Login", "Autenticacao", new { area = "" }, new { @class = "nav-link m-2" })</span>
+                                </li>
+                            }
                         </ul>
                     </div>
                 </nav>
@@ -76,7 +88,7 @@
                                         {
                                             <tr class="card-cart card-pay">
                                                 <td>
-                                                    <img src="~/image/banner-5.jpg" class="cart-img">
+                                                    <img src="@Url.Content(item.Imagem_link)" class="cart-img">
                                                     <p class="cart-subtitle cart-subtitle-pay">@Html.DisplayFor(model => item.Curso_nome)</p>
                                                 </td>
                                                 <td>
@@ -148,7 +160,7 @@
                                                                 <img src="~/image/mastercard.png" />
                                                             </div>
                                                             <div class="radio-input">
-                                                                <input id="card" type="radio" name="pagamento" value="Cartao">
+                                                                <input id="card" type="radio" name="pagamento" value="Cartao" required>
                                                                 Cartão de crédito
                                                             </div>
                                                         </label>
@@ -158,7 +170,7 @@
                                                                 <img src="~/image/boleto.png" />
                                                             </div>
                                                             <div class="radio-input">
-                                                                <input id="paypal" type="radio" name="pagamento" value="Boleto">
+                                                                <input id="paypal" type="radio" name="pagamento" value="Boleto" required>
                                                                 Boleto bancário
                                                             </div>
                                                         </label>
@@ -168,27 +180,27 @@
 
 
                                                 <div class="col-5 form-group mt-3 mx-auto">
-                                                    <span class="far fa-credit-card"></span><input type="tel" class="form-control" id="exampleInputEmail1" placeholder="Nome no cartão">
+                                                    <span class="far fa-credit-card"></span><input type="tel" required class="form-control" id="nomeCartao" placeholder="Nome no cartão">
                                                 </div>
 
                                                 <div class="col-5 form-group mt-3 mx-auto">
-                                                    <span class="far fa-credit-card"></span><input type="text" class="form-control" id="exampleInputEmail1" placeholder="CPF">
+                                                    <span class="far fa-credit-card"></span><input type="text" required minlength="9" maxlength="9" class="form-control" id="Cpf" placeholder="CPF">
                                                 </div>
 
                                                 <div class="col-11 form-group mt-3 mx-auto">
-                                                    <span class="far fa-credit-card"></span><input type="text" class="form-control" id="exampleInputEmail1" placeholder="Número do cartão">
+                                                    <span class="far fa-credit-card"></span><input type="text" required maxlength="16" class="form-control" id="numeroCartao" placeholder="Número do cartão">
                                                 </div>
 
                                                 <div class="col-3 form-group mt-3 mx-auto">
-                                                    <span class="far fa-credit-card"></span><input type="number" class="form-control" id="exampleInputEmail1" placeholder="MM">
+                                                    <span class="far fa-credit-card"></span><input type="text" required maxlength="2" class="form-control" id="mesCartao" placeholder="MM">
                                                 </div>
 
                                                 <div class="col-3 form-group mt-3 mx-auto">
-                                                    <span class="far fa-credit-card"></span><input type="text" class="form-control" id="exampleInputEmail1" placeholder="AAAA">
+                                                    <span class="far fa-credit-card"></span><input type="text" required  maxlength="4" class="form-control" id="anoCartao" placeholder="AAAA">
                                                 </div>
 
                                                 <div class="col-3 form-group mt-3 mx-auto">
-                                                    <span class="far fa-credit-card"></span><input type="number" class="form-control" id="exampleInputEmail1" placeholder="CVV">
+                                                    <span class="far fa-credit-card"></span><input type="number" required class="form-control" id="cvvCartao" placeholder="CVV">
                                                 </div>
 
                                             </div>
@@ -196,7 +208,6 @@
                                                 <button type="submit" class="btn btn btn-block btn-purple-form mt-4 mb-5">Finalizar Pagamento</button>
                                             </div>
                                         </form>
-
                                     }
                                 </div>
                             </div>

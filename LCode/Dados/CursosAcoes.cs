@@ -37,6 +37,7 @@ namespace LCode.Dados
                     Curso_nome = retorno["Curso_nome"].ToString(),
                     Curso_descricao = retorno["Curso_descricao"].ToString(),
                     Curso_valor = Convert.ToDouble(retorno["Curso_valor"]),
+                    Imagem_link = retorno["Curso_imagem"].ToString(),
                 };
                 cursosPesquisados.Add(TempCursos);
             }
@@ -67,6 +68,8 @@ namespace LCode.Dados
                     Curso_id = Convert.ToInt32(retorno["curso_id"]),
                     Curso_nome = retorno["curso_nome"].ToString(),
                     Curso_descricao = retorno["curso_descricao"].ToString(),
+                    Curso_valor = Convert.ToDouble(retorno["curso_valor"]),
+                    Imagem_link = retorno["curso_imagem"].ToString(),
                 };
                 cursos.Add(TempCurso);
             }
@@ -103,7 +106,6 @@ namespace LCode.Dados
                         Curso_descricao = retorno["curso_descricao"].ToString(),
                         Curso_duracao = Convert.ToDouble(retorno["curso_duracao"]),
                         Curso_valor = Convert.ToDouble(retorno["curso_valor"]),
-
                     };
 
 

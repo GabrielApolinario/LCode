@@ -66,7 +66,7 @@
                             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 d-none d-md-block device-mobile box-texto h-100">
                                 <div class="jumbotron">
                                     <h1 class="jumbotron-heading">Bem-vindo à <span class="color-purple-2">LCode</span></h1>
-                                    <p class="jumbotron-text ">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ex mauris, sagittis ut maximus et, placerat et tortor. Mauris consectetur nulla in porttitor dapibus.</p>
+                                    <p class="jumbotron-text ">Utilize suas credencias para se conectar a nossa plataforma.</p>
                                 </div>
                             </div>
                         </div>
@@ -90,11 +90,11 @@
                                         <div class="form-row align-items-center">
                                             <div class="col-10 form-group mt-5 mx-auto">
                                                 <span class="far fa-envelope"></span>@Html.EditorFor(model => model.Usu_email, new { htmlAttributes = new { @class = "form-control",placeholder = "Digite seu e-mail" } })
-                                                @Html.ValidationMessageFor(model => model.Usu_email, "", new { @class = "text-danger" })
+                                                @Html.ValidationMessageFor(model => model.Usu_email, "", new { @class = "text-danger validateMessage" })
                                             </div>
                                             <div class="col-10 form-group mt-3 mx-auto">
                                                 <span class="fas fa-lock"></span> @Html.EditorFor(model => model.Usu_senha, new { htmlAttributes = new { @class = "form-control", type = "password", placeholder = "Digite sua senha" } })
-                                                @Html.ValidationMessageFor(model => model.Usu_senha, "", new { @class = "text-danger" })
+                                                @Html.ValidationMessageFor(model => model.Usu_senha, "", new { @class = "text-danger validateMessage" })
                                             </div>
                                         </div>
                                         <div class="col-8 col-md-10 mx-auto">

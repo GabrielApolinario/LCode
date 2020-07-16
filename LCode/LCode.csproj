@@ -184,12 +184,9 @@
     <Compile Include="Models\Certificado.cs" />
     <Compile Include="Models\Curso.cs" />
     <Compile Include="Models\CursoComprado.cs" />
-    <Compile Include="Models\Digital.cs" />
-    <Compile Include="Models\Disciplina.cs" />
     <Compile Include="Models\Livros.cs" />
     <Compile Include="Models\Modulo.cs" />
     <Compile Include="Models\Pais.cs" />
-    <Compile Include="Models\Presencial.cs" />
     <Compile Include="Models\Usuarios.cs" />
     <Compile Include="Models\Video.cs" />
     <Compile Include="obj\Debug\.NETFramework,Version=v4.6.1.AssemblyAttributes.cs" />
@@ -420,6 +417,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="ImagensCurso\" />
     <Folder Include="obj\Debug\TempPE\" />
     <Folder Include="obj\Release\" />
   </ItemGroup>

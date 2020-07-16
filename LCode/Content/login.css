@@ -4,6 +4,12 @@
     position: relative;
 }
 
+.validateMessage {
+    width: 100% !important;
+    margin-left: 0 !important;
+    text-align:left !important;
+}
+
 .span a::before {
     content: '';
     position: absolute;

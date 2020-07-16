@@ -30,7 +30,7 @@
             <div class="row">
                 <div class="col-12 mt-5">
                     <div class="row w-100 justify-content-center m-auto  form-cad">
-                        @using (Html.BeginForm())
+                        @using (Html.BeginForm("CadastroCurso", "Curso", FormMethod.Post, new { enctype = "multipart/form-data" }))
                         {
                             @Html.AntiForgeryToken()
 
@@ -68,6 +68,11 @@
                                         <label>Selecione a Categoria do Curso</label>
                                         <span class="far fa-hand-pointer"></span> @Html.DropDownListFor(model => model.Curso_categoria, Model.Categorias, "Selecione uma categoria", new { @class = "form-control selecionar" })
                                         @Html.ValidationMessageFor(model => model.Curso_categoria, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="col-11 form-group mx-auto">
+                                        <label>Selecione uma imagem para o curso</label>
+                                        <span class="fas fa-image"></span>@Html.TextBoxFor(model => model.Imagem, new { type = "file", @class = "form-control"})
+                                        @Html.ValidationMessageFor(model => model.Imagem, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
                                 <div class="col-4 col-md-6 mx-auto">

@@ -67,6 +67,7 @@ namespace LCode.Models
             cmd.Parameters.AddWithValue("proc_curso_duracao", c.Curso_duracao);
             cmd.Parameters.AddWithValue("proc_curso_valor", c.Curso_valor);
             cmd.Parameters.AddWithValue("proc_curso_categoria", c.Curso_categoria);
+            cmd.Parameters.AddWithValue("proc_curso_imagem", c.Imagem_link);
             cmd.Parameters.AddWithValue("proc_usu_id", user_id);
             cmd.Parameters.Add("novo_curso_id", MySqlDbType.Int32);
             cmd.Parameters["novo_curso_id"].Direction = ParameterDirection.Output;
