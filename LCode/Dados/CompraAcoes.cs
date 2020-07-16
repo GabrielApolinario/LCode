@@ -82,9 +82,14 @@ namespace LCode.Dados
                 retorno.Read();
                 cursoComprado.cursoComprado_usuario = Convert.ToInt32(retorno["cursoComprado_usuario"]);
                 cursoComprado.cursoComprado = Convert.ToInt32(retorno["cursoComprado"]);
+                retorno.Close();
+                return cursoComprado;
             }
-            retorno.Close();
-            return cursoComprado;
+            else
+            {
+                retorno.Close();
+                return null;
+            }
         }
     }
 }

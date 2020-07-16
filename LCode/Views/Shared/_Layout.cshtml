@@ -1,14 +1,16 @@
 ﻿
-
+    <head>
+        <link rel="shortcut icon" href="~/image/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="~/image/favicon.ico" type="image/x-icon">
+    </head>
 <body>
     <script src="~/Scripts/bootstrap.min.js"></script>
 
-    <header>
-
+    <header>        
         <nav class="navbar navbar-expand-lg navbar-light bg-purpk nav-pills">
             <div class="d-flex flex-grow-1">
                 <span class="w-100 d-lg-none d-block"></span>
-                <a style="color: rgb(224, 224, 224);" class="navbar-brand d-none d-lg-inline-block h1 mb-0" href="index.html">
+                <a style="color: rgb(224, 224, 224);" class="navbar-brand d-none d-lg-inline-block h1 mb-0" href="@Url.Action("Index","Home")">
                     <img src="~/image/logo.png" class="d-inline-block align-top" alt="">
                 </a>
                 </a>
@@ -70,7 +72,7 @@
                         <form action="@Url.Action("PesquisarCursos", "Curso")" method="post">
                             <div class="form">
                                 <div class="col-md-12 form-group form-search mt-4 mx-auto">
-                                    <span class="fas fa-search"></span><input type="text" class="form-control"  name="pesquisar" id="pesquisar" aria-describedby="emailHelp" placeholder="Pesquisar um curso">
+                                    <span class="fas fa-search"></span><input type="text" class="form-control" name="pesquisar" id="pesquisar" aria-describedby="emailHelp" placeholder="Pesquisar um curso">
                                 </div>
                             </div>
                         </form>

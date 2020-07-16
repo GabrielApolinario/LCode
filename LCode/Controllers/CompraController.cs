@@ -137,7 +137,7 @@ namespace LCode.Controllers
                     if (retornaCurso != null)
                     {
                         TempData["CursoJaComprado"] = "Você já adquiriu esse curso anteriormente em sua conta!";
-                        return View("Carrinho", "Compra");
+                        return RedirectToAction("Carrinho", "Compra");
                     };
 
                     retorno = ca.CursoCarrinho(Convert.ToInt32(curso_id));
@@ -201,16 +201,17 @@ namespace LCode.Controllers
             {
                 ca.CompraCurso(Convert.ToInt32(curso_id), Convert.ToInt32(Session["UsuId"]), formaPagamento);
             }
-            string destino = Session["UsuEmail"].ToString();
+            string destino = Session["UsuEmail"].ToString(); //"gabitorres118@gmail.com";
             MailMessage mail = new MailMessage();
             mail.From = new MailAddress("gab.apolinario@hotmail.com");
             mail.To.Add(destino);
             mail.Subject = "Obrigado por comprar o nosso curso!";
 
-            LinkedResource image = new LinkedResource(@"C:\Users\gabap\Desktop\Projetos\LCode\LCode\image\avatar.png");
+            AlternateView htmlview = AlternateView.CreateAlternateViewFromString("teste <br/><center><img src=cid:imgPath height=500 width=600></center>", null, "text/html");
+            string linkimg = ConfigurationManager.AppSettings["imgEmail"].ToString();
+            LinkedResource image = new LinkedResource(linkimg);
             image.ContentType = new ContentType(MediaTypeNames.Image.Jpeg);
-
-            AlternateView htmlview = AlternateView.CreateAlternateViewFromString("Texto teste. <img src=cid:MyPic>", null, "text/html");
+            image.ContentId = "imgPath";
 
             htmlview.LinkedResources.Add(image);
             mail.AlternateViews.Add(htmlview);

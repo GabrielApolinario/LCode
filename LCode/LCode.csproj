@@ -253,6 +253,7 @@
     <Content Include="image\logo.png" />
     <Content Include="image\man.png" />
     <Content Include="image\mastercard.png" />
+    <Content Include="image\mensagem-email.jpg" />
     <Content Include="image\print-categorias.jpg" />
     <Content Include="image\print-comofunciona.jpg" />
     <Content Include="image\Sem Título-1.png" />
