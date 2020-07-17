@@ -160,6 +160,7 @@ namespace LCode.Dados
                     Curso_nome = retorno["curso_nome"].ToString(),
                     Curso_descricao = retorno["curso_descricao"].ToString(),
                     Curso_valor = Convert.ToDouble(retorno["curso_valor"]),
+                    Imagem_link = retorno["curso_imagem"].ToString(),
                 };
                 cursosComprados.Add(TempCursos);
             }

@@ -23,109 +23,26 @@
             <div class="row">
                 <div class="col-12">
                     <div class="row">
-                        <div class="col-sm-4 mt-5">
-                            <a href="#" class="meus-cursos">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="img-meus-cursos">
-                                            <img src="~/image/video.png">
+                        @foreach (var item in Model) 
+                        {
+                            <div class="col-sm-4 mt-5">
+                                <a href="@Url.Action("AssistirCurso", "Curso", new { curso_id = item.Curso_id })" class="meus-cursos">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="img-meus-cursos">
+                                                <img src="@Url.Content(item.Imagem_link)">
+                                            </div>
+                                            <h5 class="card-title">@Html.DisplayFor(model => item.Curso_nome)</h5>
+                                            <p class="card-text">@Html.DisplayFor(model => item.Curso_descricao)</p>
                                         </div>
-                                        <h5 class="card-title">Curso de ASP.NET</h5>
-                                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-
                                     </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-sm-4 mt-5">
-                            <a href="#" class="meus-cursos">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="img-meus-cursos">
-                                            <img src="~/image/video.png">
-                                        </div>
-                                        <h5 class="card-title">Curso de ASP.NET</h5>
-                                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-sm-4 mt-5">
-                            <a href="#" class="meus-cursos">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="img-meus-cursos">
-                                            <img src="~/image/video.png">
-                                        </div>
-                                        <h5 class="card-title">Curso de ASP.NET</h5>
-                                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-sm-4 mt-5">
-                            <a href="#" class="meus-cursos">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="img-meus-cursos">
-                                            <img src="~/image/video.png">
-                                        </div>
-                                        <h5 class="card-title">Curso de ASP.NET</h5>
-                                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
+                                </a>
+                            </div>
+                        }                       
                     </div>
                 </div>
             </div>
+        </div>>
     </section>
 
 </body>
-
-</html>
-<body>
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Curso_nome)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Curso_descricao)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Curso_valor)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Curso_duracao)
-            </th>
-            <th></th>
-        </tr>
-
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Curso_nome)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Curso_descricao)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Curso_valor)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Curso_duracao)
-                </td>
-            </tr>
-        }
-
-    </table>
-</body>
-</html>
