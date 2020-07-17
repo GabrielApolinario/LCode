@@ -1,4 +1,5 @@
-﻿
+﻿@model LCode.ViewModels.CursoVideoModuloViewModel
+@using LCode.ViewModels
 @{
     Layout = null;
 }
@@ -59,13 +60,12 @@
         <div class="container">
 
             <div class="col-lg-12 mt-5">
-                <h2>Curso de <span class="color-purple">HTML</span></h2>
+                <h2>@Html.DisplayFor(model => model.Curso_nome)</h2>
             </div>
 
             <div class="row">
                 <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8 mt-1">
-
-                    <iframe width="560" height="315" name="iframe-assistir" src="https://www.youtube.com/embed/4dQtz1PpY9A" frameborder="0" allowfullscreen scrolling="no" class="mt-5">
+                    <iframe width="560" height="315" name="iframe-assistir" src="@Url.Action("AssistirVideo", "Curso", new { curso_id = Request.QueryString["curso_id"] ,video_id = Request.QueryString["video_id"] })" frameborder="0" allowfullscreen scrolling="no" class="mt-5">
                     </iframe>
 
                 </div>
@@ -74,102 +74,53 @@
                     <h4 class="title-gray mt-3">Conteúdo do Curso</h4>
                     <div class="accordion" id="accordionExample">
                         <div class="card">
-                            <div class="card-header" id="headingOne">
-                                <h2 class="mb-0">
-                                    <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                                        <h5 class="title-module">Introdução</h5>
-                                    </button>
-                                </h2>
-                            </div>
+                            @if (ViewData["modulos"] != null)
+                            {
 
-                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-                                <div class="card-body">
-                                    <ul class="list-group list-accordion list-group-flush">
-                                        <li class=" list-group-item ">
-                                            <span><i class="fas fa-play-circle icon "></i></span>
-                                            <a href="https://www.youtube.com/embed/epDCjksKMok " target="iframe-assistir" class="link-video active">Vídeo 1</a>
-                                        </li>
-                                        <li class="list-group-item ">
-                                            <span><i class="fas fa-play-circle icon "></i></span>
-                                            <a href="https://www.youtube.com/embed/epDCjksKMok " target="iframe-assistir" class="link-video ">Vídeo 2</a>
-                                        </li>
-                                        <li class="list-group-item ">
-                                            <span><i class="fas fa-play-circle icon "></i></span> Vídeo 3
-                                        </li>
-                                        <li class="list-group-item ">
-                                            <span><i class="fas fa-play-circle icon "></i></span> Vídeo 4
-                                        </li>
-                                    </ul>
+                                foreach (var modulos in (IEnumerable<CursoVideoModuloViewModel>)ViewData["modulos"])
+                                {
+                                    <div class="card-header" id="headingOne">
+                                        <h2 class="mb-0">
 
-                                </div>
-                            </div>
-                        </div>
-                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-                            <div class="card-body">
-                                <ul class="list-group list-accordion list-group-flush">
-                                    <li class="list-group-item">
-                                        <span><i class="fas fa-play-circle icon"></i></span> Vídeo 1
+                                            <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                                <h5 class="title-module">@modulos.mod_nome</h5>
+                                            </button>
+                                        </h2>
+                                    </div>
+                                    if (ViewData["videos"] != null)
+                                    {
+                                        foreach (var videos in (IEnumerable<CursoVideoModuloViewModel>)ViewData["videos"])
+                                        {
+                                            if (@videos.video_titulo.Where(v => videos.video_modulo == modulos.mod_id).Select(v => videos.video_titulo).FirstOrDefault() != null)
+                                            {
+                                                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                                    <div class="card-body">
+                                                        <ul class="list-group list-accordion list-group-flush">
+                                                            <li class="list-group-item">
+                                                                <a class="btn-link" href="@Url.Action("AssistirCurso","Curso", new {curso_id = Model.Curso_id, @videos.video_id})"><span><i class="fas fa-play-circle icon btn-link"></i></span>
+                                                                @videos.video_titulo</a>
+                                                            </li>
 
-                                    </li>
-                                    <li class="list-group-item">
-                                        <span><i class="fas fa-play-circle icon"></i></span> Vídeo 2
-                                    </li>
-                                    <li class="list-group-item">
-                                        <span><i class="fas fa-play-circle icon"></i></span> Vídeo 3
-                                    </li>
-                                    <li class="list-group-item">
-                                        <span><i class="fas fa-play-circle icon"></i></span> Vídeo 4
-                                    </li>
-                                    <li class="list-group-item">
-                                        <span><i class="fas fa-play-circle icon"></i></span> Vídeo 5
-                                    </li>
-                                    <li class="list-group-item">
-                                        <span><i class="fas fa-play-circle icon"></i></span> Vídeo 6
-                                    </li>
-                                </ul>
+                                                        </ul>
 
-                            </div>
+                                                    </div>
+                                                </div>
+                                            }
+                                        }
+                                    }
+                                }
+                            }
                         </div>
                     </div>
-                    <div class="card">
-                        <div class="card-header" id="headingThree">
-                            <h2 class="mb-0">
-                                <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                    Conteúdo 2
-                                </button>
-                            </h2>
-                        </div>
-                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-                            <div class="card-body">
-                                <ul class="list-group list-accordion list-group-flush">
-                                    <li class="list-group-item">
-                                        <span><i class="fas fa-play-circle icon"></i></span> Vídeo 1
 
-                                    </li>
-                                    <li class="list-group-item">
-                                        <span><i class="fas fa-play-circle icon"></i></span> Vídeo 2
-                                    </li>
-                                    <li class="list-group-item">
-                                        <span><i class="fas fa-play-circle icon"></i></span> Vídeo 3
-                                    </li>
-                                    <li class="list-group-item">
-                                        <span><i class="fas fa-play-circle icon"></i></span> Vídeo 4
-                                    </li>
-                                </ul>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="row ">
+            <div class="row">
                 <div class="col-12 ">
                     <div class="col-lg-12 mt-5 ">
                         <h3 class="ml-3 "><span class="color-purple ">Descrição</span> da aula</h3>
                         <div class="col-8 description mt-3 ">
-                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sed laboriosam aperiam fugit odio voluptates error quia totam officia doloribus nam veniam, dolores nobis eos. Similique ad ullam earum amet quod!</p>
+                            <p><iframe width="560" height="315" name="iframe-assistir" src="@Url.Action("DescricaoAula", "Curso", new { curso_id = Request.QueryString["curso_id"]
+                                                                                           ,video_id = Request.QueryString["video_id"] })" frameborder="0" allowfullscreen scrolling="no" class="mt-5">
+                               </iframe></p>
                         </div>
                     </div>
                 </div>

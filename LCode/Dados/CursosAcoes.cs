@@ -145,5 +145,59 @@ namespace LCode.Dados
             return usuarios;
         }
 
+        public Video DetalhesVideo(int video_id)
+        {
+            MySqlCommand cmd = new MySqlCommand("Select * from lc_video where video_id = @video", bd.AbreConexao());
+            cmd.CommandType = CommandType.Text;
+            cmd.Parameters.AddWithValue("@video", video_id);
+            var retorno = cmd.ExecuteReader();
+            return RetornarVideo(retorno);
+        }
+
+        public Video RetornarVideo(MySqlDataReader retorno)
+        {
+                Video vid = new Video();
+            if (retorno.HasRows)
+            {
+                retorno.Read();
+
+                vid.video_id = Convert.ToInt32(retorno["video_id"]);
+                vid.video_link = retorno["video_link"].ToString();
+                vid.video_titulo = retorno["video_titulo"].ToString();
+                vid.video_modulo = Convert.ToInt32(retorno["video_modulo"]);
+                vid.video_descricao = retorno["video_descricao"].ToString();
+            }
+            retorno.Close();
+            return vid;
+
+        }
+
+        public Video VideoPadrao(int curso_id)
+        {
+            MySqlCommand cmd = new MySqlCommand("Select * from lc_video where video_curso = @curso_id ORDER BY video_id LIMIT 1", bd.AbreConexao());
+            cmd.CommandType = CommandType.Text;
+            cmd.Parameters.AddWithValue("@curso_id", curso_id);
+            var retorno = cmd.ExecuteReader();
+            return RetornarVideoPadrao(retorno);
+        }
+
+        public Video RetornarVideoPadrao(MySqlDataReader retorno)
+        {
+            Video vid = new Video();
+            if (retorno.HasRows)
+            {
+                retorno.Read();
+
+                vid.video_id = Convert.ToInt32(retorno["video_id"]);
+                vid.video_link = retorno["video_link"].ToString();
+                vid.video_titulo = retorno["video_titulo"].ToString();
+                vid.video_modulo = Convert.ToInt32(retorno["video_modulo"]);
+                vid.video_descricao = retorno["video_descricao"].ToString();
+            }
+            retorno.Close();
+            return vid;
+
+        }
+
     }
 }

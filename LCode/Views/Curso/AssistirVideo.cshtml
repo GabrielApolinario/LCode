@@ -1,0 +1,20 @@
+﻿@model LCode.Models.Video
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+</head>
+<body>
+    <div>
+        <video height="300" allowfullscreen controls>
+            <source src="@Url.Content(Model.video_link)"/>
+        </video>
+    </div>
+</body>
+</html>

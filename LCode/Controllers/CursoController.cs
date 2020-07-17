@@ -175,7 +175,7 @@ namespace LCode.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        public ActionResult AssistirCurso(int curso_id)
+        public ActionResult AssistirCurso(Nullable<int> curso_id, Nullable<int> video_id)
         {           
             var retorno = ca.ValidarCursoComprado(Convert.ToInt32(Session["UsuId"]));
             
@@ -191,6 +191,39 @@ namespace LCode.Controllers
 
             return View();
         }
+       
+
+        public ActionResult AssistirVideo(Nullable<int> curso_id, Nullable<int> video_id)
+        {
+            Video retorno = new Video();
+
+            if (video_id == null)
+            {
+               retorno = ca.VideoPadrao(Convert.ToInt32(curso_id));
+
+                return View(retorno);
+            }
+
+            retorno = ca.DetalhesVideo(Convert.ToInt32(video_id));
+
+            return View(retorno);
+        }
+
+        public ActionResult DescricaoAula(Nullable<int> curso_id, Nullable<int> video_id)
+        {
+            Video retorno = new Video();
+
+            if (video_id == null)
+            {
+                retorno = ca.VideoPadrao(Convert.ToInt32(curso_id));
+
+                return View(retorno);
+            }
+
+            retorno = ca.DetalhesVideo(Convert.ToInt32(video_id));
+
+            return View(retorno);
+        }
 
         public ActionResult Certificado(int curso_id, int usu_id)
         {
@@ -199,7 +232,8 @@ namespace LCode.Controllers
 
             return View();
         }
-            
-            
+
+        
+
     }
 }
