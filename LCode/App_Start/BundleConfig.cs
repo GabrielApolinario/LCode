@@ -24,7 +24,12 @@ namespace LCode
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/cad-curso.css"));
+                      "~/Content/cad-curso.css",
+                      "~/Content/site.css",
+                      "~/Content/login.css",
+                      //"~/Content/bootstrap.min.css",
+                      "~/Content/style.css",
+                      "~/Content/global.css"));
         }
     }
 }
