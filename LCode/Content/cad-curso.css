@@ -1,10 +1,8 @@
 .form-cad {
-    border-radius: 2px;
+    border-radius: 10px;
     -webkit-box-shadow: 7px 7px 25px -15px rgba(0, 0, 0, 0.8);
     -moz-box-shadow: 7px 7px 25px -15px rgba(0, 0, 0, 0.8);
     box-shadow: 7px 7px 25px -15px rgba(0, 0, 0, 0.8);
-    background: #2b2b2b !important;
-    color:#e3e3e3;
 }
 
 label {
@@ -17,37 +15,91 @@ label {
     background-color: transparent;
     border: 1px solid #e3e3e3;
     border-radius: 30px;
-    color: #e3e3e3;
-    line-height: normal;
-    font-size: .8571em;
-    box-shadow: none;
-}
-.selecionar{
-    color:#2b2b2b;
-}
-
-/*GLOBAL*/
-
-.title {
-    font-weight: 700;
-    margin-left: 3rem;
-    line-height:2rem;
-}
-.custom-file-input {
-    background-color: transparent !important;
-    border: 1px solid #e3e3e3;
-    border-radius: 30px;
     color: #2c2c2c;
     line-height: normal;
     font-size: .8571em;
     box-shadow: none;
 }
 
-.box-title {
-    background-color: #764ba2;
-    border-radius: 5px;
+
+/*GLOBAL*/
+
+.title {
+    font-weight: 700;
     margin-left: 3rem;
-    height: 65px;
-    margin-bottom: 1rem;
-    margin-top: -20px;
+}
+
+.img-meus-cursos {
+    width: 90px;
+    height: 90px;
+    background: linear-gradient(to top, rgb(79, 35, 147, 0.9), rgba(85, 31, 142, 0.9), rgba(90, 27, 137, 0.9), rgb(98, 19, 127, 0.9), rgb(108, 18, 135, 0.9), rgb(119, 17, 144, 0.9));
+    float: left;
+    border-radius: 10px;
+    margin-right: 2rem;
+}
+
+.img-meus-cursos img {
+        width: 60px;
+        height: 40px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 25%;
+ }
+
+ .img-meus-cursos i {
+        width: 60px;
+        height: 40px;
+        font-size: 40px;
+        display: block;
+        margin-left: 30%;
+        margin-right: auto;
+        margin-top: 25%;
+        color: rgb(255, 255, 255);
+ }
+
+.card-title {
+    color: #7665cf;
+    text-align: center;
+    font-weight: 600;
+}
+
+.card-text {
+    text-align: justify;
+    color: #909090;
+    text-align: center;
+}
+
+.meus-cursos:hover {
+    text-decoration: none;
+}
+
+.card:hover {
+    transform: scale(1.1);
+    transition: all 400ms ease-in-out;
+}
+
+.card-new-course {
+    height: 10rem;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+}
+
+    .card-new-course:hover {
+        box-shadow: 0 0 1px 1px rgba(20, 23, 28, .1), 0 3px 1px 0 rgba(20, 23, 28, .1);
+        opacity: 1;
+    }
+
+.title-new-course {
+    font-size: 30px !important;
+    text-align: left;
+    margin-left: 4%;
+    line-height: 6rem;
+    float: left;
+}
+
+.card-new-course button {
+    float: right;
+    line-height: 2rem;
+    padding: .5rem 6rem
 }

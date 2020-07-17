@@ -233,7 +233,10 @@ namespace LCode.Controllers
             return View();
         }
 
-        
+        public ActionResult CriarCurso()
+        {
+            return View();
+        }
 
     }
 }
