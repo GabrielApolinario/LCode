@@ -54,7 +54,7 @@ namespace LCode.Dados
         {
             using (bd = new BancoDeDados())
             {
-                var strQuery = string.Format("SELECT * FROM lc_usuarios WHERE usu_email = '{0}';", u.Usu_email);
+                var strQuery = string.Format("SELECT * FROM lc_usuarios WHERE usu_email = '{0}' OR usu_cpf_or_cnpj = {1};", u.Usu_email, u.Usu_cpf_ou_cnpj);
                 var retorno = bd.RetornaComando(strQuery);
                 return VerificarCadastro(retorno).FirstOrDefault();
             }

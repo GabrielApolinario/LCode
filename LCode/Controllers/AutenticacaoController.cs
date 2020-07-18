@@ -58,8 +58,7 @@ namespace LCode.Controllers
                 return View(u);
             }
 
-        }
-       
+        }      
         
         public ActionResult Cadastro()
         {
@@ -75,8 +74,7 @@ namespace LCode.Controllers
                 return View();
             }
 
-        }
-        
+        }      
 
         [HttpPost]
         public ActionResult Cadastro(Usuarios u)
@@ -112,26 +110,26 @@ namespace LCode.Controllers
                 {
                     if (u.Usu_email != null && u.Usu_cpf_ou_cnpj == null)
                     {
-                        ModelState.AddModelError("Usu_email", "Já existe um usuário cadastrado com esse e-mail.");
-                        return View(u);
+                        TempData["emailErro"] = "E-mail já cadastrado";
+                        return RedirectToAction("Cadastro");
                     }
                     else if (u.Usu_cpf_ou_cnpj != null && u.Usu_email == null)
                     {
-                        ModelState.AddModelError("Usu_cpf_ou_cnpj", "Já existe um usuário cadastrado com esse cpf.");
-                        return View(u);
+                        TempData["CpfErro"] = "CPF já cadastrado.";
+                        return RedirectToAction("Cadastro");
                     }
                     else
                     {
-                        ModelState.AddModelError("Usu_email", "Já existe um usuário cadastrado para esse e-mail.");
-                        ModelState.AddModelError("Usu_cpf_ou_cnpj", "Já existe um usuário cadastrado para esse CPF.");
-                        return View(u);
+                        TempData["emailErro"] = "E-mail já cadastrado";
+                        TempData["CpfErro"] = "CPF já cadastrado";
+                        return RedirectToAction("Cadastro");
                     }
                 }
             }
             else
             {
-                u.Paises = BancoDeDados.PopulaPais();                
-                return View(u);
+                //u.Paises = BancoDeDados.PopulaPais();                
+                return View();
             }
         }
 

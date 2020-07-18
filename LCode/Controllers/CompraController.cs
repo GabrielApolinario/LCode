@@ -209,7 +209,7 @@ namespace LCode.Controllers
             mail.To.Add(destino);
             mail.Subject = "Obrigado por comprar o nosso curso!";
 
-            AlternateView htmlview = AlternateView.CreateAlternateViewFromString("teste <br/><center><img src=cid:imgPath height=500 width=600></center>", null, "text/html");
+            AlternateView htmlview = AlternateView.CreateAlternateViewFromString("<br/><center><img src=cid:imgPath height=500 width=600></center>", null, "text/html");
             string linkimg = ConfigurationManager.AppSettings["imgEmail"].ToString();
             LinkedResource image = new LinkedResource(linkimg);
             image.ContentType = new ContentType(MediaTypeNames.Image.Jpeg);
