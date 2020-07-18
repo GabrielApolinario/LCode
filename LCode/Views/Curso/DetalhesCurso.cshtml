@@ -108,7 +108,6 @@
                         <video height="300" allowfullscreen controls>
                             @if (ViewData["videoPadrao"] != null)
                             {
-                            @*<source src="@Html.DisplayText(ViewData["videoPadrao"].ToString())" />*@
                             <source src="@Url.Content(ViewData["videoPadrao"].ToString())" />
                             }
                         </video>

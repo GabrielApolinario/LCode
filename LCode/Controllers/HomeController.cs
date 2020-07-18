@@ -13,7 +13,10 @@ namespace LCode.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            var retorno = bd.BuscaCategorias();
+            
+
+            return View(retorno);
         }
 
         public ActionResult About()

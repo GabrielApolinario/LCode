@@ -1,4 +1,6 @@
-﻿<head>
+﻿@model IEnumerable<LCode.Models.Categoria>
+
+<head>
     <meta charset="utf-8">
     <title>Cursos online, matricule-se já!</title>
     <link rel="stylesheet" href="~/Content/bootstrap.min.css">
@@ -106,14 +108,15 @@
 
 
                     <div class="col-sm-3 mt-4 card-categ">
-                        <a href="#" class="a">
+                            @foreach(var item in Model) { 
+                                <a href="@Url.Action("CursosPorCategoria", "Curso", new { categoria_id = item.Categoria_id })" class="a">
                             <div class="card card-categoria">
                                 <div class="card-header media">
                                     <div class="box-icon">
                                         <i class="fas fa-mobile-alt align-self-start mr-3 icon-categoria"></i>
                                     </div>
                                     <!--<img class="align-self-start mr-3 media-img" src="~/image/logo.png" alt="Imagem de exemplo genérica">-->
-                                    <h5 class="ml-3">Cursos de Mobile</h5>
+                                    <h5 class="ml-3">Cursos de @Html.DisplayFor(model => item.Categoria_nome)</h5>
                                 </div>
                                 <div class="card-body">
                                     <p class="card-text">
@@ -123,10 +126,11 @@
 
                                 </div>
                             </div>
-                        </a>
+                                </a>
+                            }
                     </div>
 
-                    <div class="col-sm-3 mt-4">
+                    @*<div class="col-sm-3 mt-4">
                         <a href="#" class="a">
                             <div class="card card-categoria">
                                 <div class="card-header media">
@@ -267,7 +271,7 @@
                                 </div>
                             </div>
                         </a>
-                    </div>
+                    </div>*@
 
 
                 </div>

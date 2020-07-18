@@ -280,5 +280,30 @@ namespace LCode.Models
 
         }
 
+        public List<Categoria> BuscaCategorias()
+        {
+            MySqlCommand cmd = new MySqlCommand("SELECT * FROM lc_categoria", AbreConexao());
+            var retorno = cmd.ExecuteReader();
+            return MeusCursos(retorno);
+        }
+
+        public List<Categoria> MeusCursos(MySqlDataReader retorno)
+        {
+            var categorias = new List<Categoria>();
+
+            while (retorno.Read())
+            {
+                var TempCategorias = new Categoria()
+                {
+                    Categoria_id = Convert.ToInt32(retorno["categoria_id"]),
+                    Categoria_nome = retorno["categoria_nome"].ToString(),
+                };
+                categorias.Add(TempCategorias);
+            }
+            retorno.Close();
+            return categorias;
+
+        }
+
     }
 }
