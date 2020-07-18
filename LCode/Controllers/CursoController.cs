@@ -117,6 +117,10 @@ namespace LCode.Controllers
 
             ViewData["modulos"] = bd.QueryModulos(Convert.ToInt32(curso_id));
             ViewData["videos"] = bd.QueryVideos(Convert.ToInt32(curso_id));
+
+            Video vid = new Video();
+            vid.video_link = ca.VideoPadrao(Convert.ToInt32(curso_id)).video_link;
+            ViewData["videoPadrao"] = vid.video_link;
             return View(retorno);
         }
        
