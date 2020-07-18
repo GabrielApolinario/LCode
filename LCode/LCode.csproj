@@ -234,9 +234,11 @@
     <Content Include="image\carreira.jpg" />
     <Content Include="image\carreira.png" />
     <Content Include="image\certificado.png" />
+    <Content Include="image\click.png" />
     <Content Include="image\computer-banner.jpg" />
     <Content Include="image\contato.jpg" />
     <Content Include="image\depositphotos_254300952-stock-illustration-letter-abstract-logo-design-vector.jpg" />
+    <Content Include="image\favicon.ico" />
     <Content Include="image\favicon.png" />
     <Content Include="image\gabrielle.jpg" />
     <Content Include="image\grafico.png" />
@@ -256,6 +258,7 @@
     <Content Include="image\print-comofunciona.jpg" />
     <Content Include="image\Sem Título-1.png" />
     <Content Include="image\suporte.png" />
+    <Content Include="image\video.png" />
     <Content Include="image\visa-logo.png" />
     <Content Include="obj\Debug\LCode.csproj.FileListAbsolute.txt" />
     <Content Include="obj\Debug\LCode.dll" />
