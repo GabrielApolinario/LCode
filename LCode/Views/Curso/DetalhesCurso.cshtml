@@ -106,7 +106,11 @@
                     <div class="card" style="width: 28rem;">
                         
                         <video height="300" allowfullscreen controls>
-                           <source src="@Url.Content(ViewData["videoPadrao"].ToString())"/>
+                            @if (ViewData["videoPadrao"] != null)
+                            {
+                            @*<source src="@Html.DisplayText(ViewData["videoPadrao"].ToString())" />*@
+                            <source src="@Url.Content(ViewData["videoPadrao"].ToString())" />
+                            }
                         </video>
 
                         <div class="card-body">
