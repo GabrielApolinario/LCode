@@ -10,7 +10,8 @@ using MySql.Data.MySqlClient;
 using Renci.SshNet.Security.Cryptography;
 using LCode.Dados;
 using System.Web.Security;
-
+using System.ComponentModel.DataAnnotations;
+using System.Web.UI.WebControls;
 
 namespace LCode.Controllers
 {
@@ -128,8 +129,9 @@ namespace LCode.Controllers
             }
             else
             {
-                //u.Paises = BancoDeDados.PopulaPais();                
-                return View();
+                //u.Paises = BancoDeDados.PopulaPais();   
+                TempData["emailErro"] = "Digite um e-mail válido";
+                return RedirectToAction("Cadastro");
             }
         }
 

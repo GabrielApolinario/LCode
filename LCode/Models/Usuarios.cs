@@ -33,8 +33,8 @@ namespace LCode.Models
         public string Usu_sobrenome { get; set; }
 
         [DisplayName("E-mail")]
-        //[RegularExpression(@"/ ^[a - z0 - 9.] +@[a-z0-9]+\.[a-z]+\.([a - z]+)?$/i", ErrorMessage = "Digite um e-mail válido" )]
-        [Required(ErrorMessage = "O e-mail é obritarório")]
+        [RegularExpression(@"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z", ErrorMessage = "Insira um e-mail válido")]
+        [Required(ErrorMessage = "O e-mail é obrigatório")]
         public string Usu_email { get; set; }
 
         [DisplayName("Senha")]
@@ -42,7 +42,6 @@ namespace LCode.Models
         public string Usu_senha { get; set; }
 
         [DisplayName("Cpf ou Cnpj")]
-        //[RegularExpression(@"/(^\d{3}\.\d{3}\.\d{3}\-\d{2}$)|(^\d{2}\.\d{3}\.\d{3}\/\d{4}\-\d{2}$)/", ErrorMessage ="Digite um CPF ou CNPJ válido")]
         [Required(ErrorMessage = "O Cpf ou Cnpj é obrigatório")]
         public string Usu_cpf_ou_cnpj { get; set; }
 
