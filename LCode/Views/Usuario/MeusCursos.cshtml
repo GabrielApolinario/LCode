@@ -26,7 +26,7 @@
                         @foreach (var item in Model) 
                         {
                             <div class="col-sm-4 mt-5">
-                                <a href="@Url.Action("AssistirCurso", "Curso", new { curso_id = item.Curso_id })" class="meus-cursos">
+                                <a target="_parent" href="@Url.Action("AssistirCurso", "Curso", new { curso_id = item.Curso_id })" class="meus-cursos">
                                     <div class="card">
                                         <div class="card-body">
                                             <div class="img-meus-cursos">

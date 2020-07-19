@@ -1,17 +1,75 @@
-﻿
+﻿@model IEnumerable<LCode.Models.Curso>
+
+
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <!DOCTYPE html>
-
-<html>
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <title>CursoPorCategoria</title>
+    <meta charset="utf-8">
+    <title>Cursos online</title>
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css">
+    <link href="~/Content/course.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/Content/global.css" />
+    <link rel="stylesheet" href="~/Content/index.css">
+    <link rel="stylesheet" href="~/Content/login.css">
+    <link href="~/Content/course.css" rel="stylesheet" />
+    <link rel="icon" type="~/Image/png" sizes="16x16" href="~/~/Image/favicon.png">
+    <link rel="stylesheet"
+          href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+          integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+          crossorigin="anonymous">
+
 </head>
-<body>
-    <div> 
+
+
+<!--------------------------COURSES-SECTION---------------------------->
+
+
+<section id="section-cursos" class="bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 mb-5 text-center mt-5">
+                <h2>Resultado da sua<span class="color-purple"> Pesquisa</span></h2>
+                <p class="mt-3">
+                </p>
+            </div>
+        </div>
+
+        <div class="card-deck">
+            @if (Model != null)
+            {
+                foreach (var item in Model)
+                {
+
+                    <div class="col-md-4 mt-5">
+                        <div class="card" onclick="window.location.href = '@Url.Action("DetalhesCurso", "Curso", new { curso_id = item.Curso_id })';">
+                            <img class="card-img-top" src="@Url.Content(item.Imagem_link)" alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title"> @Html.DisplayFor(modelItem => item.Curso_nome)</h5>
+                                <p class="card-text">@Html.DisplayFor(modelItem => item.Curso_descricao)</p>
+                                <p class="card-text">R$ @Html.DisplayFor(modelItem => item.Curso_valor)</p>
+                            </div>
+                            <div class="card-footer">
+                                <small class="text-muted">Last updated 3 mins ago</small>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+            else
+            {
+                <div class="col-md-4 mt-5">
+                    <p>Ainda não temos nenhum curso cadastrado com essa categoria</p>
+                </div>
+            }
+        </div>
+
     </div>
-</body>
-</html>
+</section>
+
+<!-- Footer -->
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/global.js"></script>
+    </body>

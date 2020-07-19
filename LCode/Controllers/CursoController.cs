@@ -245,7 +245,9 @@ namespace LCode.Controllers
         public ActionResult CursoPorCategoria(int categoria_id)
         {
 
-            return View();
+            var retorno = ca.CursosPorCategoria(categoria_id);
+
+            return View(retorno);
         }
 
     }

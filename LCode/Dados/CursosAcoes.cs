@@ -199,5 +199,33 @@ namespace LCode.Dados
 
         }
 
+        public List<Curso> CursosPorCategoria(int categoria_id)
+        {
+            MySqlCommand cmd = new MySqlCommand("Select * from lc_curso where curso_categoria = @categoria_id ORDER BY curso_nome", bd.AbreConexao());
+            cmd.CommandType = CommandType.Text;
+            cmd.Parameters.AddWithValue("@categoria_id", categoria_id);
+            var retorno = cmd.ExecuteReader();
+            return GetCursosPorCategoria(retorno);
+        }
+
+        public List<Curso> GetCursosPorCategoria(MySqlDataReader retorno)
+        {
+            var cursos = new List<Curso>();
+
+            while (retorno.Read())
+            {
+                var TempCurso = new Curso()
+                {
+                    Curso_id = Convert.ToInt32(retorno["curso_id"]),
+                    Curso_nome = retorno["curso_nome"].ToString(),
+                    Curso_descricao = retorno["curso_descricao"].ToString(),
+                    Curso_valor = Convert.ToDouble(retorno["curso_valor"]),
+                    Imagem_link = retorno["curso_imagem"].ToString(),
+                };
+                cursos.Add(TempCurso);
+            }
+            retorno.Close();
+            return cursos;
+        }
     }
 }

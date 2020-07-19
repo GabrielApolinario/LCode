@@ -43,7 +43,7 @@
 
                 <div class="col-md-4 mt-5">
                     <div class="card" onclick="window.location.href = '@Url.Action("DetalhesCurso", "Curso", new { curso_id = item.Curso_id})';">
-                        <img class="card-img-top" src="image/banner-1.jpg" alt="Card image cap">
+                        <img class="card-img-top" src="@Url.Content(item.Imagem_link)" alt="Card image cap">
                         <div class="card-body">
                             <h5 class="card-title"> @Html.DisplayFor(modelItem => item.Curso_nome)</h5>
                             <p class="card-text">@Html.DisplayFor(modelItem => item.Curso_descricao)</p>
