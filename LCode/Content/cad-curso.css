@@ -1,105 +1,128 @@
-.form-cad {
-    border-radius: 10px;
-    -webkit-box-shadow: 7px 7px 25px -15px rgba(0, 0, 0, 0.8);
-    -moz-box-shadow: 7px 7px 25px -15px rgba(0, 0, 0, 0.8);
-    box-shadow: 7px 7px 25px -15px rgba(0, 0, 0, 0.8);
+header {
+    background: url(../image/image.png) !important;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    background-attachment: fixed !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    background-position: center !important;
+    width: 100%;
+    height: 30vh !important;
 }
 
-label {
-    font-size: .8571em;
-    margin-bottom: 5px;
-    color: #9a9a9a;
-}
-
-.form-control {
-    background-color: transparent;
-    border: 1px solid #e3e3e3;
-    border-radius: 30px;
-    color: #2c2c2c;
-    line-height: normal;
-    font-size: .8571em;
-    box-shadow: none;
-}
-
-
-/*GLOBAL*/
-
-.title {
-    font-weight: 700;
-    margin-left: 3rem;
-}
-
-.img-meus-cursos {
-    width: 90px;
-    height: 90px;
-    background: linear-gradient(to top, rgb(79, 35, 147, 0.9), rgba(85, 31, 142, 0.9), rgba(90, 27, 137, 0.9), rgb(98, 19, 127, 0.9), rgb(108, 18, 135, 0.9), rgb(119, 17, 144, 0.9));
-    float: left;
-    border-radius: 10px;
-    margin-right: 2rem;
-}
-
-.img-meus-cursos img {
-        width: 60px;
-        height: 40px;
+    header::before {
+        content: "";
+        width: 100%;
+        height: 30vh !important;
+        z-index: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: rgba(92, 18, 134, 0.2);
         display: block;
-        margin-left: auto;
-        margin-right: auto;
-        margin-top: 25%;
- }
+    }
 
- .img-meus-cursos i {
-        width: 60px;
-        height: 40px;
-        font-size: 40px;
+.promo-title {
+    font-size: 45px;
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+.curso-detalhes {
+    background-color: #fcfdff;
+}
+
+.banner-detalhes-info {
+    background-color: rgb(255, 255, 255);
+    height: 7rem;
+    box-shadow: 4px 4px 20px 0 rgba(120, 135, 182, .1);
+    border-bottom: 1px solid #eff1f9;
+    position: relative;
+}
+
+.banner-detalhes-info-item-text {
+    margin-top: 2rem;
+    font-size: 15px;
+    color: #525c65;
+    display: block;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    flex-direction: column;
+}
+
+    .banner-detalhes-info-item-text:after {
+        content: '';
         display: block;
-        margin-left: 30%;
-        margin-right: auto;
-        margin-top: 25%;
-        color: rgb(255, 255, 255);
- }
+        width: 3px;
+        height: 40px;
+        margin-left: 71%;
+        margin-top: -22%;
+        background-color: #eff1f9;
+    }
+
+.list-group-item {
+    border: none;
+    padding: .25rem 1.25rem;
+}
+
+.card {
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+iframe {
+    border-radius: 10px;
+}
 
 .card-title {
-    color: #7665cf;
-    text-align: center;
-    font-weight: 600;
+    font-size: 25px;
+    font-weight: bold;
 }
 
 .card-text {
-    text-align: justify;
-    color: #909090;
-    text-align: center;
+    font-size: 2rem;
+    font-weight: 700;
 }
 
-.meus-cursos:hover {
-    text-decoration: none;
+.btn-purple {
+    padding: .7rem 2rem;
 }
 
-.card:hover {
-    transform: scale(1.1);
-    transition: all 400ms ease-in-out;
+.btn-outline-purple {
+    padding: .7rem 3.5rem;
 }
 
-.card-new-course {
-    height: 10rem;
-    background-color: rgb(255, 255, 255);
-    border-radius: 10px;
+.title-gray {
+    color: #363636;
+    font-weight: 700;
 }
 
-    .card-new-course:hover {
-        box-shadow: 0 0 1px 1px rgba(20, 23, 28, .1), 0 3px 1px 0 rgba(20, 23, 28, .1);
-        opacity: 1;
+.btn-link {
+    font-weight: 400;
+    color: #474747;
+    background-color: transparent;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+    .btn-link:hover {
+        text-decoration: none !important;
+        color: #af00b5;
+        background-color: transparent;
+        border-color: transparent;
+        transition: all 400ms ease-in-out;
     }
 
-.title-new-course {
-    font-size: 25px !important;
-    text-align: left;
-    margin-left: 4%;
-    line-height: 6rem;
-    float: left;
+.icon {
+    padding: .5rem;
 }
 
-.card-new-course button {
-    float: right;
-    line-height: 2rem;
-    padding: .5rem 6rem
+.list-group-item {
+    border: 1px solid rgba(0, 0, 0, .125);
+}
+
+.list-group-video {
+    border: none !important;
 }
