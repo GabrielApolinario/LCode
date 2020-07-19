@@ -19,9 +19,9 @@ namespace LCode.Controllers
             if(Session["Adm"] != null || Session["Professor"] != null || Session["Estudante"] != null)
             {
                int usu_id = Convert.ToInt32(Session["UsuId"]);
-               var retorno = ua.GetUsuarios(usu_id);
+               u = ua.GetUsuarios(usu_id);
             
-               return View(retorno);
+               return View(u);
 
             }
 
@@ -34,10 +34,12 @@ namespace LCode.Controllers
         [HttpPost]
         public ActionResult Editar(Usuarios u)
         {
-            
+
             ua.EditaUsuario(u);
+
+            TempData["usuarioAlterado"] = "Os dados foram alterados com sucesso";
             
-            return View();
+            return RedirectToAction("Perfil", "Usuario");
         }
 
         public ActionResult MeusCursos()

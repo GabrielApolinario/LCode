@@ -242,5 +242,11 @@ namespace LCode.Controllers
             return View();
         }
 
+        public ActionResult CursoPorCategoria(int categoria_id)
+        {
+
+            return View();
+        }
+
     }
 }

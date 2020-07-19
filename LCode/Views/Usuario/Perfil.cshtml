@@ -26,6 +26,12 @@
                 <div class="col-12 mt-5">
                     <div class="row w-100 justify-content-center m-auto form-cad">
                         <div class="row w-100 justify-content-center  m-auto">
+                            @if (TempData["usuarioAlterado"] != null)
+                            {
+                                <div class="alert alert-success" role="alert">
+                                    @TempData["usuarioAlterado"]
+                                </div>
+                            }
                             @using (Html.BeginForm("Editar", "Usuario", new { usu_id = Model.Usu_id }))
                             {
                                 <form class="mt-3">
@@ -46,17 +52,17 @@
 
                                         <div class="col-11 form-group mt-3 mx-auto">
                                             <label> @Html.DisplayNameFor(model => model.Usu_email)</label>
-                                            <span class="far fa-envelope"></span>   @Html.EditorFor(model => model.Usu_email, new { htmlAttributes = new { @class = "form-control", @Value = Model.Usu_email } })
+                                            <span class="far fa-envelope"></span>   @Html.EditorFor(model => model.Usu_email, new { htmlAttributes = new { @class = "form-control", @Value = Model.Usu_email, @readonly = true } })
                                         </div>
 
                                         <div class="col-5 form-group mt-3 mx-auto">
                                             <label> @Html.DisplayNameFor(model => model.Usu_cpf_ou_cnpj)</label>
-                                            <span class="fas fa-address-card"></span>@Html.EditorFor(model => model.Usu_cpf_ou_cnpj, new { htmlAttributes = new { @class = "form-control", @Value = Model.Usu_cpf_ou_cnpj } })
+                                            <span class="fas fa-address-card"></span>@Html.EditorFor(model => model.Usu_cpf_ou_cnpj, new { htmlAttributes = new { @class = "form-control", @Value = Model.Usu_cpf_ou_cnpj, @readonly = true } })
                                         </div>
 
                                         <div class="col-5 form-group mt-3 mx-auto">
                                             <label>  @Html.DisplayNameFor(model => model.Usu_data_nasc)</label>
-                                            <span class="far fa-calendar-alt"></span>@Html.EditorFor(model => model.Usu_data_nasc, new { htmlAttributes = new { @class = "form-control", @Value = Model.Usu_data_nasc } })
+                                            <span class="far fa-calendar-alt"></span>@Html.EditorFor(model => model.Usu_data_nasc, new { htmlAttributes = new { @class = "form-control", @Value = Model.Usu_data_nasc.ToString("dd/MM/yyyy") } })
                                         </div>
 
 

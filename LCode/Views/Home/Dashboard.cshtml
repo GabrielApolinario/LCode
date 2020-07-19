@@ -105,8 +105,7 @@
                 <section>
                     <div class="container">
                         <div class="row">
-                            <div class="col-12">
-
+                            <div class="col-12">                               
                                 @if (Session["Adm"] != null || Session["Professor"] != null)
                                 {
                                     <iframe name="iframe-conteudo" src="@Url.Action("CriarCurso", "Curso")" scrolling="no" class="mt-5">

@@ -421,6 +421,7 @@
     <Content Include="Views\Curso\AssistirVideo.cshtml" />
     <Content Include="Views\Curso\DescricaoAula.cshtml" />
     <Content Include="Views\Curso\CriarCurso.cshtml" />
+    <Content Include="Views\Curso\CursoPorCategoria.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

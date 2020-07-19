@@ -111,6 +111,7 @@ namespace LCode.Dados
                     retorno.Read();
                     var tempUsuario = new Usuarios()
                     {
+                        Usu_id = Convert.ToInt32(retorno["usu_id"]),
                         Usu_nome = retorno["usu_nome"].ToString(),
                         Usu_sobrenome = retorno["usu_sobrenome"].ToString(),
                         Usu_senha = retorno["usu_senha"].ToString(),
@@ -129,8 +130,9 @@ namespace LCode.Dados
         public void EditaUsuario(Usuarios u)
         {
             MySqlCommand cmd = new MySqlCommand("UPDATE lc_usuarios SET usu_nome = @proc_nome, usu_sobrenome = @proc_sobrenome, usu_senha = @proc_senha, usu_empresa = @proc_empresa," +
-                " usu_data_nasc = @proc_data_nasc;", bd.AbreConexao());
+                " usu_data_nasc = @proc_data_nasc WHERE usu_id = @proc_usu_id;", bd.AbreConexao());
             cmd.Parameters.AddWithValue("@proc_nome", u.Usu_nome);
+            cmd.Parameters.AddWithValue("@proc_usu_id", u.Usu_id); 
             cmd.Parameters.AddWithValue("@proc_sobrenome", u.Usu_sobrenome);
             cmd.Parameters.AddWithValue("@proc_senha", u.Usu_senha);
             cmd.Parameters.AddWithValue("@proc_empresa", u.Usu_empresa);
