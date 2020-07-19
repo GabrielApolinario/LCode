@@ -15,7 +15,7 @@ iframe {
 }
 
 .bg-mattBlackLight {
-    background-color: #ffffff;
+    background-color: #ffffff !important;
 }
 
 .text-mattBlackLight {
