@@ -55,5 +55,8 @@ namespace LCode.ViewModels
         public int video_curso { get; set; }
 
         public string video_link { get; set; }
+
+        [Required]
+        public HttpPostedFileBase video { get; set; }
     }
 }

@@ -78,29 +78,41 @@
                                         </div>
                                     </div>
                                 </div>
+                                @if (TempData["loginCursosCriados"] != null)
+                                {
+                                    <div class="alert alert-danger">
+                                        @TempData["loginCursosCriados"]
+                                    </div>
+                                }
+                                @if (TempData["loginCompra"] != null)
+                                {
+                                    <div class="alert alert-danger">
+                                        @TempData["loginCompra"]
+                                    </div>
+                                }
                                 <div class="row w-100 justify-content-center text-center m-auto">
                                     @using (Html.BeginForm("Login", "Autenticacao", FormMethod.Post))
                                     {
                                         @Html.AntiForgeryToken()
-                                    <form>
-                                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                                        <div class="form-row align-items-center">
-                                            <div class="col-10 form-group mt-5 mx-auto">
-                                                <span class="far fa-envelope"></span>@Html.EditorFor(model => model.Usu_email, new { htmlAttributes = new { @class = "form-control",placeholder = "Digite seu e-mail" } })
-                                                @Html.ValidationMessageFor(model => model.Usu_email, "", new { @class = "text-danger validateMessage" })
+                                        <form>
+                                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                            <div class="form-row align-items-center">
+                                                <div class="col-10 form-group mt-2 mx-auto">
+                                                    <span class="far fa-envelope"></span>@Html.EditorFor(model => model.Usu_email, new { htmlAttributes = new { @class = "form-control", placeholder = "Digite seu e-mail" } })
+                                                    @Html.ValidationMessageFor(model => model.Usu_email, "", new { @class = "text-danger validateMessage" })
+                                                </div>
+                                                <div class="col-10 form-group mt-3 mx-auto">
+                                                    <span class="fas fa-lock"></span> @Html.EditorFor(model => model.Usu_senha, new { htmlAttributes = new { @class = "form-control", type = "password", placeholder = "Digite sua senha" } })
+                                                    @Html.ValidationMessageFor(model => model.Usu_senha, "", new { @class = "text-danger validateMessage" })
+                                                </div>
                                             </div>
-                                            <div class="col-10 form-group mt-3 mx-auto">
-                                                <span class="fas fa-lock"></span> @Html.EditorFor(model => model.Usu_senha, new { htmlAttributes = new { @class = "form-control", type = "password", placeholder = "Digite sua senha" } })
-                                                @Html.ValidationMessageFor(model => model.Usu_senha, "", new { @class = "text-danger validateMessage" })
+                                            <div class="col-8 col-md-10 mx-auto">
+                                                <button type="submit" class="btn btn-block btn-purple-form mt-4">Entrar</button>
                                             </div>
-                                        </div>
-                                        <div class="col-8 col-md-10 mx-auto">
-                                            <button type="submit" class="btn btn-block btn-purple-form mt-4">Entrar</button>
-                                        </div>
-                                    </form>
+                                        </form>
 
                                     }
-                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -156,7 +156,7 @@ namespace LCode.Controllers
                     });
 
                     TempData["total"] = cursosCarrinho.Sum(c => c.Curso_valor);
-                    
+
                     return View(cursosCarrinho);
                 }
 
@@ -167,7 +167,7 @@ namespace LCode.Controllers
                     var curso = retorno;
 
                     cursosCarrinho.Add(new Curso()
-                    {                       
+                    {
                         Curso_nome = curso.Curso_nome.ToString(),
                         Curso_descricao = curso.Curso_descricao.ToString(),
                         Curso_duracao = Convert.ToDouble(curso.Curso_duracao),
@@ -181,7 +181,10 @@ namespace LCode.Controllers
                 return View(cursosCarrinho);
             }
             else
+            {
+                TempData["loginCompra"] = "Realize o login para realizar a compra!";
                 return RedirectToAction("Login", "Autenticacao");
+            }
         }
 
 
