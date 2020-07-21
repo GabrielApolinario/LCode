@@ -23,7 +23,7 @@ namespace LCode
                       "~/Scripts/bootstrap.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
+                      "~/Content/bootstrap.css",                      
                       "~/Content/cad-curso.css",
                       "~/Content/site.css",
                       "~/Content/login.css",

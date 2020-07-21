@@ -1,0 +1,50 @@
+﻿@model IEnumerable<LCode.ViewModels.CursoVideoModuloViewModel>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>EditarCurso</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>           
+            <th>
+                @Html.DisplayNameFor(model => model.video_titulo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.video_descricao)
+            <th>
+                @Html.DisplayNameFor(model => model.video_link)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>          
+            <td>
+                @Html.DisplayFor(modelItem => item.video_titulo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.video_descricao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.video_link)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "EditarVideo", new { curso_id = item.Curso_id, video_id = item.video_id })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

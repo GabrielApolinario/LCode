@@ -171,10 +171,12 @@
     <Compile Include="Controllers\CursoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\AutenticacaoController.cs" />
+    <Compile Include="Controllers\ProfessorController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Controllers\VideoController.cs" />
     <Compile Include="Dados\CompraAcoes.cs" />
     <Compile Include="Dados\CursosAcoes.cs" />
+    <Compile Include="Dados\ProfessorAcoes.cs" />
     <Compile Include="Dados\UsuarioAcoes.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -422,6 +424,9 @@
     <Content Include="Views\Curso\DescricaoAula.cshtml" />
     <Content Include="Views\Curso\CriarCurso.cshtml" />
     <Content Include="Views\Curso\CursoPorCategoria.cshtml" />
+    <Content Include="Views\Professor\CursosCriados.cshtml" />
+    <Content Include="Views\Professor\EditarCurso.cshtml" />
+    <Content Include="Views\Professor\EditarVideo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
