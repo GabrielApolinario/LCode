@@ -63,6 +63,10 @@ namespace LCode.Models
         [Required(ErrorMessage = "Tipo de usuário é obrigatório")]
         public string Usu_hierarquia { get; set; }
 
+        public string Imagem_link { get; set; }
         
+        [DisplayName("Imagem de perfil")]
+        public HttpPostedFileBase Imagem { get; set; }
+
     }
 }

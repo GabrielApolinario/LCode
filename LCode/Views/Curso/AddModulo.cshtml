@@ -55,13 +55,6 @@
                                     @Html.ValidationMessageFor(model => model.mod_desc, "", new { @class = "text-danger" })
                                 </div>
 
-                                <div class="col-11 form-group mx-auto">
-                                    <label>Quantidade de Aulas</label>
-                                    <span class="fas fa-list-ol"></span>
-                                    @Html.EditorFor(model => model.mod_qtd_video, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.mod_qtd_video, "", new { @class = "text-danger" })
-                                </div>
-
                                 @*@Html.DropDownList("modulos", "Escolha o Módulo")*@
                             </div>
                             <div class="col-4 col-md-6 mx-auto">

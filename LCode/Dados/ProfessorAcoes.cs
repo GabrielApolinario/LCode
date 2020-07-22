@@ -13,7 +13,7 @@ namespace LCode.Dados
         BancoDeDados bd = new BancoDeDados();
         public List<Curso> CursosCriados(int usu_id)
         {
-            MySqlCommand cmd = new MySqlCommand("SELECT DISTINCT * FROM lc_curso, lc_digital WHERE digital_prof = @usu_id AND curso_id = digital_nome;", bd.AbreConexao());
+            MySqlCommand cmd = new MySqlCommand("SELECT DISTINCT * FROM lc_curso, lc_digital, lc_categoria WHERE digital_prof = @usu_id AND curso_id = digital_nome AND curso_categoria = categoria_id;", bd.AbreConexao());
             cmd.Parameters.AddWithValue("@usu_id", usu_id);
             var retorno = cmd.ExecuteReader();
             return GetCursosCriados(retorno);
@@ -30,6 +30,7 @@ namespace LCode.Dados
                     Curso_id = Convert.ToInt32(retorno["curso_id"]),
                     Curso_nome = retorno["curso_nome"].ToString(),
                     Curso_descricao = retorno["curso_descricao"].ToString(),
+                    Categoria_nome = retorno["categoria_nome"].ToString(),
                     Curso_status = Convert.ToInt32(retorno["curso_status"]),
                 });
             }
@@ -40,7 +41,8 @@ namespace LCode.Dados
 
         public List<CursoVideoModuloViewModel> EditarCurso(int curso_id)
         {
-            MySqlCommand cmd = new MySqlCommand("SELECT curso_id, curso_nome, curso_descricao, curso_status,video_id, video_id, video_titulo, video_descricao, video_link FROM lc_curso, lc_video WHERE curso_id = video_curso and curso_id = @curso_id"
+            MySqlCommand cmd = new MySqlCommand("SELECT curso_id, curso_nome, curso_descricao, curso_status, video_id, video_id, video_titulo, video_descricao, video_link FROM lc_curso, lc_video" +
+                " WHERE curso_id = video_curso and curso_id = @curso_id;"
                 , bd.AbreConexao());
             cmd.Parameters.AddWithValue("@curso_id", curso_id);
             var retorno = cmd.ExecuteReader();
@@ -57,7 +59,7 @@ namespace LCode.Dados
                 {
                     Curso_id = Convert.ToInt32(retorno["curso_id"]),
                     Curso_nome = retorno["curso_nome"].ToString(),
-                    Curso_descricao = retorno["curso_descricao"].ToString(),
+                    Curso_descricao = retorno["curso_descricao"].ToString(),                   
                     Curso_status = Convert.ToInt32(retorno["curso_status"]),
                     video_id = Convert.ToInt32(retorno["video_id"]),
                     video_titulo = retorno["video_titulo"].ToString(),
@@ -101,8 +103,23 @@ namespace LCode.Dados
 
             retorno.Close();
             bd.FecharConexao();
-            return v;
-            
+            return v;           
+        }
+
+        public void AtivarCurso(int curso_id)
+        {
+            MySqlCommand cmd = new MySqlCommand("UPDATE lc_curso SET curso_status = 1 WHERE curso_id = @curso_id", bd.AbreConexao());
+            cmd.Parameters.AddWithValue("@curso_id", curso_id);
+            cmd.ExecuteNonQuery();
+            bd.FecharConexao();
+        }
+
+        public void DesativarCurso(int curso_id)
+        {
+            MySqlCommand cmd = new MySqlCommand("UPDATE lc_curso SET curso_status = 0 WHERE curso_id = @curso_id", bd.AbreConexao());
+            cmd.Parameters.AddWithValue("@curso_id", curso_id);
+            cmd.ExecuteNonQuery();
+            bd.FecharConexao();
         }
     }
 }

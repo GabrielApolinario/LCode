@@ -32,7 +32,7 @@
                                     @TempData["usuarioAlterado"]
                                 </div>
                             }
-                            @using (Html.BeginForm("Editar", "Usuario", new { usu_id = Model.Usu_id }))
+                            @using (Html.BeginForm("Editar", "Usuario", new { usu_id = Model.Usu_id }, FormMethod.Post, new { enctype = "multipart/form-data" }))
                             {
                                 <form class="mt-3">
                                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -75,6 +75,11 @@
                                         <div class="col-11 form-group mt-3 mx-auto">
                                             <label> @Html.DisplayNameFor(model => model.Usu_senha)</label>
                                             <span class="fas fa-lock"></span> @Html.EditorFor(model => model.Usu_senha, new { htmlAttributes = new { @class = "form-control", @Value = Model.Usu_senha, @Type = "password" } })
+                                        </div>
+
+                                        <div class="col-11 form-group mt-3 mx-auto">
+                                            <label> @Html.DisplayNameFor(model => model.Imagem) </label>
+                                            <span class="fas fa-image"></span>@Html.TextBoxFor(model => model.Imagem, new { type = "file", @class = "form-control"})
                                         </div>
 
                                     </div>

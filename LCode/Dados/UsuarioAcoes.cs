@@ -119,6 +119,7 @@ namespace LCode.Dados
                         Usu_data_nasc = Convert.ToDateTime(retorno["usu_data_nasc"]),
                         Usu_cpf_ou_cnpj = retorno["usu_cpf_or_cnpj"].ToString(),
                         Usu_email = retorno["usu_email"].ToString(),
+                        Imagem_link = retorno["usu_imagem"].ToString(),
                     };
                     usuarioDetalhe.Add(tempUsuario);
             }
@@ -129,7 +130,7 @@ namespace LCode.Dados
 
         public void EditaUsuario(Usuarios u)
         {
-            MySqlCommand cmd = new MySqlCommand("UPDATE lc_usuarios SET usu_nome = @proc_nome, usu_sobrenome = @proc_sobrenome, usu_senha = @proc_senha, usu_empresa = @proc_empresa," +
+            MySqlCommand cmd = new MySqlCommand("UPDATE lc_usuarios SET usu_nome = @proc_nome, usu_sobrenome = @proc_sobrenome, usu_senha = @proc_senha, usu_empresa = @proc_empresa, usu_imagem = @proc_imagem_link," +
                 " usu_data_nasc = @proc_data_nasc WHERE usu_id = @proc_usu_id;", bd.AbreConexao());
             cmd.Parameters.AddWithValue("@proc_nome", u.Usu_nome);
             cmd.Parameters.AddWithValue("@proc_usu_id", u.Usu_id); 
@@ -137,6 +138,7 @@ namespace LCode.Dados
             cmd.Parameters.AddWithValue("@proc_senha", u.Usu_senha);
             cmd.Parameters.AddWithValue("@proc_empresa", u.Usu_empresa);
             cmd.Parameters.AddWithValue("@proc_data_nasc", u.Usu_data_nasc);
+            cmd.Parameters.AddWithValue("@proc_imagem_link", u.Imagem_link);
 
             cmd.ExecuteNonQuery();
             bd.FecharConexao();

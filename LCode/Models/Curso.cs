@@ -32,12 +32,14 @@ namespace LCode.Models
         [Required(ErrorMessage = "Insira uma descrição do curso")]
         public string Curso_descricao { get; set; }
 
-        [DisplayName("Status")]
+        [DisplayName("Status do Curso")]
         public int Curso_status { get; set; }
 
         [DisplayName("Categoria")]
         [Required(ErrorMessage = "Selecione uma categoria para o curso")]
         public int Curso_categoria { get; set; }
+        [DisplayName("Categoria")]
+        public string Categoria_nome { get; set; }
 
         public string Compra_pag_forma { get; set; }
 
@@ -45,6 +47,7 @@ namespace LCode.Models
 
         [Required(ErrorMessage = "Selecione uma imagem para o curso")]
         public HttpPostedFileBase Imagem { get; set; }
+
 
     }
 }

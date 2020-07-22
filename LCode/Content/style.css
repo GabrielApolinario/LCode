@@ -164,7 +164,13 @@
         height: 180px;
         margin-left: 8%;
     }
-    
+
+    .img-perfil {
+        width: 180px;
+        height: 180px;
+        margin-left: 8%;
+        border-radius:50%;
+    }
     .drop-link {
         color: #464646;
     }

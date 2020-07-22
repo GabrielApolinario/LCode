@@ -93,7 +93,6 @@ namespace LCode.Controllers
                 mod_desc = m.mod_desc,
                 mod_nome = m.mod_nome,
                 mod_curso = m.mod_curso,
-                mod_qtd_video = m.mod_qtd_video,
 
             };
 

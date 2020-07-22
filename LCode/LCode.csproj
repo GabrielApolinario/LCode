@@ -430,6 +430,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="ImagemUsuario\" />
     <Folder Include="ImagensCurso\" />
     <Folder Include="obj\Debug\TempPE\" />
     <Folder Include="obj\Release\" />

@@ -194,7 +194,6 @@ namespace LCode.Models
             cmd.Parameters.AddWithValue("proc_mod_curso", m.mod_curso);
             cmd.Parameters.AddWithValue("proc_mod_nome", m.mod_nome);
             cmd.Parameters.AddWithValue("proc_mod_desc", m.mod_desc);
-            cmd.Parameters.AddWithValue("proc_mod_qtd_video", m.mod_qtd_video);
             cmd.Parameters.Add("novo_mod_id", MySqlDbType.Int32);
             cmd.Parameters["novo_mod_id"].Direction = ParameterDirection.Output;
             con.Open();

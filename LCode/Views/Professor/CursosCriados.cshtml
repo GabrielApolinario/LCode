@@ -14,6 +14,16 @@
     <link rel="stylesheet" href="~/Content/cad-curso.css">
     <link rel="stylesheet" href="~/Content/style.css" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+<script>
+    function confirmarAlteracao() {
+        var resposta = confirm("Deseja alterar o status do curso?");
+        if (resposta == true)
+        {
+            document.getElementById('btnStatus').click();
+        };
+    }
+</script>
 </head>
 <body>
     <table class="table">
@@ -26,29 +36,46 @@
                     @Html.DisplayNameFor(model => model.Curso_descricao)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Curso_categoria)
+                    @Html.DisplayNameFor(model => model.Categoria_nome)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Curso_status)
                 </th>
                 <th> <i class="fas fa-edit"></i></th>
             </tr>
         </thead>
     @foreach (var item in Model)
     {
-    <tbody>
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Curso_nome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Curso_descricao)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Curso_categoria)
-            </td>
-            <td>
-                <a href="@Url.Action("EditarCurso", "Professor", new { curso_id = item.Curso_id })"><button type="submit" class="btn btn-purple-form btn-cursos-criados">Editar</button></a>
-            </td>
-        </tr>
-    </tbody>
+        <tbody>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Curso_nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Curso_descricao)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Categoria_nome)
+                </td>
+                @if (item.Curso_status == 1)
+                {
+                    <td>
+                        <a href="@Url.Action("DesativarCurso", "Professor", new { curso_id = item.Curso_id })"><button type="submit" class="btn btn-purple-form btn-cursos-criados" id="btnStatus" onclick="confirmarAlteracao()"
+                            >Desativar</button></a>
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        <a href="@Url.Action("AtivarCurso", "Professor", new { curso_id = item.Curso_id })"><button type="submit" class="btn btn-purple-form btn-cursos-criados" id="btnStatus" onclick="confirmarAlteracao()"
+                            >Ativar</button></a>
+                    </td>
+                }
+                <td>
+                    <a href="@Url.Action("EditarCurso", "Professor", new { curso_id = item.Curso_id })"><button type="submit" class="btn btn-purple-form btn-cursos-criados">Editar</button></a>
+                </td>
+            </tr>
+        </tbody>
     }
     
     </table>

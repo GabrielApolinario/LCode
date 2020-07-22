@@ -17,7 +17,7 @@ namespace LCode.Dados
 
         public List<Curso> PesquisarCursos(string pesquisa)
         {
-            string query = String.Format("SELECT * FROM lc_curso WHERE curso_nome LIKE '%{0}%' OR curso_categoria LIKE '%{0}%';", pesquisa);
+            string query = String.Format("SELECT * FROM lc_curso WHERE curso_nome LIKE '%{0}%' OR curso_categoria LIKE '%{0}%' AND curso_status = 1;", pesquisa);
             MySqlCommand cmd = new MySqlCommand(query, bd.AbreConexao());
             var retorno = cmd.ExecuteReader();
             return GetCursos(retorno);
@@ -50,13 +50,12 @@ namespace LCode.Dados
         public List<Curso> ListarCursos()
         {
 
-            var strQuery = "SELECT * FROM lc_Curso ORDER BY curso_categoria, curso_nome asc;";
+            var strQuery = "SELECT * FROM lc_Curso WHERE curso_status = 1 ORDER BY curso_categoria, curso_nome asc;";
             MySqlCommand cmd = new MySqlCommand(strQuery, bd.AbreConexao());
             var retorno = cmd.ExecuteReader();
             return ListaDeCursos(retorno);
         }
 
-        //Retorna lista de cursos cadastrados
         public List<Curso> ListaDeCursos(MySqlDataReader retorno)
         {
             var cursos = new List<Curso>();
@@ -201,7 +200,7 @@ namespace LCode.Dados
 
         public List<Curso> CursosPorCategoria(int categoria_id)
         {
-            MySqlCommand cmd = new MySqlCommand("Select * from lc_curso where curso_categoria = @categoria_id ORDER BY curso_nome", bd.AbreConexao());
+            MySqlCommand cmd = new MySqlCommand("Select * from lc_curso where curso_categoria = @categoria_id AND curso_status = 1 ORDER BY curso_nome", bd.AbreConexao());
             cmd.CommandType = CommandType.Text;
             cmd.Parameters.AddWithValue("@categoria_id", categoria_id);
             var retorno = cmd.ExecuteReader();

@@ -1,4 +1,5 @@
-﻿using LCode.Models;
+﻿using LCode.Dados;
+using LCode.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace LCode.Controllers
     public class HomeController : Controller
     {
         BancoDeDados bd = new BancoDeDados();
-
+        UsuarioAcoes ua = new UsuarioAcoes();
         public ActionResult Index()
         {
             var retorno = bd.BuscaCategorias();
@@ -35,8 +36,9 @@ namespace LCode.Controllers
         public ActionResult Dashboard()
         {
             if (Session["Adm"] != null || Session["Professor"] != null || Session["Estudante"] != null)
-            { 
-                return View();
+            {
+               var retorno = ua.GetUsuarios(Convert.ToInt32(Session["UsuId"]));
+                return View(retorno);
             }
 
             return RedirectToAction("Login", "Autenticacao");

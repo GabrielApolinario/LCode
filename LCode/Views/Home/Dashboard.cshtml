@@ -56,7 +56,15 @@
     <div class="wrapper d-flex">
         <div class="sideMenu bg-mattBlackLight">
             <div class="sidebar mt-5">
-                <img src="~/image/avatar.png" class="avatar" />
+                @try
+                {
+                    <img src="@Url.Content(Model.Imagem_link)" class="img-perfil" />
+                }
+                catch
+                {
+                <img src="~/image/avatar.png" class="img-perfil" />
+                }
+
                 <ul class="navbar-nav">
                     <li class="nav-item">
                         <a href="@Url.Action("Perfil", "Usuario")" class="nav-link px-2" target="iframe-conteudo">

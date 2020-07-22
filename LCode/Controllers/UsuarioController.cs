@@ -2,6 +2,7 @@
 using LCode.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -34,12 +35,50 @@ namespace LCode.Controllers
         [HttpPost]
         public ActionResult Editar(Usuarios u)
         {
+            try
+            {
+                string FileName = Path.GetFileNameWithoutExtension(u.Imagem.FileName);
 
-            ua.EditaUsuario(u);
+                string FileExtension = Path.GetExtension(u.Imagem.FileName);
 
-            TempData["usuarioAlterado"] = "Os dados foram alterados com sucesso";
+                string final = "";
+
+                foreach (char s in FileName.ToCharArray())
+                {
+                    if (s != ' ')
+                        final += s;
+                }
+
+                FileName = final;
+
+                FileName = FileName + "-" + Session["UsuId"].ToString() + FileExtension;
+
+                string UploadPath = Server.MapPath("~/ImagemUsuario/");
+
+                u.Imagem_link = UploadPath + FileName;
+
+                u.Imagem.SaveAs(u.Imagem_link);
+
+                u.Imagem_link = "~/ImagemUsuario/" + FileName;
+                
+                ua.EditaUsuario(u);
+
+                TempData["usuarioAlterado"] = "Os dados foram alterados com sucesso";
+
+                return RedirectToAction("Perfil", "Usuario");
+            }
+            catch
+            {
+                var imagemPadrao = ua.GetUsuarios(Convert.ToInt32(Session["UsuId"]));
+                u.Imagem_link = imagemPadrao.Imagem_link;
+
+                ua.EditaUsuario(u);
+
+                TempData["usuarioAlterado"] = "Os dados foram alterados com sucesso";
             
-            return RedirectToAction("Perfil", "Usuario");
+                return RedirectToAction("Perfil", "Usuario");
+            }
+
         }
 
         public ActionResult MeusCursos()

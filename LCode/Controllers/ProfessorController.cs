@@ -82,6 +82,19 @@ namespace LCode.Controllers
             return View();
         }
 
+        public ActionResult AtivarCurso(int curso_id)
+        {
+            pa.AtivarCurso(curso_id);
+
+            return RedirectToAction("CursosCriados", "Professor");
+        }
+
+        public ActionResult DesativarCurso(int curso_id)
+        {
+            pa.DesativarCurso(curso_id);
+
+            return RedirectToAction("CursosCriados", "Professor");
+        }
 
     }
 }
