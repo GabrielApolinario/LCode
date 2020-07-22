@@ -1,35 +1,62 @@
-﻿    @{
+﻿@{
     Layout = null;
-    }
+}
 
-    <!DOCTYPE html>
 
-    <html>
-    <head>
-        <meta name="viewport" content="width=device-width" />
-        <title>Certificado</title>
-    </head>
-    <body>
-        <div>
-            <h4>Curso</h4>
-            <hr />
-        </div>
-        <div>
-            @if (ViewData["usuario"] != null)
-            {
-                var usuario = ViewData["usuario"] as IEnumerable<LCode.Models.Usuarios>;
-                <div>
-                    @usuario.Select(u => u.Usu_nome)
+
+<head>
+    <meta charset="utf-8">
+    <title>Imprima seu certificado!</title>
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/certificado.css">
+    <link href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;800&display=swap" rel="stylesheet">
+    <link rel=" icon " type="image/png " sizes="16x16 " href="image/favicon.png ">
+    <link rel="stylesheet " href="https://use.fontawesome.com/releases/v5.5.0/css/all.css " integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU " crossorigin="anonymous ">
+
+</head>
+
+<body>
+    <header>
+        <img src="~/image/bandeira.png">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-12">
+
+                    <h5 class="certificado-title">
+                        Certificado de conclusão
+                    </h5>
+                    <h5 class="declaration fins">
+                        Certifico para os devidos fins que
+                    </h5>
+                    <h3 class="nome-aluno">
+                        Gabrielle Torres</h3>
+                        <h5 class="declaration">
+                            Assistiu vídeo-aulas do curso <span class="nome-curso">Introdução ao HTML</span> com carga horária estimada em 12 horas e concluído em 22 de julho de 2020.
+                            <h5>
+                                <img src="~/image/selo.png" class="selo">
                 </div>
-            }
-            @if (ViewData["curso"] != null)
-            {
-                var curso = ViewData["curso"] as IEnumerable<LCode.Models.Curso>;
-                <div>
-                    @curso.Select(c => c.Curso_nome)
-                </div>
-            }
-        </div>
 
-    </body>
-</html>
+            </div>
+        </div>
+    </header>
+</body>
+
+
+<!--   <div>
+       @if (ViewData["usuario"] != null)
+       {
+           var usuario = ViewData["usuario"] as IEnumerable<LCode.Models.Usuarios>;
+           <div>
+               @usuario.Select(u => u.Usu_nome)
+           </div>
+       }
+       @if (ViewData["curso"] != null)
+       {
+           var curso = ViewData["curso"] as IEnumerable<LCode.Models.Curso>;
+           <div>
+               @curso.Select(c => c.Curso_nome)
+           </div>
+       }
+   </div>-->
