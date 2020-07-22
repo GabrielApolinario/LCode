@@ -26,7 +26,7 @@ namespace LCode.Controllers
 
             if(Session["carrinho"] == null)
             {
-                ViewBag.carrinhoVazio = "Você não adicionou nenhum curso ao carrinho";
+                TempData["carrinhoVazio"] = "Seu carrinho está vazio!";
                 return View();
             }
 
@@ -159,26 +159,29 @@ namespace LCode.Controllers
 
                     return View(cursosCarrinho);
                 }
-
-                foreach (var item in (List<Curso>)Session["carrinho"])
-                {
-                    retorno = ca.CursoCarrinho(item.Curso_id);
-
-                    var curso = retorno;
-
-                    cursosCarrinho.Add(new Curso()
+                if (Session["carrinho"] != null) {
+                    foreach (var item in (List<Curso>)Session["carrinho"])
                     {
-                        Curso_nome = curso.Curso_nome.ToString(),
-                        Curso_descricao = curso.Curso_descricao.ToString(),
-                        Curso_duracao = Convert.ToDouble(curso.Curso_duracao),
-                        Curso_valor = Convert.ToDouble(curso.Curso_valor),
-                        Curso_id = Convert.ToInt32(curso.Curso_id),
-                        Imagem_link = curso.Imagem_link.ToString(),
-                    });
+                        retorno = ca.CursoCarrinho(item.Curso_id);
 
-                    TempData["total"] = cursosCarrinho.Sum(c => c.Curso_valor);
+                        var curso = retorno;
+
+                        cursosCarrinho.Add(new Curso()
+                        {
+                            Curso_nome = curso.Curso_nome.ToString(),
+                            Curso_descricao = curso.Curso_descricao.ToString(),
+                            Curso_duracao = Convert.ToDouble(curso.Curso_duracao),
+                            Curso_valor = Convert.ToDouble(curso.Curso_valor),
+                            Curso_id = Convert.ToInt32(curso.Curso_id),
+                            Imagem_link = curso.Imagem_link.ToString(),
+                        });
+
+                        TempData["total"] = cursosCarrinho.Sum(c => c.Curso_valor);
+                    }
+                    return View(cursosCarrinho);
                 }
-                return View(cursosCarrinho);
+                TempData["carrinhoVazio"] = "Seu carrinho está vazio!";
+                return View("Carrinho");
             }
             else
             {

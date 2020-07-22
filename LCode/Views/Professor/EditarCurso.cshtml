@@ -9,24 +9,24 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>EditarCurso</title>
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/login.css">
+    <link rel="stylesheet" href="~/Content/cad-curso.css">
+    <link rel="stylesheet" href="~/Content/style.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 </head>
 <body>
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
     <table class="table">
-        <tr>           
-            <th>
-                @Html.DisplayNameFor(model => model.video_titulo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.video_descricao)
-            <th>
-                @Html.DisplayNameFor(model => model.video_link)
-            </th>
-            <th></th>
-        </tr>
+        <thead class="thead-dark">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.video_titulo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.video_descricao)
+                <th><i class="fas fa-edit"></i></th>
+            </tr>
+        </thead>
     
     @foreach (var item in Model) {
         <tr>          
@@ -37,10 +37,7 @@
                 @Html.DisplayFor(modelItem => item.video_descricao)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.video_link)
-            </td>
-            <td>
-                @Html.ActionLink("Editar", "EditarVideo", new { curso_id = item.Curso_id, video_id = item.video_id })
+                <a href="@Url.Action("EditarVideo", "Professor", new { curso_id = item.Curso_id, video_id = item.video_id })"><button type="submit" class="btn btn-purple-form btn-cursos-criados">Editar</button></a>
             </td>
         </tr>
     }

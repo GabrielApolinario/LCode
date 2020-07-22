@@ -68,7 +68,6 @@ label {
 .card-text {
     text-align: justify;
     color: #909090;
-    text-align: center;
 }
 
 .meus-cursos:hover {
@@ -152,4 +151,13 @@ label {
 .img-dicas img:hover {
     transform: scale(2.6);
     transition: all 300ms ease-in-out;
+}
+
+.btn-cursos-criados {
+    padding: .5rem 1rem !important;
+}
+
+.card-meus-cursos{
+    width:100%;
+    height:15rem;
 }

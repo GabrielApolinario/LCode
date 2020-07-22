@@ -40,20 +40,27 @@
                         </div>
 
 
-                    }
+                    }                   
                     <table class="table table-borderless">
                         <thead>
                             <tr>
                                 <th class="cart-title">
                                     <h2>Seu <span class="color-purple">carrinho</span></h2>
                                 </th>
-
                                 <th class="cart-title">
                                     <h4>@ViewBag.qtde</h4>
                                 </th>
                             </tr>
                         </thead>
                         <tbody>
+                                @if (TempData["carrinhoVazio"] != null)
+                                {
+                                    <tr>
+                                        <td class="alert alert-danger" role="alert">
+                                            <strong>Oh não! </strong>@TempData["carrinhoVazio"]
+                                        </td>
+                                    </tr>
+                                }
                             @if (Model != null)
                             {
                                 foreach (var item in Model)
@@ -93,6 +100,8 @@
                     </table>
                 </div>
 
+                    @if (Model != null)
+                    {
                 <div class="col-12 col-md-12 col-lg-4 col-xl-4 cart-comprar mt-5">
 
                     <table class="table table-borderless mt-5">
@@ -131,10 +140,10 @@
 
                     </table>
                     <div class="col-12 col-md-12">
-                        <a href="@Url.Action("Compra","Compra")"><button type="submit" class="btn btn-block btn-cart">Comprar</button> </a>
+                        <a href="@Url.Action("Compra", "Compra")"><button type="submit" class="btn btn-block btn-cart">Comprar</button> </a>
                     </div>
-
                 </div>
+                    }
             </div>
 
 

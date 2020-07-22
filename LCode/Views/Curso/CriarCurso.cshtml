@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     Layout = null;
 }
 
@@ -7,11 +6,15 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Criar curso</title>  
+    <title>Criar curso</title>
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/login.css">
+    <link rel="stylesheet" href="~/Content/cad-curso.css">
+    <link rel="stylesheet" href="~/Content/style.css" />
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" type="image/png" sizes="16x16" href="image/favicon.png">
+    <link rel="icon" type="~/image/png" sizes="16x16" href="~/image/favicon.png">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-    @Styles.Render("~/Content/css")
 
 </head>
 
@@ -26,21 +29,67 @@
                             <div class="meus-cursos">
                                 <div class="card-new-course">
                                     <div class="card-body">
-                                        <div class="img-meus-cursos">
-                                            <i class="far fa-edit"></i>
+                                        <div class="img-dicas">
+                                            <img src="~/image/criar-curso.png" class="mt-2">
                                         </div>
                                         <h5 class="card-title title-new-course">Iniciar a criação do curso</h5>
-                                        <a href="@Url.Action("CadastroCurso", "Curso")">
-                                        <button type="submit" class="btn btn-purple-form mt-4">Crie seu curso</button></a>
+                                        <a href="@Url.Action("CadastroCurso", "Curso")"><button type="submit" class="btn btn-purple-form mt-4">Crie seu curso</button></a>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <div class="col-sm-12 mt-3">
+                            <h4 class="text-center">Achamos que essas dicas serão úteis na criação do seu curso.</h4>
+                        </div>
 
+                        <div class="col-sm-12 mt-3 ">
+                            <div class="meus-cursos">
+                                <div class="card-dicas">
+                                    <div class="card-body">
+                                        <div class="img-dicas mt-4">
+                                            <img src="~/image/video-interativo.png" class="">
+                                        </div>
+                                        <h6 class="title-card-dicas">Iniciar a criação do curso</h6>
+                                        <p>
+                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam esse, eveniet odit numquam itaque assumenda voluptatibus unde excepturi omnis iure ratione voluptates delectus consequatur corporis inventore temporibus
+                                            suscipit modi dolore.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-sm-6 mt-5 ">
+                            <div class="meus-cursos">
+                                <div class="card-dicas">
+                                    <div class="card-body">
+                                        <div class="img-dicas">
+                                            <img src="~/image/estrelas-user.png" class="">
+                                        </div>
+                                        <h6 class="title-card-dicas">Iniciar a criação do curso</h6>
+                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam esse, eveniet odit numquam itaque assumenda voluptatibus unde excepturi omnis iure ratione voluptates.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-sm-6 mt-5 ">
+                            <div class="meus-cursos">
+                                <div class="card-dicas">
+                                    <div class="card-body">
+                                        <div class="img-dicas">
+                                            <img src="~/image/dicas-curso.png" class="">
+                                        </div>
+                                        <h6 class="title-card-dicas">Iniciar a criação do curso</h6>
+                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam esse, eveniet odit numquam itaque assumenda voluptatibus unde excepturi suscipit modi dolore.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
     </section>
 
 </body>

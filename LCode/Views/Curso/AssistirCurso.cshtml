@@ -37,20 +37,38 @@
             <div class="collapse navbar-collapse flex-grow-1 text-right" id="myNavbar">
                 <ul class="navbar-nav ml-auto flex-nowrap">
                     <li class="nav-item">
-                        <span class="span"><a href="index.html" class="nav-link m-2">HOME</a></span>
+                        <span class="span">@Html.ActionLink("HOME", "Index", "Home", new { area = "" }, new { @class = "nav-link m-2" })</span>
                     </li>
                     <li class="nav-item">
-                        <span class="span"><a href="course.html" class="nav-link m-2">CURSOS</a></span>
+                        <span class="span">@Html.ActionLink("CURSOS", "Cursos", "Curso", new { area = "" }, new { @class = "nav-link m-2" })</span>
                     </li>
                     <li class="nav-item">
-                        <span class="span"><a href="about.html" class="nav-link m-2 active-1">SOBRE</a></span>
+                        <span class="span">@Html.ActionLink("SOBRE", "Sobre", "Home", new { area = "" }, new { @class = "nav-link m-2" })</span>
                     </li>
                     <li class="nav-item">
-                        <span class="span"><a href="contato.html" class="nav-link m-2 active-1">CONTATO</a></span>
+                        <span class="span">@Html.ActionLink("CONTATO", "Contato", "Home", new { area = "" }, new { @class = "nav-link m-2" })</span>
                     </li>
-                    <li class="nav-item">
-                        <span class="span"> <a href="login.html" class="nav-link m-2">CADASTRE-SE</a></span>
-                    </li>
+                    @if (Session["Adm"] != null || Session["Professor"] != null || Session["Estudante"] != null)
+                    {
+                        <li class="nav-item">
+                            <span class="span"><a class="nav-link m-2" href="@Url.Action("Carrinho", "Compra")"><i id="icon-carrinho" class="fas fa-shopping-cart"></i></a></span>
+                        </li>
+                        <li class="nav-item">
+                            <span class="span">@Html.ActionLink(Session["Nome"].ToString().ToUpper(), "Dashboard", "Home", new { area = "" }, new { @class = "nav-link m-2" })</span>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item">
+                            <span class="span">@Html.ActionLink("CADASTRE-SE", "Cadastro", "Autenticacao", new { area = "" }, new { @class = "nav-link m-2" })</span>
+                        </li>
+                        <li class="nav-item">
+                            <span class="span">@Html.ActionLink("LOGIN", "Login", "Autenticacao", new { area = "" }, new { @class = "nav-link m-2" })</span>
+                        </li>
+                        <li class="nav-item">
+                            <span class="span"><a class="nav-link m-2" href="@Url.Action("Carrinho", "Compra")"><i id="icon-carrinho" class="fas fa-shopping-cart"></i></a></span>
+                        </li>
+                    }
                 </ul>
             </div>
         </nav>
@@ -65,7 +83,7 @@
 
             <div class="row">
                 <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8 mt-1">
-                    <iframe width="560" height="315" name="iframe-assistir" src="@Url.Action("AssistirVideo", "Curso", new { curso_id = Request.QueryString["curso_id"] ,video_id = Request.QueryString["video_id"] })" frameborder="0" allowfullscreen scrolling="no" class="mt-5">
+                    <iframe name="iframe-assistir" src="@Url.Action("AssistirVideo", "Curso", new { curso_id = Request.QueryString["curso_id"] ,video_id = Request.QueryString["video_id"] })" frameborder="0" allowfullscreen scrolling="no" class="mt-5 iframe-assistir">
                     </iframe>
 
                 </div>
@@ -112,20 +130,19 @@
                             }
                         </div>
                     </div>
-
+        </div>
             <div class="row">
                 <div class="col-12 ">
                     <div class="col-lg-12 mt-5 ">
                         <h3 class="ml-3 "><span class="color-purple ">Descrição</span> da aula</h3>
                         <div class="col-8 description mt-3 ">
-                            <p><iframe width="560" height="315" name="iframe-assistir" src="@Url.Action("DescricaoAula", "Curso", new { curso_id = Request.QueryString["curso_id"]
+                            <iframe width="560" height="315" name="iframe-assistir" src="@Url.Action("DescricaoAula", "Curso", new { curso_id = Request.QueryString["curso_id"]
                                                                                            ,video_id = Request.QueryString["video_id"] })" frameborder="0" allowfullscreen scrolling="no" class="mt-5">
-                               </iframe></p>
+                            </iframe>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
         </div>
     </main>
     <script src="js/global.js "></script>

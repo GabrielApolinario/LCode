@@ -84,8 +84,10 @@
                                 <div class="jumbotron jumbotron-pay">
 
                                     <table class="table table-borderless mt-5">
-                                        @foreach (var item in Model)
+                                        @if (Model != null)
                                         {
+                                            foreach (var item in Model)
+                                            {
                                             <tr class="card-cart card-pay">
                                                 <td>
                                                     <img src="@Url.Content(item.Imagem_link)" class="cart-img">
@@ -95,6 +97,7 @@
                                                     <p class="cart-price cart-price-pay">R$ @Html.DisplayFor(model => item.Curso_valor)</p>
                                                 </td>
                                             </tr>
+                                            }
                                         }
                                     </table>
 
