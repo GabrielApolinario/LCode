@@ -1,4 +1,5 @@
-﻿@{
+﻿@model LCode.ViewModels.UsuarioCursoViewModel
+@{
     Layout = null;
 }
 
@@ -31,9 +32,9 @@
                         Certifico para os devidos fins que
                     </h5>
                     <h3 class="nome-aluno">
-                        Gabrielle Torres</h3>
+                        @Html.DisplayFor(model => model.Usu_nome)</h3>
                         <h5 class="declaration">
-                            Assistiu vídeo-aulas do curso <span class="nome-curso">Introdução ao HTML</span> com carga horária estimada em 12 horas e concluído em 22 de julho de 2020.
+                            Assistiu vídeo-aulas do curso <span class="nome-curso">@Html.DisplayFor(model => model.Curso_nome) </span> com carga horária estimada em @Html.DisplayFor(model => model.Curso_duracao) horas e concluído em @Html.DisplayFor(model => model.Hora_Certificado).
                             <h5>
                                 <img src="~/image/selo.png" class="selo">
                 </div>
@@ -43,20 +44,3 @@
     </header>
 </body>
 
-
-<!--   <div>
-       @if (ViewData["usuario"] != null)
-       {
-           var usuario = ViewData["usuario"] as IEnumerable<LCode.Models.Usuarios>;
-           <div>
-               @usuario.Select(u => u.Usu_nome)
-           </div>
-       }
-       @if (ViewData["curso"] != null)
-       {
-           var curso = ViewData["curso"] as IEnumerable<LCode.Models.Curso>;
-           <div>
-               @curso.Select(c => c.Curso_nome)
-           </div>
-       }
-   </div>-->

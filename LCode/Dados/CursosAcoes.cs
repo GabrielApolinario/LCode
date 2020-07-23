@@ -226,5 +226,32 @@ namespace LCode.Dados
             retorno.Close();
             return cursos;
         }
+
+        public UsuarioCursoViewModel GetCertificado(int curso_id, int usu_id)
+        {
+            MySqlCommand cmd = new MySqlCommand("SELECT * FROM lc_certificado ct, lc_curso c, lc_usuarios u WHERE ct.certificado_curso_comprado = c.curso_id " +
+                "AND ct.certificado_usuario = u.usu_id " +
+                "AND ct.certificado_curso_comprado = @proc_curso_id " +
+                "AND u.usu_id = @proc_usu_id; ", bd.AbreConexao());
+            cmd.Parameters.AddWithValue("@proc_curso_id", curso_id);
+            cmd.Parameters.AddWithValue("@proc_usu_id", usu_id);
+            var retorno = cmd.ExecuteReader();
+
+            MySqlDataReader rt = retorno;
+            UsuarioCursoViewModel uc = new UsuarioCursoViewModel();
+
+            if (rt.HasRows)
+            {
+                rt.Read();
+
+                uc.Curso_nome = retorno["curso_nome"].ToString();
+                uc.Usu_nome = retorno["usu_nome"].ToString();
+                uc.Curso_duracao = Convert.ToDouble(retorno["curso_duracao"]);                
+            }
+
+            bd.FecharConexao();
+            return uc;
+        }
+
     }
 }

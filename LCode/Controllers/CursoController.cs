@@ -228,12 +228,12 @@ namespace LCode.Controllers
             return View(retorno);
         }
 
-        public ActionResult Certificado(int curso_id, int usu_id)
+        public ActionResult Certificado(int curso_id)
         {
-            ViewData["curso"] = ca.QueryDetalhesCurso(curso_id);
-            ViewData["usuario"] = ua.GetUsuarios(usu_id);
+            //ca.CriarCertificado(curso_id, Convert.ToInt32(Session["UsuId"]));
+            var retorno = ca.GetCertificado(curso_id, Convert.ToInt32(Session["UsuId"]));
 
-            return View();
+            return View(retorno);
         }
 
         public ActionResult CriarCurso()
