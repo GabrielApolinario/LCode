@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using LCode.ViewModels;
 using System.IO;
+using LCode.Models;
 
 namespace LCode.Controllers
 {
@@ -23,8 +24,6 @@ namespace LCode.Controllers
             }
                 TempData["loginCursosCriados"] = "É obrigatório realizar o login para acessar os cursos criados por você!";
                 return RedirectToAction("Login", "Autenticacao");
-
-
         }
 
         [HttpGet]

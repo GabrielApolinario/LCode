@@ -32,9 +32,17 @@
                                             <div class="img-meus-cursos">
                                                 <img src="~/image/video.png">
                                             </div>
+                                            @if (item.CursoComprado_favorito == 1)
+                                            {
+                                                <a href="@Url.Action("RemoveFavorito", "Curso", new { cursoComprado_id = item.CursoComprado_id })"><i class="fas fa-star"></i></a>
+                                            }
+                                            else
+                                            {
+                                                <a href="@Url.Action("AddFavorito", "Curso", new { cursoComprado_id = item.CursoComprado_id })"><i class="far fa-star"></i></a>
+                                            }
                                             <h5 class="card-title">@Html.DisplayFor(model => item.Curso_nome)</h5>
                                             <p class="card-text">@Html.DisplayFor(model => item.Curso_descricao)</p>
-                                        </div>
+</div>
                                     </div>
                                 </a>
                             </div>

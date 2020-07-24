@@ -16,6 +16,9 @@ namespace LCode.Models
         [DisplayName("Identificação")]
         public int Curso_id { get; set; }
 
+        public int CursoComprado_favorito { get; set; }
+        public int CursoComprado_id { get; set; }
+
         [DisplayName("Nome")]
         [Required(ErrorMessage = "O nome do curso deve ser preenchido")]
         public string Curso_nome { get; set; }

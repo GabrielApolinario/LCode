@@ -81,25 +81,39 @@ namespace LCode.Controllers
             GetModulos(Convert.ToInt32(curso_id));
             m.modulos_lista = Request["modulos"];
             m.mod_curso = Convert.ToInt32(curso_id);
+
+            //string PrevUrl = Request.UrlReferrer.ToString();
+
+            //PrevUrl.Contains("EditarCurso")
+
             return View(m);
 
         }
 
         [HttpPost]
-        public ActionResult AddModulo(Modulo m)
+        public ActionResult AddModulo(Modulo m, int curso_id)
         {
+            
             Modulo mod = new Modulo
             {
                 mod_desc = m.mod_desc,
                 mod_nome = m.mod_nome,
-                mod_curso = m.mod_curso,
+                mod_curso = curso_id,
 
             };
 
             bd.InsereModulo(mod);
 
             m.mod_id = bd.mod_id;
-            return RedirectToAction("CadastraVideo", "Video", new { curso_id = m.mod_curso, m.mod_id });
+            string PrevUrl = Request.QueryString["prevUrl"].ToString();
+
+            if(PrevUrl.Contains("/Professor/EditarCurso"))
+            {
+                TempData["ModCadastrado"] = "Módulo cadastrado com sucesso. Agora você pode cadastrar novas aulas neste módulo!";
+                return RedirectToAction("EditarCurso", "Professor", new { curso_id = Request.QueryString["curso_id"] });
+            }
+
+            return RedirectToAction("CadastraVideo", "Video", new { curso_id = Request.QueryString["curso_id"], m.mod_id });
         }
 
         public ActionResult Cursos()
@@ -247,6 +261,20 @@ namespace LCode.Controllers
             var retorno = ca.CursosPorCategoria(categoria_id);
 
             return View(retorno);
+        }
+
+        public ActionResult AddFavorito(int cursoComprado_id)
+        {
+            ca.AddFavorito(cursoComprado_id);
+
+            return RedirectToAction("MeusCursos", "Usuario");
+        }
+
+        public ActionResult RemoveFavorito(int cursoComprado_id)
+        {
+            ca.RemoveFavorito(cursoComprado_id);
+
+            return RedirectToAction("MeusCursos", "Usuario");
         }
 
     }

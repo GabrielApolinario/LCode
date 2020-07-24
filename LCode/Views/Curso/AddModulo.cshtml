@@ -26,7 +26,7 @@
             <div class="row">
                 <div class="col-12 mt-5">
                     <div class="row w-100 justify-content-center m-auto  form-cad">
-                        @using (Html.BeginForm())
+                        @using (Html.BeginForm("AddModulo", "Curso", new { curso_id = Model.mod_curso, prevUrl = Request.UrlReferrer.ToString()}, FormMethod.Post))
                         {
                             @Html.AntiForgeryToken()
 
@@ -36,11 +36,11 @@
                                 <div class="col-11 box-title">
                                     <h4 class="title mt-3">Cadastro de Módulo</h4>
                                 </div>
-                                <div class="col-11 form-group mt-3 mx-auto" hidden="hidden">
+                                @*<div class="col-11 form-group mt-3 mx-auto" hidden="hidden">
                                     <label>hidden</label>
                                     <span class="fas fa-file-signature"></span> @Html.EditorFor(model => model.mod_curso, new { htmlAttributes = new { @class = "form-control" } })
                                     @Html.ValidationMessageFor(model => model.mod_curso, "", new { @class = "text-danger" })
-                                </div>
+                                </div>*@
 
                                 <div class="col-11 form-group mx-auto">
                                     <label>Nome do Módulo</label>
@@ -54,9 +54,9 @@
                                     @Html.TextAreaFor(model => model.mod_desc, new { style = "width:100%; height:150px; background-color:transparent;  border-radius: 1.2rem ; padding: .3rem 2.7rem;", placeholder = "Digite a descrição" })
                                     @Html.ValidationMessageFor(model => model.mod_desc, "", new { @class = "text-danger" })
                                 </div>
-
-                                @*@Html.DropDownList("modulos", "Escolha o Módulo")*@
+                                    @*@Html.DropDownList("modulos", "Escolha o Módulo")*@
                             </div>
+
                             <div class="col-4 col-md-6 mx-auto">
                                 <button type="submit" class="btn btn btn-block btn-purple-form mt-4 mb-5">Cadastrar</button>
                             </div>

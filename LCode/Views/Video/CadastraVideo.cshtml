@@ -37,7 +37,7 @@
                             <h2>@ViewBag.CadVideo</h2>
                         </div>
                         }
-                        @using (Html.BeginForm("CadastraVideo", "Video", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        @using (Html.BeginForm("CadastraVideo", "Video", new { prevUrl = Request.UrlReferrer.ToString() }, FormMethod.Post, new { enctype = "multipart/form-data" }))
                         {
                             @Html.AntiForgeryToken()
 
@@ -46,12 +46,6 @@
                                 <div class="form-row align-items-center">
                                     <div class="col-11 box-title">
                                         <h4 class="title mt-3">Cadastro de Aula</h4>
-                                    </div>
-                                    <div class="col-11 form-group mx-auto" hidden="hidden">
-                                        <label>hidden</label>
-                                        <span class="fas fa-user"></span>
-                                        @Html.EditorFor(model => model.video_modulo, new { htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.video_modulo, "", new { @class = "text-danger" })
                                     </div>
 
                                     <div class="col-11 form-group mx-auto" hidden="hidden">
@@ -78,11 +72,27 @@
                                     <div class="col-11 custom-file mx-auto">
                                         <label>Adicione um Vídeo</label>
                                         <br>
-                                        @Html.TextBoxFor(model => model.video, new { type = "file" })
+                                        @Html.TextBoxFor(model => model.video, new { type = "file"})
                                         @Html.ValidationMessageFor(model => model.video, "", new { @class = "text-danger" })
                                     </div>
 
-
+                                    @if (Request.UrlReferrer.ToString().Contains("EditarCurso"))
+                                    {
+                                        <div class="col-11 custom-file mx-auto">
+                                            <span class="far fa-hand-pointer"></span> @Html.DropDownListFor(model => model.video_modulo, Model.Modulos, "Selecione o Módulo", new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(model => model.Modulos, "", new { @class = "text-danger" })
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="col-11 form-group mx-auto" hidden="hidden">
+                                            <label>hidden</label>
+                                            <span class="fas fa-user"></span>
+                                            @Html.EditorFor(model => model.video_modulo, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.video_modulo, "", new { @class = "text-danger" })
+                                        </div>
+                                    }
+                                    
                                     <div class="col-4 col-md-6 mx-auto">
                                         <button type="submit" class="btn btn btn-block btn-purple-form mt-4 mb-5" style="float:left;">Cadastrar</button>
                                     </div>

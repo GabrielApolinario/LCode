@@ -253,5 +253,21 @@ namespace LCode.Dados
             return uc;
         }
 
+        public void AddFavorito(int cursoComprado_id)
+        {
+            MySqlCommand cmd = new MySqlCommand("UPDATE lc_cursocomprado SET cursoComprado_favorito = 1 WHERE cursoComprado_id = @proc_cursoComprado_id", bd.AbreConexao());
+            cmd.Parameters.AddWithValue("@proc_cursoComprado_id", cursoComprado_id);
+            cmd.ExecuteNonQuery();
+            bd.FecharConexao();
+
+        }
+
+        public void RemoveFavorito(int cursoComprado_id)
+        {
+            MySqlCommand cmd = new MySqlCommand("UPDATE lc_cursocomprado SET cursoComprado_favorito = 0 WHERE cursoComprado_id = @proc_cursoComprado_id", bd.AbreConexao());
+            cmd.Parameters.AddWithValue("@proc_cursoComprado_id", cursoComprado_id);
+            cmd.ExecuteNonQuery();
+            bd.FecharConexao();
+        }
     }
 }

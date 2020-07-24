@@ -15,14 +15,15 @@ namespace LCode.Controllers
         BancoDeDados bd = new BancoDeDados();
         // GET: Video
         [HttpGet]
-        public ActionResult CadastraVideo(Nullable<int> curso_id, Nullable<int> mod_id)
+        public ActionResult CadastraVideo(Nullable<int> curso_id, Nullable<int> mod_id, Nullable<int> mod_curso)
         {
             if (Session["Professor"] != null || Session["Adm"] != null)
             {
                 try
                 {
                     Video v = new Video();
-                    v.video_curso = Convert.ToInt32(curso_id);
+                    v.Modulos = BancoDeDados.PopulaModulos(Convert.ToInt32(curso_id));
+                    v.video_curso = Convert.ToInt32(Request.QueryString["curso_id"]);
                     v.video_modulo = Convert.ToInt32(mod_id);
                     return View(v);
                 }
@@ -74,18 +75,25 @@ namespace LCode.Controllers
                     video_link = v.video_link,
                     video_curso = v.video_curso,
                     video_modulo = v.video_modulo,
-
                 };
 
                 bd.InsereVideo(vid);
 
-                //vid.video_titulo = "";
-                //vid.video_descricao = "";
-                //vid.video_link = "";
+                vid.video_titulo = "";
+                vid.video_descricao = "";
+                vid.video_link = "";
 
                 ViewBag.CadVideo = "Vídeo cadastrado com sucesso!";
 
-                return View(vid);
+                string PrevUrl = Request.QueryString["prevUrl"].ToString();
+
+                if (PrevUrl.Contains("/Professor/EditarCurso"))                
+                {
+                    TempData["VidCadastrado"] = "O vídeo foi cadastrado com sucesso!";
+                    return RedirectToAction("EditarCurso", "Professor", new { curso_id = vid.video_curso});
+                }
+
+                    return View(vid);
             }
 
             catch

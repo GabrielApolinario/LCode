@@ -12,6 +12,9 @@ namespace LCode.Models
     {
         public List<SelectListItem> Cursos { get; set; }
 
+        [Required(ErrorMessage = "O módulo é obrigatório!")]
+        public List<SelectListItem> Modulos { get; set; }
+
         public int video_id { get; set; }
 
         [Required]

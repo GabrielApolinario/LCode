@@ -146,7 +146,8 @@ namespace LCode.Dados
 
         public List<Curso> GetMeusCursos(int usu_id)
         {
-            MySqlCommand cmd = new MySqlCommand("SELECT * FROM lc_cursocomprado cc, lc_curso c WHERE cc.cursoComprado = c.curso_id AND cc.cursoComprado_usuario = @usu_id", bd.AbreConexao());
+            MySqlCommand cmd = new MySqlCommand("SELECT * FROM lc_cursocomprado cc, lc_curso c WHERE cc.cursoComprado = c.curso_id AND cc.cursoComprado_usuario = @usu_id " +
+                "ORDER BY cursoComprado_favorito DESC, curso_nome ASC", bd.AbreConexao());
             cmd.Parameters.AddWithValue("@usu_id", usu_id);
             var retorno = cmd.ExecuteReader();
             return MeusCursos(retorno);
@@ -160,7 +161,9 @@ namespace LCode.Dados
             {
                 var TempCursos = new Curso()
                 {
+                    CursoComprado_id = Convert.ToInt32(retorno["cursoComprado_id"]),
                     Curso_id = Convert.ToInt32(retorno["curso_id"]),
+                    CursoComprado_favorito = Convert.ToInt32(retorno["cursoComprado_favorito"]), 
                     Curso_nome = retorno["curso_nome"].ToString(),
                     Curso_descricao = retorno["curso_descricao"].ToString(),
                     Curso_valor = Convert.ToDouble(retorno["curso_valor"]),
