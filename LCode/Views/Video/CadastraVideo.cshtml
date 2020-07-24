@@ -9,33 +9,40 @@
 }
 
 
-<head>
-    <meta charset="utf-8">
-    <title>Cadastre-se</title>
-    @Styles.Render("~/Content/bootstrap.min.css")
-    @Styles.Render("~/Content/login.css")
-    @Styles.Render("~/Content/cad-curso.css")
-    @Styles.Render("~/Content/style.css")
+    <head>
+        <meta charset="utf-8">
+        <title>Cadastre-se</title>
+        @Styles.Render("~/Content/bootstrap.min.css")
+        @Styles.Render("~/Content/login.css")
+        @Styles.Render("~/Content/cad-curso.css")
+        @Styles.Render("~/Content/style.css")
 
 
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" type="image/png" sizes="16x16" href="image/favicon.png">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" type="~/image/png" sizes="16x16" href="~/image/favicon.png">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 
-</head>
+    </head>
 
 <body>
     <script src="js/bootstrap.min.js"></script>
     <section>
         <div class="container">
             <div class="row">
+                <div class="progress col-lg-12">
+                    <div class="step active"></div>
+                    <div class="step active"></div>
+                    <div class="step active"></div>
+                    <div class="step"></div>
+                    <div class="step"></div>
+                </div>
                 <div class="col-12 mt-5">
                     <div class="row w-100 justify-content-center m-auto  form-cad mt-5">
                         @if (ViewBag.CadVideo != null)
                         {
-                        <div class="alert alert-success mt-3">
-                            <h2>@ViewBag.CadVideo</h2>
-                        </div>
+                            <div class="alert alert-success mt-3">
+                                <h2>@ViewBag.CadVideo</h2>
+                            </div>
                         }
                         @using (Html.BeginForm("CadastraVideo", "Video", new { prevUrl = Request.UrlReferrer.ToString() }, FormMethod.Post, new { enctype = "multipart/form-data" }))
                         {
@@ -72,7 +79,7 @@
                                     <div class="col-11 custom-file mx-auto">
                                         <label>Adicione um Vídeo</label>
                                         <br>
-                                        @Html.TextBoxFor(model => model.video, new { type = "file"})
+                                        @Html.TextBoxFor(model => model.video, new { type = "file" })
                                         @Html.ValidationMessageFor(model => model.video, "", new { @class = "text-danger" })
                                     </div>
 
@@ -92,14 +99,14 @@
                                             @Html.ValidationMessageFor(model => model.video_modulo, "", new { @class = "text-danger" })
                                         </div>
                                     }
-                                    
+
                                     <div class="col-4 col-md-6 mx-auto">
                                         <button type="submit" class="btn btn btn-block btn-purple-form mt-4 mb-5" style="float:left;">Cadastrar</button>
                                     </div>
                             </form>
                         }
                     </div>
-                    
+
                 </div>
             </div>
         </div>

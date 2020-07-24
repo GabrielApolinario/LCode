@@ -80,3 +80,6 @@ iframe {
     .link-video .active {
         color: #af00b5;
     }
+.btn-assistir {
+    padding: .7rem 6rem!important;
+}

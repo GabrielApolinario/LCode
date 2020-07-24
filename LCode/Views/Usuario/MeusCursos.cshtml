@@ -11,7 +11,7 @@
     <title>Meus cursos</title>
     @Styles.Render("~/Content/css")
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" type="image/png" sizes="16x16" href="image/favicon.png">
+    <link rel="icon" type="~/image/png" sizes="16x16" href="~/image/favicon.png">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 
 </head>
@@ -25,7 +25,7 @@
                     <div class="row">
                         @foreach (var item in Model) 
                         {
-                            <div class="col-sm-4 mt-5">
+                            <div class="col-sm-5 mt-5">
                                 <a target="_parent" href="@Url.Action("AssistirCurso", "Curso", new { curso_id = item.Curso_id })" class="meus-cursos">
                                     <div class="card card-meus-cursos">
                                         <div class="card-body">
@@ -34,11 +34,11 @@
                                             </div>
                                             @if (item.CursoComprado_favorito == 1)
                                             {
-                                                <a href="@Url.Action("RemoveFavorito", "Curso", new { cursoComprado_id = item.CursoComprado_id })"><i class="fas fa-star"></i></a>
+                                                <a alt="Adicionar aos favoritos" href="@Url.Action("RemoveFavorito", "Curso", new { cursoComprado_id = item.CursoComprado_id })"><i class="fas fa-heart icon-favorito"></i></a>
                                             }
                                             else
                                             {
-                                                <a href="@Url.Action("AddFavorito", "Curso", new { cursoComprado_id = item.CursoComprado_id })"><i class="far fa-star"></i></a>
+                                                <a href="@Url.Action("AddFavorito", "Curso", new { cursoComprado_id = item.CursoComprado_id })"><i class="far fa-heart icon-favorito"></i></a>
                                             }
                                             <h5 class="card-title">@Html.DisplayFor(model => item.Curso_nome)</h5>
                                             <p class="card-text">@Html.DisplayFor(model => item.Curso_descricao)</p>
