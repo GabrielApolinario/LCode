@@ -113,12 +113,11 @@
                                 <div class="card card-categoria">
                                     <div class="card-header media">
                                         <!--<img class="align-self-start mr-3 media-img" src="~/image/logo.png" alt="Imagem de exemplo genérica">-->
-                                        <h5 class="ml-3">Cursos de @Html.DisplayFor(model => item.Categoria_nome)</h5>
+                                        <h5 class="ml-3">Cursos @Html.DisplayFor(model => item.Categoria_nome)</h5>
                                     </div>
                                     <div class="card-body">
                                         <p class="card-text">
-                                            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                            Lorem Ipsum has been the industry.
+                                            @Html.DisplayFor(model => item.Categoria_descricao)
                                         </p>
 
                                     </div>

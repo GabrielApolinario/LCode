@@ -13,5 +13,6 @@ namespace LCode.Models
 
         public string Categoria_nome { get; set; }
 
+        public string Categoria_descricao { get; set; }
     }
 }

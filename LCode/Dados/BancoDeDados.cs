@@ -296,6 +296,7 @@ namespace LCode.Models
                 {
                     Categoria_id = Convert.ToInt32(retorno["categoria_id"]),
                     Categoria_nome = retorno["categoria_nome"].ToString(),
+                    Categoria_descricao = retorno["categoria_descricao"].ToString(),
                 };
                 categorias.Add(TempCategorias);
             }

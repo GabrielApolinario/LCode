@@ -196,7 +196,7 @@ namespace LCode.Controllers
         {
             string formaPagamento = frm["pagamento"].ToString();
 
-            //tring curso_id = Request.QueryString["curso_id"];
+            //string curso_id = Request.QueryString["curso_id"];
 
             if (Session["carrinho"] != null)
             {
@@ -204,6 +204,8 @@ namespace LCode.Controllers
                 {
                     ca.CompraCurso(item.Curso_id, Convert.ToInt32(Session["UsuId"]), formaPagamento);
                 }
+
+                Session["carrinho"] = null;
             }
             if (curso_id != null)
             {
