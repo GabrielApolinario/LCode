@@ -137,12 +137,7 @@ namespace LCode.Controllers
 
         public ActionResult Logout()
         {
-            Session["Nome"] = null;
-            Session["UsuEmail"] = null;
-            Session["UsuId"] = null;
-            Session["Adm"] = null;
-            Session["Professor"] = null;
-            Session["Estudante"] = null;
+            Session.Abandon();
 
             return RedirectToAction("Index", "Home");
         }

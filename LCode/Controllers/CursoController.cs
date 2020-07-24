@@ -242,12 +242,19 @@ namespace LCode.Controllers
             return View(retorno);
         }
 
-        public ActionResult Certificado(int curso_id)
-        {
-            //ca.CriarCertificado(curso_id, Convert.ToInt32(Session["UsuId"]));
-            var retorno = ca.GetCertificado(curso_id, Convert.ToInt32(Session["UsuId"]));
+        public ActionResult Certificado(int curso_id, int usu_id)
+        {            
+            var retorno = ca.GetCertificado(curso_id, usu_id);
 
             return View(retorno);
+        }
+
+        public ActionResult ImprimirCertificado(int curso_id)
+        {
+            var pdf = new Rotativa.ActionAsPdf("Certificado", new { curso_id, usu_id = Convert.ToInt32(Session["UsuId"]) });
+            //var orientacao = Rotativa.Options.Orientation.Landscape;
+            //pdf.PageOrientation = orientacao;
+            return pdf;
         }
 
         public ActionResult CriarCurso()

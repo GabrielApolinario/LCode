@@ -243,7 +243,7 @@ namespace LCode.Dados
             if (rt.HasRows)
             {
                 rt.Read();
-
+                uc.Curso_id = Convert.ToInt32(retorno["curso_id"]);
                 uc.Curso_nome = retorno["curso_nome"].ToString();
                 uc.Usu_nome = retorno["usu_nome"].ToString();
                 uc.Curso_duracao = Convert.ToDouble(retorno["curso_duracao"]);                

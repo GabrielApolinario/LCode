@@ -13,9 +13,18 @@
 </head>
 <body>
     <div>
-        <video  width="760" height="430" allowfullscreen controls>
-            <source src="@Url.Content(Model.video_link)"/>
-        </video>
+        @if (Model.video_link != null)
+        {
+            <video width="760" height="430" allowfullscreen controls>
+                <source src="@Url.Content(Model.video_link)" />
+            </video>
+        }
+        else
+        {
+            <video width="760" height="430" allowfullscreen controls>
+                <source src="" />
+            </video>
+        }
     </div>
 </body>
 </html>
