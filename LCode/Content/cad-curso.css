@@ -257,3 +257,7 @@ label {
 .card-meus-cursos{
     height:11.5rem;
 }
+
+.btn-criar-curso {
+    padding: .8rem .6rem !important;
+}

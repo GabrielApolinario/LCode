@@ -257,8 +257,9 @@ namespace LCode.Controllers
             return pdf;
         }
 
-        public ActionResult CriarCurso()
+        public ActionResult CriarCurso(string cursoCriado)
         {
+            ViewBag.cursoCriado = cursoCriado;
             return View();
         }
 
