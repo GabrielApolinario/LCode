@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="~/Content/index.css">
     <link rel="stylesheet" href="~/Content/login.css">
     <link href="~/Content/course.css" rel="stylesheet" />
-    <link rel="icon" type="~/Image/png" sizes="16x16" href="~/~/Image/favicon.png">
+    <link rel="icon" type="~/image/png" sizes="16x16" href="~/image/favicon.png">
     <link rel="stylesheet"
           href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
           integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
@@ -48,7 +48,7 @@
                         <div class="card-body">
                             <h5 class="card-title"> @Html.DisplayFor(modelItem => item.Curso_nome)</h5>
                             <p class="card-text">@Html.DisplayFor(modelItem => item.Curso_descricao)</p>
-                            <h5 class="card-text">R$ @Html.DisplayFor(modelItem => item.Curso_valor)</h5>
+                            <h5 class="card-text price">R$ @Html.DisplayFor(modelItem => item.Curso_valor)</h5>
                         </div>
                         <div class="card-footer">
                             <small class="text-muted">Last updated 3 mins ago</small>

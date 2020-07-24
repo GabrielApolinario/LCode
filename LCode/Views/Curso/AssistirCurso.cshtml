@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="~/Content/login.css">
     <link rel="stylesheet" href="~/Content/assistir.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" type="image/png" sizes="16x16" href="image/favicon.png">
+    <link rel="icon" type="~/image/png" sizes="16x16" href="~/image/favicon.png">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 
 </head>
@@ -115,8 +115,10 @@
                                                     <div class="card-body">
                                                         <ul class="list-group list-accordion list-group-flush">
                                                             <li class="list-group-item">
-                                                                <a class="btn-link" href="@Url.Action("AssistirCurso","Curso", new {curso_id = Model.Curso_id, @videos.video_id})"><span><i class="fas fa-play-circle icon btn-link"></i></span>
-                                                                @videos.video_titulo</a>
+                                                                <a class="btn-link" href="@Url.Action("AssistirCurso","Curso", new {curso_id = Model.Curso_id, @videos.video_id})">
+                                                                    <span><i class="fas fa-play-circle icon btn-link"></i></span>
+                                                                    @videos.video_titulo
+                                                                </a>
                                                             </li>
 
                                                         </ul>
@@ -129,6 +131,9 @@
                                 }
                             }
                         </div>
+                       
+                            <a target="_blank" href="@Url.Action("Certificado", "Curso", new { curso_id = Request.QueryString["curso_id"]})"><button type="submit" class="btn btn-purple-form btn-assistir mt-4">Gerar Certificado</button></a>
+                     
                     </div>
         </div>
             <div class="row">
@@ -138,10 +143,13 @@
                         <div class="col-12 description mt-3 ">
                             <iframe width="560" height="315" name="iframe-assistir" src="@Url.Action("DescricaoAula", "Curso", new { curso_id = Request.QueryString["curso_id"]
                                                                                            ,video_id = Request.QueryString["video_id"] })" frameborder="0" allowfullscreen scrolling="no" class="mt-5">
+
                             </iframe>
+                           
                         </div>
+                        
                     </div>
-                    <a target="_blank" href="@Url.Action("ImprimirCertificado", "Curso", new { curso_id = Request.QueryString["curso_id"]})"><button type="submit" class="btn btn-purple-form mt-4">Gerar Certificado</button></a>
+                   
                 </div>
             </div>
         </div>

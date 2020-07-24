@@ -1,7 +1,18 @@
+.img-curso {
+    width: 357px;
+    height: 250px;
+    background-size: cover;
+    background-position: center;
+}
+
+header {
+    background: url(../image/banner-roxo.jpg);
+}
+
 .card-img-top {
     height: 240px;
     width: 80%;
-    /*margin-left: 10%;*/
+    margin-left: 0%;
     margin-top: 5%;
     border-radius: 50%;
 }
@@ -15,7 +26,7 @@
 
 .card-text {
     text-align: center;
-    /*height: 6rem;*/
+    height: 6rem;
 }
 
 .section-cursos {
@@ -35,15 +46,14 @@
         cursor: pointer;
     }
 
-
-
 .card {
     position: relative;
     text-decoration: none;
-    border: 2px solid transparent;
+    border: 1px solid transparent;
     text-align: center;
     display: block;
     color: #7665cf;
+    height: 31rem;
 }
 
     .card:before {
@@ -134,4 +144,12 @@
         border-bottom-color: #7665cf;
         border-left-color: #7665cf;
     }
+}
+.card-footer {
+    margin-top: -21%;
+}
+.price {
+    margin-top:-10%;
+    font-size:25px;
+    font-weight:bold;
 }

@@ -16,7 +16,7 @@
     <link href="~/Content/login.css" rel="stylesheet" />
     <link href="~/Content/cad-curso.css" rel="stylesheet" />
 
-    <link rel="icon" type="image/png" sizes="16x16" href="image/favicon.png">
+    <link rel="icon" type="~/image/png" sizes="16x16" href="~/image/favicon.png">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-icons/3.0.1/iconfont/material-icons.min.css" integrity="sha256-x8PYmLKD83R9T/sYmJn1j3is/chhJdySyhet/JuHnfY=" crossorigin="anonymous" />
 
@@ -112,7 +112,7 @@
                             <div class="col-12">                               
                                 @if (Session["Adm"] != null || Session["Professor"] != null)
                                 {
-                                    <iframe name="iframe-conteudo" src="@Url.Action("CriarCurso", "Curso")" scrolling="no" class="mt-5">
+                                    <iframe name="iframe-conteudo" src="@Url.Action("CriarCurso", "Curso")" scrolling="no" class="mt-2">
                                         <!--
                                         Aqui é linkado as páginas referentes ao usuario
                                         -->
