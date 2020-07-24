@@ -244,6 +244,7 @@
     <Content Include="image\carrinho-vazio.png" />
     <Content Include="image\certi.jpg" />
     <Content Include="image\certificado.png" />
+    <Content Include="image\chat.png" />
     <Content Include="image\click.png" />
     <Content Include="image\computer-banner.jpg" />
     <Content Include="image\contato.jpg" />
@@ -274,10 +275,13 @@
     <Content Include="image\print-comofunciona.jpg" />
     <Content Include="image\selo.png" />
     <Content Include="image\Sem Título-1.png" />
+    <Content Include="image\services.png" />
     <Content Include="image\suporte.png" />
     <Content Include="image\video-interativo.png" />
+    <Content Include="image\video-services.png" />
     <Content Include="image\video.png" />
     <Content Include="image\visa-logo.png" />
+    <Content Include="image\welcome.png" />
     <Content Include="obj\Debug\LCode.csproj.FileListAbsolute.txt" />
     <Content Include="obj\Debug\LCode.dll" />
     <Content Include="obj\Debug\LCode.pdb" />
