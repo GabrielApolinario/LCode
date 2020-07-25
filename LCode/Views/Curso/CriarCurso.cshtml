@@ -26,6 +26,12 @@
                 <div class="col-12">
                     <div class="row">
                         <div class="col-sm-12 mt-5 ">
+                            @if (ViewBag.cursoCriado != null)
+                            {
+                                <div class="alert alert-success">
+                                    @ViewBag.cursoCriado
+                                </div>
+                            }
                             <div class="meus-cursos">
                                 <div class="card-new-course">
                                     <div class="card-body">
