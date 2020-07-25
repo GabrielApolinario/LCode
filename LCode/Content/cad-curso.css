@@ -261,3 +261,7 @@ label {
 .btn-criar-curso {
     padding: .8rem .6rem !important;
 }
+
+.btn-cursos-criados{
+    padding: .6rem 1rem !important;
+}

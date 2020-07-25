@@ -56,13 +56,13 @@
     <div class="wrapper d-flex">
         <div class="sideMenu bg-mattBlackLight">
             <div class="sidebar mt-5">
-                @try
+                @if(Model.Imagem_link == "")
+                {
+                    <img src="~/image/avatar.png" class="img-perfil" />
+                }
+                else
                 {
                     <img src="@Url.Content(Model.Imagem_link)" class="img-perfil" />
-                }
-                catch
-                {
-                <img src="~/image/avatar.png" class="img-perfil" />
                 }
 
                 <ul class="navbar-nav">

@@ -37,13 +37,13 @@
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.video_descricao)
-                <th><i class="fas fa-edit"></i></th>
                 <th>
                     <a href="@Url.Action("AddModulo", "Curso", new { curso_id = Request.QueryString["curso_id"] })"><button type="submit" class="btn btn-purple-form btn-cursos-criados">Inserir novo módulo</button></a>
                 </th>
                 <th>
                     <a href="@Url.Action("CadastraVideo", "Video", new { curso_id = Request.QueryString["curso_id"] })"><button type="submit" class="btn btn-purple-form btn-cursos-criados">Inserir novo vídeo</button></a>
                 </th>
+                <th><i class="fas fa-edit"></i></th>
             </tr>
         </thead>
 
@@ -55,6 +55,10 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.video_descricao)
+                </td>
+                <td>
+                </td>
+                <td>
                 </td>
                 <td>
                     <a href="@Url.Action("EditarVideo", "Professor", new { curso_id = item.Curso_id, video_id = item.video_id })"><button type="submit" class="btn btn-purple-form btn-cursos-criados">Editar</button></a>
