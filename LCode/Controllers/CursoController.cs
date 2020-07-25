@@ -252,8 +252,8 @@ namespace LCode.Controllers
         public ActionResult ImprimirCertificado(int curso_id)
         {
             var pdf = new Rotativa.ActionAsPdf("Certificado", new { curso_id, usu_id = Convert.ToInt32(Session["UsuId"]) });
-            //var orientacao = Rotativa.Options.Orientation.Landscape;
-            //pdf.PageOrientation = orientacao;
+            var orientacao = Rotativa.Options.Orientation.Landscape;
+            pdf.PageOrientation = orientacao;
             return pdf;
         }
 

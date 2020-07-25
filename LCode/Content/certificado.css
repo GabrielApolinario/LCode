@@ -2,18 +2,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;800&display=swap');
 body {
     background-color: #4e005f;
+    
 }
 
 header img {
     width: 250px;
-    height: 250px;
+    height: 240px;
     margin-left: 45%;
 }
 
 .container {
     background-color: #ffffff;
-    margin-top: -8%;
-    height: 50rem;
+    margin-top: -13%;
+    height: 30rem;
+    width:90%
 }
 
 .nome-aluno {
